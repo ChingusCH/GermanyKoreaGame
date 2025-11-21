@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Sightseeing Quiz - South Korea</title>
+
+<style>
+    :root { --gold: #ffd27f; --glass: rgba(255,255,255,0.12); --overlay: rgba(0,0,0,0.55); }
+
+    body{
+        margin:0;
+        padding:0;
+        font-family:"Georgia", serif;
+        background-image:url("KoreaPhotoForIQ.jpg");
+        background-size:cover;
+        background-position:center;
+        background-attachment:fixed;
+    }
+
+    .overlay{
+        width:100%;
+        min-height:100vh;
+        background:var(--overlay);
+        backdrop-filter:blur(3px);
+        padding:40px 0;
+    }
+
+    .content-box{
+        max-width:900px;
+        margin:auto;
+        padding:40px;
+        background:var(--glass);
+        border-radius:15px;
+        backdrop-filter:blur(6px);
+        color:white;
+        line-height:1.8;
+        box-shadow:0 0 25px rgba(0,0,0,0.35);
+    }
+
+    h1{
+        text-align:center;
+        font-size:38px;
+        color:var(--gold);
+        text-shadow:0 0 10px rgba(0,0,0,0.6);
+        margin-bottom:22px;
+    }
+
+    h2{
+        margin-top:36px;
+        font-size:30px;
+        color:var(--gold);
+        text-shadow:0 0 8px rgba(0,0,0,0.5);
+    }
+
+    p{ margin-top:12px; font-size:18px; }
+
+    .highlight{ color:var(--gold); font-weight:bold; }
+
+    .question{ margin-top:24px; }
+    .options{ margin-top:12px; display:flex; flex-wrap:wrap; gap:12px; }
+    .option-btn{
+        background:rgba(0,0,0,0.35);
+        color:white;
+        border:none;
+        padding:10px 16px;
+        border-radius:8px;
+        cursor:pointer;
+        font-size:16px;
+        transition:0.2s;
+    }
+    .option-btn:hover{ background:rgba(0,0,0,0.6); }
+    .option-btn.correct{ background:green; }
+    .option-btn.wrong{ background:red; }
+
+    .answer{ margin-top:10px; font-size:18px; display:none; }
+
+    .back{
+        display:inline-block;
+        margin-top:28px;
+        padding:12px 20px;
+        background:rgba(0,0,0,0.45);
+        color:white;
+        text-decoration:none;
+        font-size:18px;
+        border-radius:8px;
+        transition:background .18s;
+    }
+    .back:hover{ background:rgba(0,0,0,0.75); }
+
+    @media (max-width:760px){
+        .content-box{ margin:20px; padding:24px; }
+        h1{ font-size:30px; }
+        h2{ font-size:22px; }
+        .option-btn{ font-size:14px; padding:8px 12px; }
+    }
+</style>
+</head>
+<body>
+<div class="overlay">
+<div class="content-box">
+
+    <h1>Sightseeing Quiz - South Korea</h1>
+    <p>Test your knowledge about famous sightseeing spots in South Korea. Click an option to check your answer!</p>
+
+    <div class="quiz">
+
+        <div class="question">
+            <h2>1. Gyeongbokgung Palace is associated with which Korean dynasty?</h2>
+            <div class="options">
+                <button class="option-btn" onclick="checkAnswer(this,'b')">a) Silla</button>
+                <button class="option-btn" onclick="checkAnswer(this,'b')">b) Joseon</button>
+                <button class="option-btn" onclick="checkAnswer(this,'b')">c) Goryeo</button>
+                <button class="option-btn" onclick="checkAnswer(this,'b')">d) Balhae</button>
+            </div>
+            <div class="answer">Correct Answer: b) Joseon</div>
+        </div>
+
+        <div class="question">
+            <h2>2. What is a hanok?</h2>
+            <div class="options">
+                <button class="option-btn" onclick="checkAnswer(this,'a')">a) A traditional Korean house</button>
+                <button class="option-btn" onclick="checkAnswer(this,'a')">b) A type of temple</button>
+                <button class="option-btn" onclick="checkAnswer(this,'a')">c) A historic fortress</button>
+                <button class="option-btn" onclick="checkAnswer(this,'a')">d) A royal burial mound</button>
+            </div>
+            <div class="answer">Correct Answer: a) A traditional Korean house</div>
+        </div>
+
+        <div class="question">
+            <h2>3. N Seoul Tower is located on which mountain?</h2>
+            <div class="options">
+                <button class="option-btn" onclick="checkAnswer(this,'c')">a) Hallasan</button>
+                <button class="option-btn" onclick="checkAnswer(this,'c')">b) Taebaeksan</button>
+                <button class="option-btn" onclick="checkAnswer(this,'c')">c) Namsan</button>
+                <button class="option-btn" onclick="checkAnswer(this,'c')">d) Jirisan</button>
+            </div>
+            <div class="answer">Correct Answer: c) Namsan</div>
+        </div>
+
+        <div class="question">
+            <h2>4. Which destination is known for volcanic landscapes and lava tubes?</h2>
+            <div class="options">
+                <button class="option-btn" onclick="checkAnswer(this,'b')">a) Busan</button>
+                <button class="option-btn" onclick="checkAnswer(this,'b')">b) Jeju Island</button>
+                <button class="option-btn" onclick="checkAnswer(this,'b')">c) Gyeongju</button>
+                <button class="option-btn" onclick="checkAnswer(this,'b')">d) Suwon</button>
+            </div>
+            <div class="answer">Correct Answer: b) Jeju Island</div>
+        </div>
+
+        <div class="question">
+            <h2>5. Gyeongju is often called “the museum without walls” because it contains</h2>
+            <div class="options">
+                <button class="option-btn" onclick="checkAnswer(this,'c')">a) a large number of modern art galleries</button>
+                <button class="option-btn" onclick="checkAnswer(this,'c')">b) extensive royal palaces</button>
+                <button class="option-btn" onclick="checkAnswer(this,'c')">c) numerous outdoor historical sites</button>
+                <button class="option-btn" onclick="checkAnswer(this,'c')">d) the tallest buildings in Korea</button>
+            </div>
+            <div class="answer">Correct Answer: c) numerous outdoor historical sites</div>
+        </div>
+
+        <div class="question">
+            <h2>6. Gamcheon Culture Village is famous for</h2>
+            <div class="options">
+                <button class="option-btn" onclick="checkAnswer(this,'b')">a) traditional palaces</button>
+                <button class="option-btn" onclick="checkAnswer(this,'b')">b) colorful hillside homes and murals</button>
+                <button class="option-btn" onclick="checkAnswer(this,'b')">c) mountain hiking trails</button>
+                <button class="option-btn" onclick="checkAnswer(this,'b')">d) royal tombs</button>
+            </div>
+            <div class="answer">Correct Answer: b) colorful hillside homes and murals</div>
+        </div>
+
+    </div>
+
+    <a class="back" href="KoreaGeography.html">← Back</a>
+
+</div>
+</div>
+
+<script>
+function checkAnswer(btn, correct){
+    const parent = btn.closest('.question');
+    const options = parent.querySelectorAll('.option-btn');
+    options.forEach(o => o.disabled = true);
+    const answerDiv = parent.querySelector('.answer');
+    if(btn.textContent.startsWith(correct)){
+        btn.classList.add('correct');
+        answerDiv.textContent = "Correct! " + answerDiv.textContent;
+    } else {
+        btn.classList.add('wrong');
+        options.forEach(o=>{
+            if(o.textContent.startsWith(correct)) o.classList.add('correct');
+        });
+        answerDiv.style.display = "block";
+    }
+    answerDiv.style.display = "block";
+}
+</script>
+
+</body>
+</html>

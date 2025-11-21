@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Hangul Alphabet</title>
+
+    <style>
+        :root { --gold: #ffd27f; --glass: rgba(255,255,255,0.12); --overlay: rgba(0,0,0,0.55); }
+        body{
+            margin:0;
+            padding:0;
+            font-family: "Georgia", serif;
+            background-image: url("KoreaPhotoForIQ.jpg"); /* replace with your background */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .overlay{
+            width:100%;
+            min-height:100vh;
+            background: var(--overlay);
+            backdrop-filter: blur(3px);
+            padding:40px 0;
+        }
+
+        .content-box{
+            max-width:900px;
+            margin:auto;
+            padding:40px;
+            background: var(--glass);
+            border-radius:15px;
+            backdrop-filter: blur(6px);
+            color:white;
+            line-height:1.8;
+            box-shadow:0 0 25px rgba(0,0,0,0.35);
+        }
+
+        h1{
+            text-align:center;
+            font-size:38px;
+            color:var(--gold);
+            text-shadow:0 0 10px rgba(0,0,0,0.6);
+            margin-bottom:22px;
+        }
+
+        h2{
+            margin-top:36px;
+            font-size:30px;
+            color:var(--gold);
+            text-shadow:0 0 8px rgba(0,0,0,0.5);
+        }
+
+        p{ margin-top:12px; font-size:18px; }
+
+        .highlight{ color:var(--gold); font-weight:bold; }
+
+        .photo{
+            width:100%;
+            border-radius:12px;
+            margin:18px 0;
+            box-shadow:0 0 15px rgba(0,0,0,0.45);
+            display:block;
+        }
+
+        .caption{
+            font-size:14px;
+            color:rgba(255,255,255,0.75);
+            margin-top:-10px;
+            margin-bottom:8px;
+        }
+
+        .back{
+            display:inline-block;
+            margin-top:28px;
+            padding:12px 20px;
+            background:rgba(0,0,0,0.45);
+            color:white;
+            text-decoration:none;
+            font-size:18px;
+            border-radius:8px;
+            transition:background .18s;
+        }
+        .back:hover{ background:rgba(0,0,0,0.75); }
+
+        @media (max-width:760px){
+            .content-box{ margin:20px; padding:24px; }
+            h1{ font-size:30px; }
+            h2{ font-size:22px; }
+        }
+    </style>
+</head>
+<body>
+<div class="overlay">
+    <div class="content-box">
+
+        <h1>Hangul Alphabet</h1>
+
+        <img src="HangulMain.jpg" alt="Hangul letters on a page" class="photo">
+        <p class="caption">Hangul, the Korean alphabet, is logical, phonetic, and easy to learn.</p>
+
+        <p>
+            <span class="highlight">Hangul</span> is the Korean alphabet, created in 1443 by King Sejong the Great during the Joseon Dynasty. 
+            Before Hangul, Koreans primarily used Chinese characters (<span class="highlight">Hanja</span>) for writing, which were difficult for common people to learn. 
+            Hangul was designed to be simple, logical, and easy to learn, allowing literacy to spread widely.
+        </p>
+
+        <h2>Structure of Hangul</h2>
+        <img src="HangulStructure.jpg" alt="Hangul consonants and vowels" class="photo">
+        <p class="caption">Hangul combines consonants and vowels into syllable blocks for easy reading.</p>
+
+        <p>
+            Hangul consists of 14 consonants and 10 vowels in its basic form, which combine into syllable blocks. Each syllable block contains at least one consonant and one vowel.
+        </p>
+        <p>
+            <span class="highlight">Consonants:</span> ㄱ (g/k), ㄴ (n), ㄷ (d/t), ㄹ (r/l), ㅁ (m), ㅂ (b/p), ㅅ (s), ㅇ (silent/ng), ㅈ (j), ㅊ (ch), ㅋ (k), ㅌ (t), ㅍ (p), ㅎ (h)<br>
+            <span class="highlight">Vowels:</span> ㅏ (a), ㅑ (ya), ㅓ (eo), ㅕ (yeo), ㅗ (o), ㅛ (yo), ㅜ (u), ㅠ (yu), ㅡ (eu), ㅣ (i)
+        </p>
+        <p>
+            For example, the word <span class="highlight">한국</span> (Hanguk, “Korea”) is written as:<br>
+            ㅎ (h) + ㅏ (a) + ㄴ (n) = 한 (Han)<br>
+            ㄱ (g/k) + ㅜ (u) + ㄱ (k) = 국 (Guk)
+        </p>
+
+        <h2>Features of Hangul</h2>
+        <p>
+            <span class="highlight">Phonetic:</span> Each letter represents a specific sound.<br>
+            <span class="highlight">Syllable blocks:</span> Letters are grouped into blocks for readability.<br>
+            <span class="highlight">Scientific design:</span> Consonants reflect the shape of the mouth and tongue when pronouncing them.<br>
+            <span class="highlight">Ease of learning:</span> Hangul can be mastered in a few days, unlike Chinese characters.
+        </p>
+
+        <h2>Cultural Significance</h2>
+        <img src="HangulCultural.jpg" alt="Celebrating Hangul Day" class="photo">
+        <p class="caption">Hangul Day (October 9) celebrates the creation and importance of the Korean alphabet.</p>
+
+        <p>
+            Hangul is a source of pride for Koreans and is celebrated annually on <span class="highlight">Hangul Day</span> (October 9). 
+            Its creation revolutionized literacy in Korea and remains one of the most efficient and logical writing systems in the world.
+        </p>
+
+        <a class="back" href="KoreaLanguage.html">← Back</a>
+    </div>
+</div>
+</body>
+</html>

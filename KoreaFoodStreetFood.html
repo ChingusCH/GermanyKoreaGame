@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Korean Street Food</title>
+
+    <style>
+        :root { --gold: #ffd27f; --glass: rgba(255,255,255,0.12); --overlay: rgba(0,0,0,0.55); }
+        body{
+            margin:0;
+            padding:0;
+            font-family: "Georgia", serif;
+            background-image: url("KoreaPhotoForIQ.jpg"); /* replace with your background */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .overlay{
+            width:100%;
+            min-height:100vh;
+            background: var(--overlay);
+            backdrop-filter: blur(3px);
+            padding:40px 0;
+        }
+
+        .content-box{
+            max-width:900px;
+            margin:auto;
+            padding:40px;
+            background: var(--glass);
+            border-radius:15px;
+            backdrop-filter: blur(6px);
+            color:white;
+            line-height:1.8;
+            box-shadow:0 0 25px rgba(0,0,0,0.35);
+        }
+
+        h1{
+            text-align:center;
+            font-size:38px;
+            color:var(--gold);
+            text-shadow:0 0 10px rgba(0,0,0,0.6);
+            margin-bottom:22px;
+        }
+
+        h2{
+            margin-top:36px;
+            font-size:30px;
+            color:var(--gold);
+            text-shadow:0 0 8px rgba(0,0,0,0.5);
+        }
+
+        p{ margin-top:12px; font-size:18px; }
+
+        .highlight{ color:var(--gold); font-weight:bold; }
+
+        .photo{
+            width:100%;
+            border-radius:12px;
+            margin:18px 0;
+            box-shadow:0 0 15px rgba(0,0,0,0.45);
+            display:block;
+        }
+
+        .caption{
+            font-size:14px;
+            color:rgba(255,255,255,0.75);
+            margin-top:-10px;
+            margin-bottom:8px;
+        }
+
+        .back{
+            display:inline-block;
+            margin-top:28px;
+            padding:12px 20px;
+            background:rgba(0,0,0,0.45);
+            color:white;
+            text-decoration:none;
+            font-size:18px;
+            border-radius:8px;
+            transition:background .18s;
+        }
+        .back:hover{ background:rgba(0,0,0,0.75); }
+
+        @media (max-width:760px){
+            .content-box{ margin:20px; padding:24px; }
+            h1{ font-size:30px; }
+            h2{ font-size:22px; }
+        }
+    </style>
+</head>
+<body>
+<div class="overlay">
+    <div class="content-box">
+
+        <h1>Korean Street Food</h1>
+
+        <img src="StreetFoodMain.jpg" alt="Korean street food stalls" class="photo">
+        <p class="caption">Vibrant street food markets in Korea, offering a variety of snacks and dishes.</p>
+
+        <p>
+            <span class="highlight">Korean street food</span> is a vibrant and delicious part of daily life in Korea. Sold at markets, food stalls, and festivals, it offers quick, inexpensive, and flavorful snacks. Street food reflects Korea’s creativity in combining flavors, textures, and ingredients.
+        </p>
+
+        <h2>Popular Street Foods</h2>
+        <img src="StreetFoodVariety.jpg" alt="Popular Korean street foods" class="photo">
+        <p class="caption">Tteokbokki, Hotteok, Kimbap, Odeng, Sundae, Twigim, Bungeoppang, and more.</p>
+
+        <p>
+            <span class="highlight">Tteokbokki:</span> Spicy rice cakes cooked in a sweet and spicy chili sauce, often with fish cakes and boiled eggs. A signature street food that is both chewy and flavorful.
+        </p>
+        <p>
+            <span class="highlight">Hotteok:</span> Sweet pancakes filled with brown sugar, cinnamon, and chopped nuts. Crispy on the outside and soft on the inside.
+        </p>
+        <p>
+            <span class="highlight">Kimbap (Gimbap):</span> Rice rolled in seaweed with fillings like vegetables, eggs, and sometimes meat or fish. Often called “Korean sushi,” though it is less raw and more portable.
+        </p>
+        <p>
+            <span class="highlight">Odeng (Fish Cake Skewers):</span> Fish cakes boiled in a warm, savory broth, served on skewers. Popular for its comforting, mild flavor.
+        </p>
+        <p>
+            <span class="highlight">Sundae (Korean Blood Sausage):</span> Sausage made with pig’s blood, glass noodles, and other seasonings. Usually steamed and sliced, often eaten with dipping sauces.
+        </p>
+        <p>
+            <span class="highlight">Twigim (Korean Tempura):</span> Deep-fried vegetables, seafood, or dumplings, crispy and golden. Often served with a spicy or sweet dipping sauce.
+        </p>
+        <p>
+            <span class="highlight">Bungeoppang:</span> Fish-shaped pastry filled with sweet red bean paste or custard. Commonly eaten in winter as a warm snack.
+        </p>
+
+        <h2>Cultural Significance</h2>
+        <img src="StreetFoodCulture.jpg" alt="People enjoying street food" class="photo">
+        <p class="caption">Street food gatherings create a lively and casual social atmosphere.</p>
+
+        <p>
+            Street food in Korea is more than just a snack—it is a social experience. People gather at stalls after school, work, or during festivals, creating a lively and casual atmosphere. Korean street food reflects local flavors, creativity, and seasonal ingredients.
+        </p>
+
+        <a class="back" href="KoreaFood.html">← Back</a>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Korean Sentence Structure</title>
+
+    <style>
+        :root { --gold: #ffd27f; --glass: rgba(255,255,255,0.12); --overlay: rgba(0,0,0,0.55); }
+        body{
+            margin:0;
+            padding:0;
+            font-family: "Georgia", serif;
+            background-image: url("KoreaPhotoForIQ.jpg"); /* replace with your background */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .overlay{
+            width:100%;
+            min-height:100vh;
+            background: var(--overlay);
+            backdrop-filter: blur(3px);
+            padding:40px 0;
+        }
+
+        .content-box{
+            max-width:900px;
+            margin:auto;
+            padding:40px;
+            background: var(--glass);
+            border-radius:15px;
+            backdrop-filter: blur(6px);
+            color:white;
+            line-height:1.8;
+            box-shadow:0 0 25px rgba(0,0,0,0.35);
+        }
+
+        h1{
+            text-align:center;
+            font-size:38px;
+            color:var(--gold);
+            text-shadow:0 0 10px rgba(0,0,0,0.6);
+            margin-bottom:22px;
+        }
+
+        h2{
+            margin-top:36px;
+            font-size:30px;
+            color:var(--gold);
+            text-shadow:0 0 8px rgba(0,0,0,0.5);
+        }
+
+        p{ margin-top:12px; font-size:18px; }
+
+        .highlight{ color:var(--gold); font-weight:bold; }
+
+        .photo{
+            width:100%;
+            border-radius:12px;
+            margin:18px 0;
+            box-shadow:0 0 15px rgba(0,0,0,0.45);
+            display:block;
+        }
+
+        .caption{
+            font-size:14px;
+            color:rgba(255,255,255,0.75);
+            margin-top:-10px;
+            margin-bottom:8px;
+        }
+
+        .back{
+            display:inline-block;
+            margin-top:28px;
+            padding:12px 20px;
+            background:rgba(0,0,0,0.45);
+            color:white;
+            text-decoration:none;
+            font-size:18px;
+            border-radius:8px;
+            transition:background .18s;
+        }
+        .back:hover{ background:rgba(0,0,0,0.75); }
+
+        @media (max-width:760px){
+            .content-box{ margin:20px; padding:24px; }
+            h1{ font-size:30px; }
+            h2{ font-size:22px; }
+        }
+    </style>
+</head>
+<body>
+<div class="overlay">
+    <div class="content-box">
+
+        <h1>Korean Sentence Structure</h1>
+
+        <img src="KoreanSentenceMain.jpg" alt="Korean grammar illustration" class="photo">
+        <p class="caption">Korean follows a Subject–Object–Verb structure, with verbs appearing at the end.</p>
+
+        <p>
+            Korean has a sentence structure that is different from English, which can take some practice for learners. 
+            The basic word order in Korean is <span class="highlight">Subject–Object–Verb (SOV)</span>, meaning the verb usually comes at the end of the sentence.
+        </p>
+
+        <h2>Basic Word Order</h2>
+        <p>
+            <span class="highlight">Subject (S)</span> – The person or thing doing the action.<br>
+            <span class="highlight">Object (O)</span> – The thing receiving the action.<br>
+            <span class="highlight">Verb (V)</span> – The action, placed at the end.
+        </p>
+
+        <p class="highlight">Example:</p>
+        <p>
+            <span class="highlight">English:</span> I eat rice. (S–V–O)<br>
+            <span class="highlight">Korean:</span> 저는 밥을 먹어요. (Jeoneun bap-eul meogeoyo)
+        </p>
+
+        <p>
+            저는 = I (subject)<br>
+            밥을 = rice (object)<br>
+            먹어요 = eat (verb)
+        </p>
+
+        <h2>Particles</h2>
+
+        <img src="KoreanParticles.jpg" alt="Korean particles chart" class="photo">
+        <p class="caption">Particles in Korean mark grammatical roles such as subject, object, and topic.</p>
+
+        <p>
+            Particles are small markers attached to nouns that show the noun’s role in the sentence.
+        </p>
+
+        <p>
+            <span class="highlight">Subject particles:</span> 이 / 가<br>
+            <span class="highlight">Object particles:</span> 을 / 를<br>
+            <span class="highlight">Topic particle:</span> 은 / 는
+        </p>
+
+        <p class="highlight">Example:</p>
+        <p>
+            친구가 사과를 먹어요. (Chingu-ga sagwa-reul meogeoyo)
+        </p>
+        <p>
+            친구가 = the friend (subject)<br>
+            사과를 = apple (object)<br>
+            먹어요 = eats
+        </p>
+
+        <h2>Additional Notes</h2>
+        <p>
+            • <span class="highlight">Adjectives come before the noun</span> they describe.<br>
+            Example: 예쁜 꽃 (pretty flower)
+        </p>
+        <p>
+            • <span class="highlight">Time and place appear before the verb.</span><br>
+            Example: 저는 어제 학교에 갔어요. (I went to school yesterday.)
+        </p>
+        <p>
+            • <span class="highlight">Politeness levels</span> change verb endings depending on formality and relationship.
+        </p>
+
+        <h2>Cultural Significance</h2>
+
+        <img src="KoreanLanguageCulture.jpg" alt="Korean language culture" class="photo">
+        <p class="caption">Politeness levels in Korean reflect respect, hierarchy, and social context.</p>
+
+        <p>
+            Korean sentence structure reflects a high-context culture where respect and hierarchy matter. 
+            Verb endings and particles communicate politeness, social standing, and subtle meaning differences.
+        </p>
+
+        <a class="back" href="KoreaLanguage.html">← Back</a>
+    </div>
+</div>
+</body>
+</html>

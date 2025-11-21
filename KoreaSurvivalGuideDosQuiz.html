@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Cultural Do’s & Don’ts Quiz</title>
+
+<style>
+:root { --red:#ff6b6b; --green:#4cd137; --overlay:rgba(0,0,0,0.55); }
+
+body{
+    margin:0;
+    padding:0;
+    font-family:"Georgia", serif;
+    background-image:url("KoreaPhotoForIQ.jpg");
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+}
+
+.overlay{
+    width:100%;
+    min-height:100vh;
+    background:var(--overlay);
+    backdrop-filter:blur(3px);
+    padding:40px 0;
+}
+
+.content-box{
+    max-width:900px;
+    margin:auto;
+    padding:40px;
+    background:rgba(255,255,255,0.12);
+    border-radius:15px;
+    backdrop-filter:blur(6px);
+    color:white;
+    line-height:1.8;
+    box-shadow:0 0 25px rgba(0,0,0,0.35);
+}
+
+h1{
+    text-align:center;
+    font-size:36px;
+    color:#ffd27f;
+    text-shadow:0 0 10px rgba(0,0,0,0.6);
+    margin-bottom:20px;
+}
+
+h2{
+    margin-top:30px;
+    font-size:26px;
+    color:#ffd27f;
+    text-shadow:0 0 8px rgba(0,0,0,0.5);
+}
+
+.options{ margin-top:12px; display:flex; flex-wrap:wrap; gap:12px; }
+.option-btn{
+    background:rgba(0,0,0,0.35);
+    color:white;
+    border:none;
+    padding:10px 16px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+    transition:0.2s;
+}
+.option-btn:hover{ background:rgba(0,0,0,0.6); }
+.option-btn.correct{ background:var(--green); }
+.option-btn.wrong{ background:var(--red); }
+
+.answer{ margin-top:10px; font-size:18px; display:none; }
+
+.back{
+    display:inline-block;
+    margin-top:28px;
+    padding:12px 20px;
+    background:rgba(0,0,0,0.45);
+    color:white;
+    text-decoration:none;
+    font-size:18px;
+    border-radius:8px;
+    transition:background .18s;
+}
+.back:hover{ background:rgba(0,0,0,0.75); }
+
+@media (max-width:760px){
+    .content-box{ margin:20px; padding:24px; }
+    h1{ font-size:30px; }
+    h2{ font-size:22px; }
+    .option-btn{ font-size:14px; padding:8px 12px; }
+}
+</style>
+</head>
+<body>
+<div class="overlay">
+<div class="content-box">
+
+<h1>Cultural Do’s & Don’ts Quiz</h1>
+<p>Click an option to check if you are correct!</p>
+
+<div class="quiz">
+
+<div class="question">
+    <h2>1. How should you greet elders or in formal situations?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'c')">a) Shake hands firmly</button>
+        <button class="option-btn" onclick="checkAnswer(this,'c')">b) Wave from afar</button>
+        <button class="option-btn" onclick="checkAnswer(this,'c')">c) Bow slightly</button>
+        <button class="option-btn" onclick="checkAnswer(this,'c')">d) High five</button>
+    </div>
+    <div class="answer">Correct Answer: c) Bow slightly</div>
+</div>
+
+<div class="question">
+    <h2>2. When giving or receiving gifts, what is the polite gesture?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'c')">a) Use one hand casually</button>
+        <button class="option-btn" onclick="checkAnswer(this,'c')">b) Toss it gently</button>
+        <button class="option-btn" onclick="checkAnswer(this,'c')">c) Use both hands</button>
+        <button class="option-btn" onclick="checkAnswer(this,'c')">d) Place it on the floor</button>
+    </div>
+    <div class="answer">Correct Answer: c) Use both hands</div>
+</div>
+
+<div class="question">
+    <h2>3. Which action is considered impolite in Korean dining culture?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'c')">a) Saying “thank you” after the meal</button>
+        <button class="option-btn" onclick="checkAnswer(this,'c')">b) Trying the food served</button>
+        <button class="option-btn" onclick="checkAnswer(this,'c')">c) Blowing your nose at the table</button>
+        <button class="option-btn" onclick="checkAnswer(this,'c')">d) Using chopsticks properly</button>
+    </div>
+    <div class="answer">Correct Answer: c) Blowing your nose at the table</div>
+</div>
+
+<div class="question">
+    <h2>4. What is a common rule when addressing someone older or of higher rank?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'d')">a) Use only their first name</button>
+        <button class="option-btn" onclick="checkAnswer(this,'d')">b) Whisper their name</button>
+        <button class="option-btn" onclick="checkAnswer(this,'d')">c) Avoid saying their name at all</button>
+        <button class="option-btn" onclick="checkAnswer(this,'d')">d) Use titles and last names</button>
+    </div>
+    <div class="answer">Correct Answer: d) Use titles and last names</div>
+</div>
+
+<div class="question">
+    <h2>5. Which of the following should you avoid doing in public?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'c')">a) Helping someone with directions</button>
+        <button class="option-btn" onclick="checkAnswer(this,'c')">b) Smiling politely</button>
+        <button class="option-btn" onclick="checkAnswer(this,'c')">c) Raising your voice or arguing loudly</button>
+        <button class="option-btn" onclick="checkAnswer(this,'c')">d) Speaking politely</button>
+    </div>
+    <div class="answer">Correct Answer: c) Raising your voice or arguing loudly</div>
+</div>
+
+<div class="question">
+    <h2>6. What is considered disrespectful when interacting with children?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'d')">a) Offering food</button>
+        <button class="option-btn" onclick="checkAnswer(this,'d')">b) Complimenting them</button>
+        <button class="option-btn" onclick="checkAnswer(this,'d')">c) Playing games with them</button>
+        <button class="option-btn" onclick="checkAnswer(this,'d')">d) Touching their head</button>
+    </div>
+    <div class="answer">Correct Answer: d) Touching their head</div>
+</div>
+
+</div>
+
+<a class="back" href="KoreaSurvivalGuide.html">← Back</a>
+
+</div>
+</div>
+
+<script>
+function checkAnswer(btn, correct){
+    const parent = btn.closest('.question');
+    const options = parent.querySelectorAll('.option-btn');
+    options.forEach(o => o.disabled = true);
+    const answerDiv = parent.querySelector('.answer');
+    
+    if(btn.textContent.startsWith(correct)){
+        btn.classList.add('correct');
+    } else {
+        btn.classList.add('wrong');
+        options.forEach(o=>{
+            if(o.textContent.startsWith(correct)) o.classList.add('correct');
+        });
+    }
+    answerDiv.style.display = "block";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Korean BBQ Quiz</title>
+
+<style>
+:root { --gold: #ffd27f; --glass: rgba(255,255,255,0.12); --overlay: rgba(0,0,0,0.55); }
+
+body{
+    margin:0;
+    padding:0;
+    font-family:"Georgia", serif;
+    background-image:url("KoreaPhotoForIQ.jpg");
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+}
+
+.overlay{
+    width:100%;
+    min-height:100vh;
+    background:var(--overlay);
+    backdrop-filter:blur(3px);
+    padding:40px 0;
+}
+
+.content-box{
+    max-width:900px;
+    margin:auto;
+    padding:40px;
+    background:var(--glass);
+    border-radius:15px;
+    backdrop-filter:blur(6px);
+    color:white;
+    line-height:1.8;
+    box-shadow:0 0 25px rgba(0,0,0,0.35);
+}
+
+h1{
+    text-align:center;
+    font-size:38px;
+    color:var(--gold);
+    text-shadow:0 0 10px rgba(0,0,0,0.6);
+    margin-bottom:22px;
+}
+
+h2{
+    margin-top:36px;
+    font-size:30px;
+    color:var(--gold);
+    text-shadow:0 0 8px rgba(0,0,0,0.5);
+}
+
+p{ margin-top:12px; font-size:18px; }
+
+.question{ margin-top:24px; }
+.options{ margin-top:12px; display:flex; flex-wrap:wrap; gap:12px; }
+.option-btn{
+    background:rgba(0,0,0,0.35);
+    color:white;
+    border:none;
+    padding:10px 16px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+    transition:0.2s;
+}
+.option-btn:hover{ background:rgba(0,0,0,0.6); }
+.option-btn.correct{ background:green; }
+.option-btn.wrong{ background:red; }
+
+.answer{ margin-top:10px; font-size:18px; display:none; }
+
+.back{
+    display:inline-block;
+    margin-top:28px;
+    padding:12px 20px;
+    background:rgba(0,0,0,0.45);
+    color:white;
+    text-decoration:none;
+    font-size:18px;
+    border-radius:8px;
+    transition:background .18s;
+}
+.back:hover{ background:rgba(0,0,0,0.75); }
+
+@media (max-width:760px){
+    .content-box{ margin:20px; padding:24px; }
+    h1{ font-size:30px; }
+    h2{ font-size:22px; }
+    .option-btn{ font-size:14px; padding:8px 12px; }
+}
+</style>
+</head>
+<body>
+<div class="overlay">
+<div class="content-box">
+
+<h1>Korean BBQ Quiz</h1>
+<p>Click an option to check your answer. Correct answers will be highlighted!</p>
+
+<div class="quiz">
+
+<div class="question">
+    <h2>1. What does “Gogigui” mean in English?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'b')">a) Fermented vegetables</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">b) Grilled meat</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">c) Rice dish</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">d) Soup</button>
+    </div>
+    <div class="answer">Correct Answer: b) Grilled meat</div>
+</div>
+
+<div class="question">
+    <h2>2. Which Korean BBQ meat is thinly sliced and marinated, often sweet and savory?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'b')">a) Samgyeopsal</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">b) Bulgogi</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">c) Galbi</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">d) Dak-galbi</button>
+    </div>
+    <div class="answer">Correct Answer: b) Bulgogi</div>
+</div>
+
+<div class="question">
+    <h2>3. Which type of meat is thick, unsalted pork belly?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'b')">a) Bulgogi</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">b) Samgyeopsal</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">c) Galbi</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">d) Dak-galbi</button>
+    </div>
+    <div class="answer">Correct Answer: b) Samgyeopsal</div>
+</div>
+
+<div class="question">
+    <h2>4. What is the Korean term for wrapping grilled meat in lettuce leaves with condiments?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'b')">a) Kimchi</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">b) Ssam</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">c) Banchan</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">d) Gogigui</button>
+    </div>
+    <div class="answer">Correct Answer: b) Ssam</div>
+</div>
+
+<div class="question">
+    <h2>5. What are “banchan” in a Korean BBQ meal?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'b')">a) Main dishes</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">b) Small side dishes</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">c) Grilled meats</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">d) Drinks</button>
+    </div>
+    <div class="answer">Correct Answer: b) Small side dishes</div>
+</div>
+
+<div class="question">
+    <h2>6. Why is Korean BBQ considered a social dining experience?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'b')">a) It is served only individually</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">b) Diners grill meat themselves and share it communally</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">c) It requires no interaction</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">d) It is eaten silently</button>
+    </div>
+    <div class="answer">Correct Answer: b) Diners grill meat themselves and share it communally</div>
+</div>
+
+</div>
+
+<a class="back" href="KoreaFood.html">← Back</a>
+
+</div>
+</div>
+
+<script>
+function checkAnswer(btn, correct){
+    const parent = btn.closest('.question');
+    const options = parent.querySelectorAll('.option-btn');
+    options.forEach(o => o.disabled = true);
+    const answerDiv = parent.querySelector('.answer');
+    
+    if(btn.textContent.startsWith(correct)){
+        btn.classList.add('correct');
+    } else {
+        btn.classList.add('wrong');
+        options.forEach(o=>{
+            if(o.textContent.startsWith(correct)) o.classList.add('correct');
+        });
+    }
+    answerDiv.style.display = "block";
+}
+</script>
+
+</body>
+</html>

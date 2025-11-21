@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>K-Pop Quiz</title>
+
+<style>
+    :root { --gold: #ffd27f; --glass: rgba(255,255,255,0.12); --overlay: rgba(0,0,0,0.55); }
+
+    body{
+        margin:0;
+        padding:0;
+        font-family:"Georgia", serif;
+        background-image:url("KoreaPhotoForIQ.jpg");
+        background-size:cover;
+        background-position:center;
+        background-attachment:fixed;
+    }
+
+    .overlay{
+        width:100%;
+        min-height:100vh;
+        background:var(--overlay);
+        backdrop-filter:blur(3px);
+        padding:40px 0;
+    }
+
+    .content-box{
+        max-width:900px;
+        margin:auto;
+        padding:40px;
+        background:var(--glass);
+        border-radius:15px;
+        backdrop-filter:blur(6px);
+        color:white;
+        line-height:1.8;
+        box-shadow:0 0 25px rgba(0,0,0,0.35);
+    }
+
+    h1{
+        text-align:center;
+        font-size:38px;
+        color:var(--gold);
+        text-shadow:0 0 10px rgba(0,0,0,0.6);
+        margin-bottom:22px;
+    }
+
+    h2{
+        margin-top:36px;
+        font-size:30px;
+        color:var(--gold);
+        text-shadow:0 0 8px rgba(0,0,0,0.5);
+    }
+
+    p{ margin-top:12px; font-size:18px; }
+
+    .highlight{ color:var(--gold); font-weight:bold; }
+
+    .question{ margin-top:24px; }
+    .options{ margin-top:12px; display:flex; flex-wrap:wrap; gap:12px; }
+    .option-btn{
+        background:rgba(0,0,0,0.35);
+        color:white;
+        border:none;
+        padding:10px 16px;
+        border-radius:8px;
+        cursor:pointer;
+        font-size:16px;
+        transition:0.2s;
+    }
+    .option-btn:hover{ background:rgba(0,0,0,0.6); }
+    .option-btn.correct{ background:green; }
+    .option-btn.wrong{ background:red; }
+
+    .answer{ margin-top:10px; font-size:18px; display:none; }
+
+    .back{
+        display:inline-block;
+        margin-top:28px;
+        padding:12px 20px;
+        background:rgba(0,0,0,0.45);
+        color:white;
+        text-decoration:none;
+        font-size:18px;
+        border-radius:8px;
+        transition:background .18s;
+    }
+    .back:hover{ background:rgba(0,0,0,0.75); }
+
+    @media (max-width:760px){
+        .content-box{ margin:20px; padding:24px; }
+        h1{ font-size:30px; }
+        h2{ font-size:22px; }
+        .option-btn{ font-size:14px; padding:8px 12px; }
+    }
+</style>
+</head>
+<body>
+<div class="overlay">
+<div class="content-box">
+
+    <h1>K-Pop Quiz</h1>
+    <p>Click an option to check your answer. Correct answers will be highlighted!</p>
+
+    <div class="quiz">
+
+        <div class="question">
+            <h2>1. What does K-Pop stand for?</h2>
+            <div class="options">
+                <button class="option-btn" onclick="checkAnswer(this,'b')">a) Korean Poetry</button>
+                <button class="option-btn" onclick="checkAnswer(this,'b')">b) Korean Pop Music</button>
+                <button class="option-btn" onclick="checkAnswer(this,'b')">c) Korean Politics</button>
+                <button class="option-btn" onclick="checkAnswer(this,'b')">d) Korean Performance Art</button>
+            </div>
+            <div class="answer">Correct Answer: b) Korean Pop Music</div>
+        </div>
+
+        <div class="question">
+            <h2>2. Which 1990s group is considered a pioneer of modern K-Pop?</h2>
+            <div class="options">
+                <button class="option-btn" onclick="checkAnswer(this,'c')">a) BTS</button>
+                <button class="option-btn" onclick="checkAnswer(this,'c')">b) BLACKPINK</button>
+                <button class="option-btn" onclick="checkAnswer(this,'c')">c) Seo Taiji and Boys</button>
+                <button class="option-btn" onclick="checkAnswer(this,'c')">d) EXO</button>
+            </div>
+            <div class="answer">Correct Answer: c) Seo Taiji and Boys</div>
+        </div>
+
+        <div class="question">
+            <h2>3. What is the term used for K-Pop fans organized around a group or artist?</h2>
+            <div class="options">
+                <button class="option-btn" onclick="checkAnswer(this,'c')">a) Tribes</button>
+                <button class="option-btn" onclick="checkAnswer(this,'c')">b) Clans</button>
+                <button class="option-btn" onclick="checkAnswer(this,'c')">c) Fandoms</button>
+                <button class="option-btn" onclick="checkAnswer(this,'c')">d) Societies</button>
+            </div>
+            <div class="answer">Correct Answer: c) Fandoms</div>
+        </div>
+
+        <div class="question">
+            <h2>4. Which of the following is NOT a typical characteristic of K-Pop?</h2>
+            <div class="options">
+                <button class="option-btn" onclick="checkAnswer(this,'d')">a) Synchronized choreography</button>
+                <button class="option-btn" onclick="checkAnswer(this,'d')">b) Fashion and styling</button>
+                <button class="option-btn" onclick="checkAnswer(this,'d')">c) Complex music videos</button>
+                <button class="option-btn" onclick="checkAnswer(this,'d')">d) Minimal fan interaction</button>
+            </div>
+            <div class="answer">Correct Answer: d) Minimal fan interaction</div>
+        </div>
+
+        <div class="question">
+            <h2>5. The global spread of Korean culture, including K-Pop, is called:</h2>
+            <div class="options">
+                <button class="option-btn" onclick="checkAnswer(this,'a')">a) Hallyu (Korean Wave)</button>
+                <button class="option-btn" onclick="checkAnswer(this,'a')">b) Hanbok Movement</button>
+                <button class="option-btn" onclick="checkAnswer(this,'a')">c) Jeju Phenomenon</button>
+                <button class="option-btn" onclick="checkAnswer(this,'a')">d) Seollal Trend</button>
+            </div>
+            <div class="answer">Correct Answer: a) Hallyu (Korean Wave)</div>
+        </div>
+
+        <div class="question">
+            <h2>6. Which of these is a famous K-Pop group?</h2>
+            <div class="options">
+                <button class="option-btn" onclick="checkAnswer(this,'ad')">a) Stray Kids</button>
+                <button class="option-btn" onclick="checkAnswer(this,'ad')">b) Coldplay</button>
+                <button class="option-btn" onclick="checkAnswer(this,'ad')">c) The Beatles</button>
+                <button class="option-btn" onclick="checkAnswer(this,'ad')">d) BTS</button>
+            </div>
+            <div class="answer">Correct Answers: a) Stray Kids and d) BTS</div>
+        </div>
+
+    </div>
+
+    <a class="back" href="KoreaCulture.html">← Back</a>
+
+</div>
+</div>
+
+<script>
+function checkAnswer(btn, correct){
+    const parent = btn.closest('.question');
+    const options = parent.querySelectorAll('.option-btn');
+    options.forEach(o => o.disabled = true);
+    const answerDiv = parent.querySelector('.answer');
+    
+    if(correct === 'ad'){ // multiple correct case
+        if(btn.textContent.startsWith('a') || btn.textContent.startsWith('d')){
+            btn.classList.add('correct');
+        } else {
+            btn.classList.add('wrong');
+            options.forEach(o=>{
+                if(o.textContent.startsWith('a') || o.textContent.startsWith('d')) o.classList.add('correct');
+            });
+        }
+        answerDiv.style.display = "block";
+    } else {
+        if(btn.textContent.startsWith(correct)){
+            btn.classList.add('correct');
+        } else {
+            btn.classList.add('wrong');
+            options.forEach(o=>{
+                if(o.textContent.startsWith(correct)) o.classList.add('correct');
+            });
+        }
+        answerDiv.style.display = "block";
+    }
+}
+</script>
+
+</body>
+</html>

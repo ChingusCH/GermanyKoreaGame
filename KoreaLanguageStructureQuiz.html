@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Korean Sentence Structure Quiz</title>
+
+<style>
+:root { --gold: #ffd27f; --glass: rgba(255,255,255,0.12); --overlay: rgba(0,0,0,0.55); }
+
+body{
+    margin:0;
+    padding:0;
+    font-family:"Georgia", serif;
+    background-image:url("KoreaPhotoForIQ.jpg");
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+}
+
+.overlay{
+    width:100%;
+    min-height:100vh;
+    background:var(--overlay);
+    backdrop-filter:blur(3px);
+    padding:40px 0;
+}
+
+.content-box{
+    max-width:900px;
+    margin:auto;
+    padding:40px;
+    background:var(--glass);
+    border-radius:15px;
+    backdrop-filter:blur(6px);
+    color:white;
+    line-height:1.8;
+    box-shadow:0 0 25px rgba(0,0,0,0.35);
+}
+
+h1{
+    text-align:center;
+    font-size:38px;
+    color:var(--gold);
+    text-shadow:0 0 10px rgba(0,0,0,0.6);
+    margin-bottom:22px;
+}
+
+h2{
+    margin-top:36px;
+    font-size:30px;
+    color:var(--gold);
+    text-shadow:0 0 8px rgba(0,0,0,0.5);
+}
+
+p{ margin-top:12px; font-size:18px; }
+
+.question{ margin-top:24px; }
+.options{ margin-top:12px; display:flex; flex-wrap:wrap; gap:12px; }
+.option-btn{
+    background:rgba(0,0,0,0.35);
+    color:white;
+    border:none;
+    padding:10px 16px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+    transition:0.2s;
+}
+.option-btn:hover{ background:rgba(0,0,0,0.6); }
+.option-btn.correct{ background:green; }
+.option-btn.wrong{ background:red; }
+
+.answer{ margin-top:10px; font-size:18px; display:none; }
+
+.back{
+    display:inline-block;
+    margin-top:28px;
+    padding:12px 20px;
+    background:rgba(0,0,0,0.45);
+    color:white;
+    text-decoration:none;
+    font-size:18px;
+    border-radius:8px;
+    transition:background .18s;
+}
+.back:hover{ background:rgba(0,0,0,0.75); }
+
+@media (max-width:760px){
+    .content-box{ margin:20px; padding:24px; }
+    h1{ font-size:30px; }
+    h2{ font-size:22px; }
+    .option-btn{ font-size:14px; padding:8px 12px; }
+}
+</style>
+</head>
+<body>
+<div class="overlay">
+<div class="content-box">
+
+<h1>Korean Sentence Structure Quiz</h1>
+<p>Click an option to see if you are correct!</p>
+
+<div class="quiz">
+
+<div class="question">
+    <h2>1. What is the basic word order in Korean sentences?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'c')">a) S–V–O</button>
+        <button class="option-btn" onclick="checkAnswer(this,'c')">b) V–S–O</button>
+        <button class="option-btn" onclick="checkAnswer(this,'c')">c) S–O–V</button>
+        <button class="option-btn" onclick="checkAnswer(this,'c')">d) O–S–V</button>
+    </div>
+    <div class="answer">Correct Answer: c) S–O–V</div>
+</div>
+
+<div class="question">
+    <h2>2. In the sentence 저는 밥을 먹어요, what is the object?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'b')">a) 저는 (I)</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">b) 밥을 (rice)</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">c) 먹어요 (eat)</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">d) None</button>
+    </div>
+    <div class="answer">Correct Answer: b) 밥을 (rice)</div>
+</div>
+
+<div class="question">
+    <h2>3. Which particle marks the subject of a sentence?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'b')">a) 을 / 를</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">b) 이 / 가</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">c) 은 / 는</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">d) 에 / 에서</button>
+    </div>
+    <div class="answer">Correct Answer: b) 이 / 가</div>
+</div>
+
+<div class="question">
+    <h2>4. Where do adjectives usually appear in Korean?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'b')">a) After the noun</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">b) Before the noun</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">c) At the end of the sentence</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">d) At the beginning of the sentence</button>
+    </div>
+    <div class="answer">Correct Answer: b) Before the noun</div>
+</div>
+
+<div class="question">
+    <h2>5. In Korean, when do time and place usually appear?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'a')">a) Before the verb</button>
+        <button class="option-btn" onclick="checkAnswer(this,'a')">b) After the verb</button>
+        <button class="option-btn" onclick="checkAnswer(this,'a')">c) At the start of a conversation</button>
+        <button class="option-btn" onclick="checkAnswer(this,'a')">d) They are not used</button>
+    </div>
+    <div class="answer">Correct Answer: a) Before the verb</div>
+</div>
+
+<div class="question">
+    <h2>6. Why are verb endings important in Korean?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'a')">a) They show politeness and social hierarchy</button>
+        <button class="option-btn" onclick="checkAnswer(this,'a')">b) They indicate colors</button>
+        <button class="option-btn" onclick="checkAnswer(this,'a')">c) They are optional</button>
+        <button class="option-btn" onclick="checkAnswer(this,'a')">d) They are only used in writing</button>
+    </div>
+    <div class="answer">Correct Answer: a) They show politeness and social hierarchy</div>
+</div>
+
+</div>
+
+<a class="back" href="KoreaLanguage.html">← Back</a>
+
+</div>
+</div>
+
+<script>
+function checkAnswer(btn, correct){
+    const parent = btn.closest('.question');
+    const options = parent.querySelectorAll('.option-btn');
+    options.forEach(o => o.disabled = true);
+    const answerDiv = parent.querySelector('.answer');
+    
+    if(btn.textContent.startsWith(correct)){
+        btn.classList.add('correct');
+    } else {
+        btn.classList.add('wrong');
+        options.forEach(o=>{
+            if(o.textContent.startsWith(correct)) o.classList.add('correct');
+        });
+    }
+    answerDiv.style.display = "block";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>K-Pop (Korean Pop Music)</title>
+
+    <style>
+        /* === Page base (matches your other pages) === */
+        :root { --gold: #ffd27f; --glass: rgba(255,255,255,0.12); --overlay: rgba(0,0,0,0.55); }
+        body{
+            margin:0;
+            padding:0;
+            font-family: "Georgia", serif;
+            background-image: url("KoreaPhotoForIQ.jpg"); /* replace with your background */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .overlay{
+            width:100%;
+            min-height:100vh;
+            background: var(--overlay);
+            backdrop-filter: blur(3px);
+            padding:40px 0;
+        }
+
+        .content-box{
+            max-width:900px;
+            margin:auto;
+            padding:40px;
+            background: var(--glass);
+            border-radius:15px;
+            backdrop-filter: blur(6px);
+            color:white;
+            line-height:1.8;
+            box-shadow:0 0 25px rgba(0,0,0,0.35);
+        }
+
+        h1{
+            text-align:center;
+            font-size:38px;
+            color:var(--gold);
+            text-shadow:0 0 10px rgba(0,0,0,0.6);
+            margin-bottom:22px;
+        }
+
+        h2{
+            margin-top:36px;
+            font-size:30px;
+            color:var(--gold);
+            text-shadow:0 0 8px rgba(0,0,0,0.5);
+        }
+
+        p{ margin-top:12px; font-size:18px; }
+
+        .highlight{ color:var(--gold); font-weight:bold; }
+
+        .photo{
+            width:100%;
+            border-radius:12px;
+            margin:18px 0;
+            box-shadow:0 0 15px rgba(0,0,0,0.45);
+            display:block;
+        }
+
+        .caption{
+            font-size:14px;
+            color:rgba(255,255,255,0.75);
+            margin-top:-10px;
+            margin-bottom:8px;
+        }
+
+        .back{
+            display:inline-block;
+            margin-top:28px;
+            padding:12px 20px;
+            background:rgba(0,0,0,0.45);
+            color:white;
+            text-decoration:none;
+            font-size:18px;
+            border-radius:8px;
+            transition:background .18s;
+        }
+        .back:hover{ background:rgba(0,0,0,0.75); }
+
+        /* responsive tweaks */
+        @media (max-width:760px){
+            .content-box{ margin:20px; padding:24px; }
+            h1{ font-size:30px; }
+            h2{ font-size:22px; }
+        }
+    </style>
+</head>
+<body>
+<div class="overlay">
+    <div class="content-box">
+
+        <h1>K-Pop (Korean Pop Music)</h1>
+
+        <img src="KPopMain.jpg" alt="K-Pop collage / stage" class="photo">
+        <p class="caption">Example: vibrant stage performance or collage of popular groups.</p>
+
+        <p>
+            <span class="highlight">K-Pop</span> is a musical and cultural phenomenon from South Korea that blends pop, hip-hop,
+            R&B, EDM and more. Beyond songs it includes choreography, fashion, music videos and a global fandom system that
+            drives streams, trends and tourism.
+        </p>
+
+        <h2>History and Development</h2>
+        <img src="SeoTaiji.jpg" alt="Seo Taiji and Boys" class="photo">
+        <p class="caption">Early pioneers such as Seo Taiji and Boys mixed Western styles with Korean lyrics in the 1990s.</p>
+        <p>
+            Modern K-Pop emerged in the early 1990s. Entertainment companies developed a systematic idol training model:
+            singers trained in vocals, dance, language and media skills from a young age. Over decades this industry matured
+            into a global export of music and culture.
+        </p>
+
+        <h2>Idol Culture</h2>
+        <img src="Idols.jpg" alt="K-Pop idols" class="photo">
+        <p class="caption">Idol groups perform synchronized choreography, concept photoshoots and variety appearances.</p>
+        <p>
+            K-Pop idols are branded performers known for precision choreography, visuals and tight group concepts.
+            Groups like <span class="highlight">BTS, BLACKPINK, TWICE, EXO</span> and others have become international stars.
+            Fandoms (organized fan communities) actively promote their favorites through streaming, voting and social media.
+        </p>
+
+        <h2>Music, Videos & Performances</h2>
+        <img src="MV.jpg" alt="K-Pop music video still" class="photo">
+        <p class="caption">Music videos are highly produced — a major part of K-Pop's global appeal.</p>
+        <p>
+            K-Pop tracks emphasize catchy hooks, tight production and visually striking music videos. Television music shows,
+            world tours, and variety programs are core platforms where idols showcase new releases and connect with fans.
+        </p>
+
+        <h2>Global Impact</h2>
+        <img src="Tour.jpg" alt="K-Pop world tour" class="photo">
+        <p class="caption">International tours, award shows and collaborations extend K-Pop's reach.</p>
+        <p>
+            As part of the broader <span class="highlight">Hallyu (Korean Wave)</span>, K-Pop has influenced fashion, language
+            learning, and tourism. Artists regularly top global charts, collaborate with international stars, and sell out arenas
+            worldwide.
+        </p>
+
+        <h2>Cultural Significance</h2>
+        <img src="FanCulture.jpg" alt="Fans at a concert / fan events" class="photo">
+        <p class="caption">Fan culture powers streaming, chart rankings and social trends.</p>
+        <p>
+            K-Pop functions as cultural diplomacy: it familiarizes global audiences with Korean language, food, fashion and
+            modern lifestyles. Its industry model emphasizes teamwork, training and high production values, making it distinct
+            among global pop industries.
+        </p>
+
+        <a class="back" href="KoreaCulture.html">← Back</a>
+    </div>
+</div>
+</body>
+</html>

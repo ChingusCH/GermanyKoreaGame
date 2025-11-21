@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Chuseok Quiz</title>
+
+<style>
+:root { --gold: #ffd27f; --glass: rgba(255,255,255,0.12); --overlay: rgba(0,0,0,0.55); }
+
+body{
+    margin:0;
+    padding:0;
+    font-family:"Georgia", serif;
+    background-image:url("KoreaPhotoForIQ.jpg");
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+}
+
+.overlay{
+    width:100%;
+    min-height:100vh;
+    background:var(--overlay);
+    backdrop-filter:blur(3px);
+    padding:40px 0;
+}
+
+.content-box{
+    max-width:900px;
+    margin:auto;
+    padding:40px;
+    background:var(--glass);
+    border-radius:15px;
+    backdrop-filter:blur(6px);
+    color:white;
+    line-height:1.8;
+    box-shadow:0 0 25px rgba(0,0,0,0.35);
+}
+
+h1{
+    text-align:center;
+    font-size:36px;
+    color:var(--gold);
+    text-shadow:0 0 10px rgba(0,0,0,0.6);
+    margin-bottom:20px;
+}
+
+h2{
+    margin-top:30px;
+    font-size:26px;
+    color:var(--gold);
+    text-shadow:0 0 8px rgba(0,0,0,0.5);
+}
+
+.options{ margin-top:12px; display:flex; flex-wrap:wrap; gap:12px; }
+.option-btn{
+    background:rgba(0,0,0,0.35);
+    color:white;
+    border:none;
+    padding:10px 16px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+    transition:0.2s;
+}
+.option-btn:hover{ background:rgba(0,0,0,0.6); }
+.option-btn.correct{ background:green; }
+.option-btn.wrong{ background:red; }
+
+.answer{ margin-top:10px; font-size:18px; display:none; }
+
+.back{
+    display:inline-block;
+    margin-top:28px;
+    padding:12px 20px;
+    background:rgba(0,0,0,0.45);
+    color:white;
+    text-decoration:none;
+    font-size:18px;
+    border-radius:8px;
+    transition:background .18s;
+}
+.back:hover{ background:rgba(0,0,0,0.75); }
+
+@media (max-width:760px){
+    .content-box{ margin:20px; padding:24px; }
+    h1{ font-size:30px; }
+    h2{ font-size:22px; }
+    .option-btn{ font-size:14px; padding:8px 12px; }
+}
+</style>
+</head>
+<body>
+<div class="overlay">
+<div class="content-box">
+
+<h1>Chuseok Quiz</h1>
+<p>Click an option to see if you are correct!</p>
+
+<div class="quiz">
+
+<div class="question">
+    <h2>1. When is Chuseok celebrated?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'b')">a) December 25th</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">b) 15th day of the 8th lunar month</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">c) January 1st</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">d) August 15th</button>
+    </div>
+    <div class="answer">Correct Answer: b) 15th day of the 8th lunar month</div>
+</div>
+
+<div class="question">
+    <h2>2. What is Songpyeon?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'b')">a) A type of kimchi</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">b) Half-moon shaped rice cake</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">c) A traditional hat</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">d) Korean fried chicken</button>
+    </div>
+    <div class="answer">Correct Answer: b) Half-moon shaped rice cake</div>
+</div>
+
+<div class="question">
+    <h2>3. Which activity involves cleaning and decorating ancestral graves?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'c')">a) Sebae</button>
+        <button class="option-btn" onclick="checkAnswer(this,'c')">b) Charye</button>
+        <button class="option-btn" onclick="checkAnswer(this,'c')">c) Seongmyo</button>
+        <button class="option-btn" onclick="checkAnswer(this,'c')">d) Yutnori</button>
+    </div>
+    <div class="answer">Correct Answer: c) Seongmyo</div>
+</div>
+
+<div class="question">
+    <h2>4. What do families commonly eat during Chuseok?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'c')">a) Sushi and ramen</button>
+        <button class="option-btn" onclick="checkAnswer(this,'c')">b) Pizza and pasta</button>
+        <button class="option-btn" onclick="checkAnswer(this,'c')">c) Jeon, galbi, and seasonal side dishes</button>
+        <button class="option-btn" onclick="checkAnswer(this,'c')">d) Burgers and fries</button>
+    </div>
+    <div class="answer">Correct Answer: c) Jeon, galbi, and seasonal side dishes</div>
+</div>
+
+<div class="question">
+    <h2>5. Which traditional clothing might families wear during Chuseok rituals?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'a')">a) Hanbok</button>
+        <button class="option-btn" onclick="checkAnswer(this,'a')">b) Kimono</button>
+        <button class="option-btn" onclick="checkAnswer(this,'a')">c) Ao dai</button>
+        <button class="option-btn" onclick="checkAnswer(this,'a')">d) Cheongsam</button>
+    </div>
+    <div class="answer">Correct Answer: a) Hanbok</div>
+</div>
+
+<div class="question">
+    <h2>6. Which games are commonly played during Chuseok?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'b')">a) Soccer and baseball</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">b) Ssireum and yutnori</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">c) Chess and checkers</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">d) Basketball and volleyball</button>
+    </div>
+    <div class="answer">Correct Answer: b) Ssireum and yutnori</div>
+</div>
+
+</div>
+
+<a class="back" href="KoreaFestivalsHolidays.html">← Back</a>
+
+</div>
+</div>
+
+<script>
+function checkAnswer(btn, correct){
+    const parent = btn.closest('.question');
+    const options = parent.querySelectorAll('.option-btn');
+    options.forEach(o => o.disabled = true);
+    const answerDiv = parent.querySelector('.answer');
+    
+    if(btn.textContent.startsWith(correct)){
+        btn.classList.add('correct');
+    } else {
+        btn.classList.add('wrong');
+        options.forEach(o=>{
+            if(o.textContent.startsWith(correct)) o.classList.add('correct');
+        });
+    }
+    answerDiv.style.display = "block";
+}
+</script>
+
+</body>
+</html>

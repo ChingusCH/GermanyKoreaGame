@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Hangul Quiz</title>
+
+<style>
+:root { --gold: #ffd27f; --glass: rgba(255,255,255,0.12); --overlay: rgba(0,0,0,0.55); }
+
+body{
+    margin:0;
+    padding:0;
+    font-family:"Georgia", serif;
+    background-image:url("KoreaPhotoForIQ.jpg");
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+}
+
+.overlay{
+    width:100%;
+    min-height:100vh;
+    background:var(--overlay);
+    backdrop-filter:blur(3px);
+    padding:40px 0;
+}
+
+.content-box{
+    max-width:900px;
+    margin:auto;
+    padding:40px;
+    background:var(--glass);
+    border-radius:15px;
+    backdrop-filter:blur(6px);
+    color:white;
+    line-height:1.8;
+    box-shadow:0 0 25px rgba(0,0,0,0.35);
+}
+
+h1{
+    text-align:center;
+    font-size:38px;
+    color:var(--gold);
+    text-shadow:0 0 10px rgba(0,0,0,0.6);
+    margin-bottom:22px;
+}
+
+h2{
+    margin-top:36px;
+    font-size:30px;
+    color:var(--gold);
+    text-shadow:0 0 8px rgba(0,0,0,0.5);
+}
+
+p{ margin-top:12px; font-size:18px; }
+
+.question{ margin-top:24px; }
+.options{ margin-top:12px; display:flex; flex-wrap:wrap; gap:12px; }
+.option-btn{
+    background:rgba(0,0,0,0.35);
+    color:white;
+    border:none;
+    padding:10px 16px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+    transition:0.2s;
+}
+.option-btn:hover{ background:rgba(0,0,0,0.6); }
+.option-btn.correct{ background:green; }
+.option-btn.wrong{ background:red; }
+
+.answer{ margin-top:10px; font-size:18px; display:none; }
+
+.back{
+    display:inline-block;
+    margin-top:28px;
+    padding:12px 20px;
+    background:rgba(0,0,0,0.45);
+    color:white;
+    text-decoration:none;
+    font-size:18px;
+    border-radius:8px;
+    transition:background .18s;
+}
+.back:hover{ background:rgba(0,0,0,0.75); }
+
+@media (max-width:760px){
+    .content-box{ margin:20px; padding:24px; }
+    h1{ font-size:30px; }
+    h2{ font-size:22px; }
+    .option-btn{ font-size:14px; padding:8px 12px; }
+}
+</style>
+</head>
+<body>
+<div class="overlay">
+<div class="content-box">
+
+<h1>Hangul Quiz</h1>
+<p>Click an option to see if you are correct!</p>
+
+<div class="quiz">
+
+<div class="question">
+    <h2>1. Who created Hangul?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'a')">a) King Sejong the Great</button>
+        <button class="option-btn" onclick="checkAnswer(this,'a')">b) King Gojong</button>
+        <button class="option-btn" onclick="checkAnswer(this,'a')">c) Admiral Yi Sun-sin</button>
+        <button class="option-btn" onclick="checkAnswer(this,'a')">d) King Taejo</button>
+    </div>
+    <div class="answer">Correct Answer: a) King Sejong the Great</div>
+</div>
+
+<div class="question">
+    <h2>2. What was primarily used for writing in Korea before Hangul?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'b')">a) Japanese Kana</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">b) Hanja (Chinese characters)</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">c) Latin alphabet</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">d) Sanskrit</button>
+    </div>
+    <div class="answer">Correct Answer: b) Hanja (Chinese characters)</div>
+</div>
+
+<div class="question">
+    <h2>3. How are Hangul letters combined in writing?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'b')">a) In straight lines only</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">b) Into syllable blocks</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">c) Randomly</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">d) As single letters without combination</button>
+    </div>
+    <div class="answer">Correct Answer: b) Into syllable blocks</div>
+</div>
+
+<div class="question">
+    <h2>4. How many basic consonants does Hangul have?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'b')">a) 10</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">b) 14</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">c) 16</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">d) 20</button>
+    </div>
+    <div class="answer">Correct Answer: b) 14</div>
+</div>
+
+<div class="question">
+    <h2>5. How many basic vowels are in Hangul?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'b')">a) 5</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">b) 10</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">c) 14</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">d) 20</button>
+    </div>
+    <div class="answer">Correct Answer: b) 10</div>
+</div>
+
+<div class="question">
+    <h2>6. What is celebrated on October 9 in Korea?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'b')">a) Seollal (Lunar New Year)</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">b) Hangul Day</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">c) Chuseok (Thanksgiving)</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">d) Independence Day</button>
+    </div>
+    <div class="answer">Correct Answer: b) Hangul Day</div>
+</div>
+
+</div>
+
+<a class="back" href="KoreaLanguage.html">← Back</a>
+
+</div>
+</div>
+
+<script>
+function checkAnswer(btn, correct){
+    const parent = btn.closest('.question');
+    const options = parent.querySelectorAll('.option-btn');
+    options.forEach(o => o.disabled = true);
+    const answerDiv = parent.querySelector('.answer');
+    
+    if(btn.textContent.startsWith(correct)){
+        btn.classList.add('correct');
+    } else {
+        btn.classList.add('wrong');
+        options.forEach(o=>{
+            if(o.textContent.startsWith(correct)) o.classList.add('correct');
+        });
+    }
+    answerDiv.style.display = "block";
+}
+</script>
+
+</body>
+</html>

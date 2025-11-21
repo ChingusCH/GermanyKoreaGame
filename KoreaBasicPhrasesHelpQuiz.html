@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Korean Conversation Essentials Quiz</title>
+
+<style>
+:root { --gold: #ffd27f; --glass: rgba(255,255,255,0.12); --overlay: rgba(0,0,0,0.55); }
+
+body{
+    margin:0;
+    padding:0;
+    font-family:"Georgia", serif;
+    background-image:url("KoreaPhotoForIQ.jpg");
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+}
+
+.overlay{
+    width:100%;
+    min-height:100vh;
+    background:var(--overlay);
+    backdrop-filter:blur(3px);
+    padding:40px 0;
+}
+
+.content-box{
+    max-width:950px;
+    margin:auto;
+    padding:40px;
+    background:var(--glass);
+    border-radius:15px;
+    backdrop-filter:blur(6px);
+    color:white;
+    line-height:1.8;
+    box-shadow:0 0 25px rgba(0,0,0,0.35);
+}
+
+h1{
+    text-align:center;
+    font-size:38px;
+    color:var(--gold);
+    text-shadow:0 0 10px rgba(0,0,0,0.6);
+    margin-bottom:22px;
+}
+
+h2{
+    margin-top:36px;
+    font-size:28px;
+    color:var(--gold);
+    text-shadow:0 0 8px rgba(0,0,0,0.5);
+}
+
+p{ margin-top:12px; font-size:18px; }
+
+.question{ margin-top:24px; }
+.options{ margin-top:12px; display:flex; flex-wrap:wrap; gap:12px; }
+.option-btn{
+    background:rgba(0,0,0,0.35);
+    color:white;
+    border:none;
+    padding:10px 16px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+    transition:0.2s;
+}
+.option-btn:hover{ background:rgba(0,0,0,0.6); }
+.option-btn.correct{ background:green; }
+.option-btn.wrong{ background:red; }
+
+.answer{ margin-top:10px; font-size:18px; display:none; }
+
+.back{
+    display:inline-block;
+    margin-top:28px;
+    padding:12px 20px;
+    background:rgba(0,0,0,0.45);
+    color:white;
+    text-decoration:none;
+    font-size:18px;
+    border-radius:8px;
+    transition:background .18s;
+}
+.back:hover{ background:rgba(0,0,0,0.75); }
+
+@media (max-width:760px){
+    .content-box{ margin:20px; padding:24px; }
+    h1{ font-size:30px; }
+    h2{ font-size:22px; }
+    .option-btn{ font-size:14px; padding:8px 12px; }
+}
+</style>
+</head>
+<body>
+<div class="overlay">
+<div class="content-box">
+
+<h1>Korean Conversation Essentials Quiz</h1>
+<p>Click an option to see if you are correct!</p>
+
+<div class="quiz">
+
+<!-- Introducing Yourself Section -->
+<div class="question">
+    <h2>1. How do you say “Hello, I am [Name]” politely?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'d')">a) 안녕, 나는 [Name]-야</button>
+        <button class="option-btn" onclick="checkAnswer(this,'d')">b) 제 이름은 [Name]입니다</button>
+        <button class="option-btn" onclick="checkAnswer(this,'d')">c) 만나서 반갑습니다</button>
+        <button class="option-btn" onclick="checkAnswer(this,'d')">d) 안녕하세요, 저는 [Name]입니다</button>
+    </div>
+    <div class="answer">Correct Answer: d) 안녕하세요, 저는 [Name]입니다</div>
+</div>
+
+<div class="question">
+    <h2>2. Which phrase means “Nice to meet you”?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'c')">a) 안녕하세요</button>
+        <button class="option-btn" onclick="checkAnswer(this,'c')">b) 제 이름은 [Name]입니다</button>
+        <button class="option-btn" onclick="checkAnswer(this,'c')">c) 만나서 반갑습니다</button>
+        <button class="option-btn" onclick="checkAnswer(this,'c')">d) [Country/City]에서 왔습니다</button>
+    </div>
+    <div class="answer">Correct Answer: c) 만나서 반갑습니다</div>
+</div>
+
+<div class="question">
+    <h2>3. How would you politely say “I am from Seoul”?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'b')">a) 제 이름은 서울입니다</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">b) 저는 서울에서 왔습니다</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">c) 안녕, 나는 서울이야</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">d) 만나서 반갑습니다</button>
+    </div>
+    <div class="answer">Correct Answer: b) 저는 서울에서 왔습니다</div>
+</div>
+
+<div class="question">
+    <h2>4. What is the polite way to say “Please help me”?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'b')">a) 잠깐만 도와줄래?</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">b) 도와주세요</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">c) 이거 어떻게 해요?</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">d) 무슨 뜻이에요?</button>
+    </div>
+    <div class="answer">Correct Answer: b) 도와주세요</div>
+</div>
+
+<div class="question">
+    <h2>5. How do you politely ask “Could you help me?”</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'a')">a) 도와주실 수 있나요?</button>
+        <button class="option-btn" onclick="checkAnswer(this,'a')">b) 잠깐만 도와줄래?</button>
+        <button class="option-btn" onclick="checkAnswer(this,'a')">c) 도와주세요</button>
+        <button class="option-btn" onclick="checkAnswer(this,'a')">d) 죄송하지만, 도와주실 수 있나요?</button>
+    </div>
+    <div class="answer">Correct Answer: a) 도와주실 수 있나요? (d is also acceptable in formal context)</div>
+</div>
+
+<div class="question">
+    <h2>6. Which phrase combines an apology with a request for help?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'c')">a) 도와주세요</button>
+        <button class="option-btn" onclick="checkAnswer(this,'c')">b) 잠깐만 도와줄래?</button>
+        <button class="option-btn" onclick="checkAnswer(this,'c')">c) 죄송하지만, 도와주실 수 있나요?</button>
+        <button class="option-btn" onclick="checkAnswer(this,'c')">d) 무슨 뜻이에요?</button>
+    </div>
+    <div class="answer">Correct Answer: c) 죄송하지만, 도와주실 수 있나요?</div>
+</div>
+
+</div>
+
+<a class="back" href="KoreaBasicPhrases.html">← Back</a>
+
+</div>
+</div>
+
+<script>
+function checkAnswer(btn, correct){
+    const parent = btn.closest('.question');
+    const options = parent.querySelectorAll('.option-btn');
+    options.forEach(o => o.disabled = true);
+    const answerDiv = parent.querySelector('.answer');
+    
+    if(btn.textContent.startsWith(correct)){
+        btn.classList.add('correct');
+    } else {
+        btn.classList.add('wrong');
+        options.forEach(o=>{
+            if(o.textContent.startsWith(correct)) o.classList.add('correct');
+        });
+    }
+    answerDiv.style.display = "block";
+}
+</script>
+
+</body>
+</html>

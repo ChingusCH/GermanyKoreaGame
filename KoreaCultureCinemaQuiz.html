@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Korean Cinema & TV Dramas Quiz</title>
+
+<style>
+:root { --gold: #ffd27f; --glass: rgba(255,255,255,0.12); --overlay: rgba(0,0,0,0.55); }
+
+body{
+    margin:0;
+    padding:0;
+    font-family:"Georgia", serif;
+    background-image:url("KoreaPhotoForIQ.jpg");
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+}
+
+.overlay{
+    width:100%;
+    min-height:100vh;
+    background:var(--overlay);
+    backdrop-filter:blur(3px);
+    padding:40px 0;
+}
+
+.content-box{
+    max-width:900px;
+    margin:auto;
+    padding:40px;
+    background:var(--glass);
+    border-radius:15px;
+    backdrop-filter:blur(6px);
+    color:white;
+    line-height:1.8;
+    box-shadow:0 0 25px rgba(0,0,0,0.35);
+}
+
+h1{
+    text-align:center;
+    font-size:38px;
+    color:var(--gold);
+    text-shadow:0 0 10px rgba(0,0,0,0.6);
+    margin-bottom:22px;
+}
+
+h2{
+    margin-top:36px;
+    font-size:30px;
+    color:var(--gold);
+    text-shadow:0 0 8px rgba(0,0,0,0.5);
+}
+
+p{ margin-top:12px; font-size:18px; }
+
+.question{ margin-top:24px; }
+.options{ margin-top:12px; display:flex; flex-wrap:wrap; gap:12px; }
+.option-btn{
+    background:rgba(0,0,0,0.35);
+    color:white;
+    border:none;
+    padding:10px 16px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+    transition:0.2s;
+}
+.option-btn:hover{ background:rgba(0,0,0,0.6); }
+.option-btn.correct{ background:green; }
+.option-btn.wrong{ background:red; }
+
+.answer{ margin-top:10px; font-size:18px; display:none; }
+
+.back{
+    display:inline-block;
+    margin-top:28px;
+    padding:12px 20px;
+    background:rgba(0,0,0,0.45);
+    color:white;
+    text-decoration:none;
+    font-size:18px;
+    border-radius:8px;
+    transition:background .18s;
+}
+.back:hover{ background:rgba(0,0,0,0.75); }
+
+@media (max-width:760px){
+    .content-box{ margin:20px; padding:24px; }
+    h1{ font-size:30px; }
+    h2{ font-size:22px; }
+    .option-btn{ font-size:14px; padding:8px 12px; }
+}
+</style>
+</head>
+<body>
+<div class="overlay">
+<div class="content-box">
+
+<h1>Korean Cinema & TV Dramas Quiz</h1>
+<p>Click an option to check your answer. Correct answers will be highlighted!</p>
+
+<div class="quiz">
+
+<div class="question">
+    <h2>1. Which Korean director won the Academy Award for Best Picture with Parasite?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'b')">a) Park Chan-wook</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">b) Bong Joon-ho</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">c) Kim Ki-duk</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">d) Lee Chang-dong</button>
+    </div>
+    <div class="answer">Correct Answer: b) Bong Joon-ho</div>
+</div>
+
+<div class="question">
+    <h2>2. What is the term for Korean historical dramas?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'b')">a) K-History</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">b) Sageuk</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">c) Hanbok Drama</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">d) Hallyu</button>
+    </div>
+    <div class="answer">Correct Answer: b) Sageuk</div>
+</div>
+
+<div class="question">
+    <h2>3. Which of the following is a popular Korean TV drama?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'a')">a) Goblin</button>
+        <button class="option-btn" onclick="checkAnswer(this,'a')">b) Game of Thrones</button>
+        <button class="option-btn" onclick="checkAnswer(this,'a')">c) Breaking Bad</button>
+        <button class="option-btn" onclick="checkAnswer(this,'a')">d) Friends</button>
+    </div>
+    <div class="answer">Correct Answer: a) Goblin</div>
+</div>
+
+<div class="question">
+    <h2>4. What is a common length for most K-Dramas?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'b')">a) 5–10 episodes</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">b) 16–20 episodes</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">c) 50–60 episodes</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">d) Over 100 episodes</button>
+    </div>
+    <div class="answer">Correct Answer: b) 16–20 episodes</div>
+</div>
+
+<div class="question">
+    <h2>5. Korean cinema is known for exploring:</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'b')">a) Only historical events</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">b) Social issues, romance, thriller, and horror</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">c) Only fantasy and romance</button>
+        <button class="option-btn" onclick="checkAnswer(this,'b')">d) Only action films</button>
+    </div>
+    <div class="answer">Correct Answer: b) Social issues, romance, thriller, and horror</div>
+</div>
+
+<div class="question">
+    <h2>6. How have K-Dramas contributed to Korea internationally?</h2>
+    <div class="options">
+        <button class="option-btn" onclick="checkAnswer(this,'a')">a) Increasing tourism and promoting Korean culture</button>
+        <button class="option-btn" onclick="checkAnswer(this,'a')">b) Reducing interest in Korean language</button>
+        <button class="option-btn" onclick="checkAnswer(this,'a')">c) Limiting cultural exports</button>
+        <button class="option-btn" onclick="checkAnswer(this,'a')">d) Replacing Korean films entirely</button>
+    </div>
+    <div class="answer">Correct Answer: a) Increasing tourism and promoting Korean culture</div>
+</div>
+
+</div>
+
+<a class="back" href="KoreaCulture.html">← Back</a>
+
+</div>
+</div>
+
+<script>
+function checkAnswer(btn, correct){
+    const parent = btn.closest('.question');
+    const options = parent.querySelectorAll('.option-btn');
+    options.forEach(o => o.disabled = true);
+    const answerDiv = parent.querySelector('.answer');
+    
+    if(btn.textContent.startsWith(correct)){
+        btn.classList.add('correct');
+    } else {
+        btn.classList.add('wrong');
+        options.forEach(o=>{
+            if(o.textContent.startsWith(correct)) o.classList.add('correct');
+        });
+    }
+    answerDiv.style.display = "block";
+}
+</script>
+
+</body>
+</html>

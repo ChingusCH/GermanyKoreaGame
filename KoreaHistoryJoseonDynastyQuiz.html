@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Joseon Dynasty Quiz</title>
+
+<style>
+    :root { --gold: #ffd27f; --glass: rgba(255,255,255,0.12); --overlay: rgba(0,0,0,0.55); }
+
+    body{
+        margin:0;
+        padding:0;
+        font-family:"Georgia", serif;
+        background-image:url("KoreaPhotoForIQ.jpg");
+        background-size:cover;
+        background-position:center;
+        background-attachment:fixed;
+    }
+
+    .overlay{
+        width:100%;
+        min-height:100vh;
+        background:var(--overlay);
+        backdrop-filter:blur(3px);
+        padding:40px 0;
+    }
+
+    .content-box{
+        max-width:900px;
+        margin:auto;
+        padding:40px;
+        background:var(--glass);
+        border-radius:15px;
+        backdrop-filter:blur(6px);
+        color:white;
+        line-height:1.8;
+        box-shadow:0 0 25px rgba(0,0,0,0.35);
+    }
+
+    h1{
+        text-align:center;
+        font-size:38px;
+        color:var(--gold);
+        text-shadow:0 0 10px rgba(0,0,0,0.6);
+        margin-bottom:22px;
+    }
+
+    h2{
+        margin-top:36px;
+        font-size:30px;
+        color:var(--gold);
+        text-shadow:0 0 8px rgba(0,0,0,0.5);
+    }
+
+    p{ margin-top:12px; font-size:18px; }
+
+    .highlight{ color:var(--gold); font-weight:bold; }
+
+    .question{ margin-top:24px; }
+    .options{ margin-top:12px; display:flex; flex-wrap:wrap; gap:12px; }
+    .option-btn{
+        background:rgba(0,0,0,0.35);
+        color:white;
+        border:none;
+        padding:10px 16px;
+        border-radius:8px;
+        cursor:pointer;
+        font-size:16px;
+        transition:0.2s;
+    }
+    .option-btn:hover{ background:rgba(0,0,0,0.6); }
+    .option-btn.correct{ background:green; }
+    .option-btn.wrong{ background:red; }
+
+    .answer{ margin-top:10px; font-size:18px; display:none; }
+
+    .back{
+        display:inline-block;
+        margin-top:28px;
+        padding:12px 20px;
+        background:rgba(0,0,0,0.45);
+        color:white;
+        text-decoration:none;
+        font-size:18px;
+        border-radius:8px;
+        transition:background .18s;
+    }
+    .back:hover{ background:rgba(0,0,0,0.75); }
+
+    @media (max-width:760px){
+        .content-box{ margin:20px; padding:24px; }
+        h1{ font-size:30px; }
+        h2{ font-size:22px; }
+        .option-btn{ font-size:14px; padding:8px 12px; }
+    }
+</style>
+</head>
+<body>
+<div class="overlay">
+<div class="content-box">
+
+    <h1>Joseon Dynasty Quiz</h1>
+    <p>Click an option to check your answer. Correct answers will be highlighted!</p>
+
+    <div class="quiz">
+
+        <div class="question">
+            <h2>1. When was the Joseon Dynasty founded?</h2>
+            <div class="options">
+                <button class="option-btn" onclick="checkAnswer(this,'b')">a) 918</button>
+                <button class="option-btn" onclick="checkAnswer(this,'b')">b) 1392</button>
+                <button class="option-btn" onclick="checkAnswer(this,'b')">c) 668</button>
+                <button class="option-btn" onclick="checkAnswer(this,'b')">d) 1897</button>
+            </div>
+            <div class="answer">Correct Answer: b) 1392</div>
+        </div>
+
+        <div class="question">
+            <h2>2. Who founded the Joseon Dynasty?</h2>
+            <div class="options">
+                <button class="option-btn" onclick="checkAnswer(this,'b')">a) King Sejong the Great</button>
+                <button class="option-btn" onclick="checkAnswer(this,'b')">b) Yi Seong-gye</button>
+                <button class="option-btn" onclick="checkAnswer(this,'b')">c) King Taejo of Goguryeo</button>
+                <button class="option-btn" onclick="checkAnswer(this,'b')">d) King Munmu</button>
+            </div>
+            <div class="answer">Correct Answer: b) Yi Seong-gye</div>
+        </div>
+
+        <div class="question">
+            <h2>3. What was the main state ideology during Joseon?</h2>
+            <div class="options">
+                <button class="option-btn" onclick="checkAnswer(this,'b')">a) Buddhism</button>
+                <button class="option-btn" onclick="checkAnswer(this,'b')">b) Confucianism</button>
+                <button class="option-btn" onclick="checkAnswer(this,'b')">c) Shamanism</button>
+                <button class="option-btn" onclick="checkAnswer(this,'b')">d) Taoism</button>
+            </div>
+            <div class="answer">Correct Answer: b) Confucianism</div>
+        </div>
+
+        <div class="question">
+            <h2>4. What important writing system was created during this dynasty?</h2>
+            <div class="options">
+                <button class="option-btn" onclick="checkAnswer(this,'a')">a) Hangul</button>
+                <button class="option-btn" onclick="checkAnswer(this,'a')">b) Kanji</button>
+                <button class="option-btn" onclick="checkAnswer(this,'a')">c) Hanja</button>
+                <button class="option-btn" onclick="checkAnswer(this,'a')">d) Katakana</button>
+            </div>
+            <div class="answer">Correct Answer: a) Hangul</div>
+        </div>
+
+        <div class="question">
+            <h2>5. Which class of officials helped run the government?</h2>
+            <div class="options">
+                <button class="option-btn" onclick="checkAnswer(this,'c')">a) Slaves</button>
+                <button class="option-btn" onclick="checkAnswer(this,'c')">b) Commoners</button>
+                <button class="option-btn" onclick="checkAnswer(this,'c')">c) Yangban</button>
+                <button class="option-btn" onclick="checkAnswer(this,'c')">d) Merchants</button>
+            </div>
+            <div class="answer">Correct Answer: c) Yangban</div>
+        </div>
+
+        <div class="question">
+            <h2>6. Which event refers to the Japanese invasions of Korea during Joseon?</h2>
+            <div class="options">
+                <button class="option-btn" onclick="checkAnswer(this,'b')">a) Goryeo-Mongol Wars</button>
+                <button class="option-btn" onclick="checkAnswer(this,'b')">b) Imjin War</button>
+                <button class="option-btn" onclick="checkAnswer(this,'b')">c) Manchu Invasions</button>
+                <button class="option-btn" onclick="checkAnswer(this,'b')">d) Korean War</button>
+            </div>
+            <div class="answer">Correct Answer: b) Imjin War</div>
+        </div>
+
+    </div>
+
+    <a class="back" href="KoreaHistory.html">← Back</a>
+
+</div>
+</div>
+
+<script>
+function checkAnswer(btn, correct){
+    const parent = btn.closest('.question');
+    const options = parent.querySelectorAll('.option-btn');
+    options.forEach(o => o.disabled = true);
+    const answerDiv = parent.querySelector('.answer');
+    if(btn.textContent.startsWith(correct)){
+        btn.classList.add('correct');
+        answerDiv.textContent = "Correct! " + answerDiv.textContent;
+    } else {
+        btn.classList.add('wrong');
+        options.forEach(o=>{
+            if(o.textContent.startsWith(correct)) o.classList.add('correct');
+        });
+        answerDiv.style.display = "block";
+    }
+    answerDiv.style.display = "block";
+}
+</script>
+
+</body>
+</html>
