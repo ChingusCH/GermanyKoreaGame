@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>German Sentence Structure Quiz</title>
+
+<style>
+    :root { --gold: #ffd27f; --glass: rgba(255,255,255,0.12); --overlay: rgba(0,0,0,0.55); }
+
+    body{
+        margin:0;
+        padding:0;
+        font-family:"Georgia", serif;
+        background-image:url("GermanyPhotoForIQ.jpg");
+        background-size:cover;
+        background-position:center;
+        background-attachment:fixed;
+    }
+
+    .overlay{
+        width:100%;
+        min-height:100vh;
+        background:var(--overlay);
+        backdrop-filter:blur(3px);
+        padding:40px 0;
+    }
+
+    .content-box{
+        max-width:900px;
+        margin:auto;
+        padding:40px;
+        background:var(--glass);
+        border-radius:15px;
+        backdrop-filter:blur(6px);
+        color:white;
+        line-height:1.8;
+        box-shadow:0 0 25px rgba(0,0,0,0.35);
+    }
+
+    h1{
+        text-align:center;
+        font-size:38px;
+        color:var(--gold);
+        text-shadow:0 0 10px rgba(0,0,0,0.6);
+        margin-bottom:22px;
+    }
+
+    h2{
+        margin-top:36px;
+        font-size:30px;
+        color:var(--gold);
+        text-shadow:0 0 8px rgba(0,0,0,0.5);
+    }
+
+    p{ margin-top:12px; font-size:18px; }
+
+    .question{ margin-top:24px; }
+    .options{ margin-top:12px; display:flex; flex-wrap:wrap; gap:12px; }
+
+    .option-btn{
+        background:rgba(0,0,0,0.35);
+        color:white;
+        border:none;
+        padding:10px 16px;
+        border-radius:8px;
+        cursor:pointer;
+        font-size:16px;
+        transition:0.2s;
+    }
+
+    .option-btn:hover{ background:rgba(0,0,0,0.6); }
+    .option-btn.correct{ background:green; }
+    .option-btn.wrong{ background:red; }
+
+    .answer{
+        margin-top:10px;
+        font-size:18px;
+        display:none;
+    }
+
+    .back{
+        display:inline-block;
+        margin-top:28px;
+        padding:12px 20px;
+        background:rgba(0,0,0,0.45);
+        color:white;
+        text-decoration:none;
+        font-size:18px;
+        border-radius:8px;
+        transition:background .18s;
+    }
+
+    .back:hover{ background:rgba(0,0,0,0.75); }
+
+    @media (max-width:760px){
+        .content-box{ margin:20px; padding:24px; }
+        h1{ font-size:30px; }
+        h2{ font-size:22px; }
+        .option-btn{ font-size:14px; padding:8px 12px; }
+    }
+</style>
+</head>
+
+<body>
+<div class="overlay">
+<div class="content-box">
+
+    <h1>German Sentence Structure Quiz</h1>
+    <p>Click an option to check your answer. Correct answers will be highlighted!</p>
+
+    <div class="quiz">
+
+        <div class="question">
+            <h2>1. What is the typical word order in a simple German main clause?</h2>
+            <div class="options">
+                <button class="option-btn" onclick="checkAnswer(this,'a')">a) Subject-Verb-Object</button>
+                <button class="option-btn" onclick="checkAnswer(this,'a')">b) Verb-Subject-Object</button>
+                <button class="option-btn" onclick="checkAnswer(this,'a')">c) Object-Subject-Verb</button>
+                <button class="option-btn" onclick="checkAnswer(this,'a')">d) Verb-Object-Subject</button>
+            </div>
+            <div class="answer">Correct Answer: a) Subject-Verb-Object</div>
+        </div>
+
+        <div class="question">
+            <h2>2. In a yes/no question, where does the verb go?</h2>
+            <div class="options">
+                <button class="option-btn" onclick="checkAnswer(this,'a')">a) First</button>
+                <button class="option-btn" onclick="checkAnswer(this,'a')">b) Last</button>
+                <button class="option-btn" onclick="checkAnswer(this,'a')">c) Second</button>
+                <button class="option-btn" onclick="checkAnswer(this,'a')">d) Third</button>
+            </div>
+            <div class="answer">Correct Answer: a) First</div>
+        </div>
+
+        <div class="question">
+            <h2>3. In sentences with time, manner, and place, what is the correct order?</h2>
+            <div class="options">
+                <button class="option-btn" onclick="checkAnswer(this,'a')">a) Time-Manner-Place</button>
+                <button class="option-btn" onclick="checkAnswer(this,'a')">b) Manner-Time-Place</button>
+                <button class="option-btn" onclick="checkAnswer(this,'a')">c) Place-Time-Manner</button>
+                <button class="option-btn" onclick="checkAnswer(this,'a')">d) Place-Manner-Time</button>
+            </div>
+            <div class="answer">Correct Answer: a) Time-Manner-Place</div>
+        </div>
+
+        <div class="question">
+            <h2>4. In a sentence with a separable verb, where does the prefix usually go?</h2>
+            <div class="options">
+                <button class="option-btn" onclick="checkAnswer(this,'a')">a) At the end of the sentence</button>
+                <button class="option-btn" onclick="checkAnswer(this,'a')">b) At the beginning of the sentence</button>
+                <button class="option-btn" onclick="checkAnswer(this,'a')">c) Right after the subject</button>
+                <button class="option-btn" onclick="checkAnswer(this,'a')">d) Before the object</button>
+            </div>
+            <div class="answer">Correct Answer: a) At the end of the sentence</div>
+        </div>
+
+        <div class="question">
+            <h2>5. In subordinate clauses introduced by weil, where is the verb?</h2>
+            <div class="options">
+                <button class="option-btn" onclick="checkAnswer(this,'a')">a) At the end</button>
+                <button class="option-btn" onclick="checkAnswer(this,'a')">b) In the middle</button>
+                <button class="option-btn" onclick="checkAnswer(this,'a')">c) First</button>
+                <button class="option-btn" onclick="checkAnswer(this,'a')">d) Second</button>
+            </div>
+            <div class="answer">Correct Answer: a) At the end</div>
+        </div>
+
+        <div class="question">
+            <h2>6. Why is mastering German sentence structure important?</h2>
+            <div class="options">
+                <button class="option-btn" onclick="checkAnswer(this,'a')">a) It helps communicate clearly and understand written and spoken German</button>
+                <button class="option-btn" onclick="checkAnswer(this,'a')">b) It is only used in poetry</button>
+                <button class="option-btn" onclick="checkAnswer(this,'a')">c) It is optional in conversations</button>
+                <button class="option-btn" onclick="checkAnswer(this,'a')">d) It replaces vocabulary learning</button>
+            </div>
+            <div class="answer">Correct Answer: a) It helps communicate clearly and understand written and spoken German</div>
+        </div>
+
+    </div>
+
+    <a class="back" href="GermanyLanguage.html">← Back</a>
+
+</div>
+</div>
+
+<script>
+function checkAnswer(btn, correct){
+    const parent = btn.closest('.question');
+    const options = parent.querySelectorAll('.option-btn');
+    options.forEach(o => o.disabled = true);
+    const answerDiv = parent.querySelector('.answer');
+
+    if(btn.textContent.trim().startsWith(correct)){
+        btn.classList.add('correct');
+    } else {
+        btn.classList.add('wrong');
+        options.forEach(o=>{
+            if(o.textContent.trim().startsWith(correct)) o.classList.add('correct');
+        });
+    }
+    answerDiv.style.display = "block";
+}
+</script>
+
+</body>
+</html>

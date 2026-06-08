@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Germany Menu</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Georgia", serif;
+            background-image: url("GermanyPhotoForIQ.jpg");
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(2, 250px);
+            gap: 25px;
+        }
+
+        .box {
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 22px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            border: 2px solid rgba(0,0,0,0.4);
+            background: rgba(0,0,0,0.25);
+            backdrop-filter: blur(2px);
+            transition: 0.3s;
+            text-align: center;
+            padding: 0 10px;
+        }
+
+        .box:hover {
+            transform: scale(1.07);
+            background: rgba(0,0,0,0.4);
+        }
+
+        /* UNIQUE COLORS FOR EVERY BOX */
+        .unification { background-color: rgba(70, 130, 200, 0.75); }   /* cool blue */
+        .quiz1       { background-color: rgba(200, 90, 140, 0.75); }   /* magenta rose */
+        
+        .worldwars   { background-color: rgba(90, 170, 110, 0.75); }   /* soft green */
+        .quiz2       { background-color: rgba(230, 150, 80, 0.75); }    /* warm orange */
+        
+        .division    { background-color: rgba(150, 100, 200, 0.75); }  /* purple violet */
+        .quiz3       { background-color: rgba(220, 120, 60, 0.75); }    /* burnt orange */
+
+        /* Back button */
+        .back {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            font-size: 20px;
+            color: white;
+            text-decoration: none;
+            background: rgba(0,0,0,0.4);
+            padding: 10px 15px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="menu">
+
+        <!-- Row 1 -->
+        <a href="GermanyHistoryUnification.html" class="box unification">Unification</a>
+        <a href="GermanyHistoryUnificationQuiz.html" class="box quiz1">Quiz</a>
+
+        <!-- Row 2 -->
+        <a href="GermanyHistoryWorldWars.html" class="box worldwars">World Wars</a>
+        <a href="GermanyHistoryWorldWarsQuiz.html" class="box quiz2">Quiz</a>
+
+        <!-- Row 3 -->
+        <a href="GermanyHistoryDivisionAndReunification.html" class="box division">Division & Reunification</a>
+        <a href="GermanyHistoryDivisionAndReunificationQuiz.html" class="box quiz3">Quiz</a>
+
+    </div>
+
+    <a href="index.html" class="back">← Back</a>
+
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Germany Menu</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Georgia", serif;
+            background-image: url("GermanyPhotoForIQ.jpg");
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(2, 250px);
+            gap: 25px;
+        }
+
+        .box {
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 22px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            border: 2px solid rgba(0,0,0,0.4);
+            backdrop-filter: blur(2px);
+            transition: 0.3s;
+            text-align: center;
+            padding: 0 10px;
+        }
+
+        .box:hover {
+            transform: scale(1.07);
+            background: rgba(0,0,0,0.35);
+        }
+
+        /* NEW COLOR PALETTE */
+        .bread {
+            background-color: rgba(140, 220, 180, 0.85);  /* mint green */
+        }
+        .quiz1 {
+            background-color: rgba(255, 140, 120, 0.85);  /* soft coral */
+        }
+        .regional {
+            background-color: rgba(120, 170, 255, 0.85);  /* sky blue */
+        }
+        .quiz2 {
+            background-color: rgba(190, 150, 255, 0.85);  /* soft lavender */
+        }
+        .traditional {
+            background-color: rgba(220, 190, 140, 0.85);  /* warm sand */
+        }
+        .quiz3 {
+            background-color: rgba(80, 170, 180, 0.85);   /* teal blue */
+        }
+
+        /* Back button */
+        .back {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            font-size: 20px;
+            color: white;
+            text-decoration: none;
+            background: rgba(0,0,0,0.4);
+            padding: 10px 15px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="menu">
+
+        <!-- Row 1 -->
+        <a href="GermanyFoodBrot.html" class="box bread">Bread Culture</a>
+        <a href="GermanyFoodBrotQuiz.html" class="box quiz1">Quiz</a>
+
+        <!-- Row 2 -->
+        <a href="GermanyFoodRegionalCuisine.html" class="box regional">Regional Cuisines</a>
+        <a href="GermanyFoodRegionalCuisineQuiz.html" class="box quiz2">Quiz</a>
+
+        <!-- Row 3 -->
+        <a href="GermanyFoodTraditional.html" class="box traditional">Traditional</a>
+        <a href="GermanyFoodTraditionalQuiz.html" class="box quiz3">Quiz</a>
+
+    </div>
+
+    <a href="index.html" class="back">← Back</a>
+
+</body>
+</html>

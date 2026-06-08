@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Germany: Geography Overview</title>
+
+    <style>
+        :root {
+            --gold:#ffd27f;
+            --glass:rgba(255,255,255,0.12);
+            --overlay:rgba(0,0,0,0.55);
+        }
+
+        body{
+            margin:0;
+            padding:0;
+            font-family:"Georgia", serif;
+            background-image:url("GermanyPhotoForIQ.jpg"); /* Replace */
+            background-size:cover;
+            background-position:center;
+            background-attachment:fixed;
+        }
+
+        .overlay{
+            width:100%;
+            min-height:100vh;
+            background:var(--overlay);
+            backdrop-filter:blur(3px);
+            padding:40px 0;
+        }
+
+        .content-box{
+            max-width:900px;
+            margin:auto;
+            padding:40px;
+            background:var(--glass);
+            border-radius:15px;
+            backdrop-filter:blur(6px);
+            color:white;
+            line-height:1.8;
+            box-shadow:0 0 25px rgba(0,0,0,0.35);
+        }
+
+        h1{
+            text-align:center;
+            font-size:38px;
+            color:var(--gold);
+            text-shadow:0 0 10px rgba(0,0,0,0.6);
+            margin-bottom:22px;
+        }
+
+        h2{
+            margin-top:36px;
+            font-size:30px;
+            color:var(--gold);
+            text-shadow:0 0 8px rgba(0,0,0,0.5);
+        }
+
+        p{
+            font-size:18px;
+            margin-top:12px;
+        }
+
+        .highlight{
+            color:var(--gold);
+            font-weight:bold;
+        }
+
+        .photo{
+            width:100%;
+            border-radius:12px;
+            margin:18px 0;
+            box-shadow:0 0 15px rgba(0,0,0,0.45);
+        }
+
+        .caption{
+            font-size:14px;
+            color:rgba(255,255,255,0.75);
+            margin-top:-10px;
+            margin-bottom:8px;
+        }
+
+        .back{
+            display:inline-block;
+            margin-top:28px;
+            padding:12px 20px;
+            background:rgba(0,0,0,0.45);
+            color:white;
+            text-decoration:none;
+            font-size:18px;
+            border-radius:8px;
+            transition:0.18s;
+        }
+
+        .back:hover{
+            background:rgba(0,0,0,0.75);
+        }
+
+        @media(max-width:760px){
+            .content-box{ margin:20px; padding:24px; }
+            h1{ font-size:30px; }
+            h2{ font-size:22px; }
+        }
+    </style>
+</head>
+
+<body>
+<div class="overlay">
+    <div class="content-box">
+
+        <h1>Germany: Geography Overview</h1>
+
+        <img src="GermanyPhotoFor.jpg" alt="Map of Germany" class="photo">
+        <p class="caption">Germany is located in the heart of Europe.</p>
+
+        <p>
+            <span class="highlight">Germany</span> is located at the heart of Europe and is characterized by remarkable geographical diversity. 
+            Its landscape ranges from coastal plains in the north to alpine mountains in the south, creating a rich mix of natural environments.
+        </p>
+
+        <!-- Northern Germany -->
+        <h2>Northern Germany</h2>
+
+        <img src="NorthernGermany.jpg" alt="Northern Germany Coast" class="photo">
+        <p class="caption">Flat plains and coastal landscapes dominate the north.</p>
+
+        <p>
+            In the north, Germany features <span class="highlight">flat coastal landscapes</span>, wide plains, and the shores of the 
+            <span class="highlight">North Sea</span> and <span class="highlight">Baltic Sea</span>.
+            This region has a strong maritime character, with major port cities such as Hamburg and Bremen.
+        </p>
+
+        <!-- Central Germany -->
+        <h2>Central Germany</h2>
+
+        <img src="CentralGermany.jpg" alt="Central Germany Forests" class="photo">
+        <p class="caption">Forests, hills, and river valleys shape central Germany.</p>
+
+        <p>
+            Central Germany is defined by <span class="highlight">rolling hills</span>, dense forests, and fertile river valleys.
+            Important rivers such as the Rhine, Elbe, and Danube play a crucial role in transportation, trade, and agriculture.
+        </p>
+
+        <!-- Southern Germany -->
+        <h2>Southern Germany</h2>
+
+        <img src="BavarianAlps.jpg" alt="Bavarian Alps" class="photo">
+        <p class="caption">The Bavarian Alps form Germany’s alpine landscape.</p>
+
+        <p>
+            In the south, the landscape becomes more mountainous with the <span class="highlight">Bavarian Alps</span>.
+            This region is known for its dramatic peaks, clear alpine lakes, and picturesque towns rich in cultural traditions.
+        </p>
+
+        <!-- Climate -->
+        <h2>Climate</h2>
+
+        <img src="GermanyClimate.jpg" alt="Germany Climate" class="photo">
+        <p class="caption">Germany has a temperate climate with regional variations.</p>
+
+        <p>
+            Germany has a <span class="highlight">temperate climate</span>, influenced by the Atlantic Ocean in the north and more 
+            continental conditions in the east and south. Winters are generally cool, while summers are mild to warm.
+        </p>
+
+        <!-- Cities -->
+        <h2>Major Cities & Environment</h2>
+
+        <img src="GermanCities.jpg" alt="Berlin Cologne Munich" class="photo">
+        <p class="caption">Urban life blends with natural landscapes.</p>
+
+        <p>
+            Major cities such as <span class="highlight">Berlin</span>, <span class="highlight">Cologne</span>, and 
+            <span class="highlight">Munich</span> reflect this geographical diversity.
+            These cities combine modern urban life with rivers, forests, parks, and nearby natural regions.
+        </p>
+
+        <a class="back" href="GermanyGeography.html">← Back</a>
+
+    </div>
+</div>
+</body>
+</html>
