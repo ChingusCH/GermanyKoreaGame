@@ -21,15 +21,15 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            object-fit: cover;       /* zooms to fill screen */
-            z-index: -1;             /* behind everything */
+            object-fit: cover;
+            z-index: -1;
         }
 
         /* ----- CONTAINER FOR BOXES ----- */
         .menu {
             position: relative;
             display: grid;
-            grid-template-columns: repeat(2, 250px);
+            grid-template-columns: repeat(3, 250px);
             gap: 25px;
             width: fit-content;
             margin: auto;
@@ -58,7 +58,9 @@
             background: rgba(0,0,0,0.55);
         }
 
-        /* COLORS (same as your picture) */
+        /* COLORS */
+        .school { background-color: rgba(30, 150, 170, 0.55); }
+
         .geo { background-color: rgba(180, 40, 40, 0.55); }
         .his { background-color: rgba(150, 70, 160, 0.55); }
         .cul { background-color: rgba(40, 60, 150, 0.55); }
@@ -87,23 +89,24 @@
 
     <!-- Background video -->
     <video id="bg-video" autoplay loop muted playsinline>
-    <source src="KoreaSecondPageVideo.mp4" type="video/mp4">
-</video>
-
+        <source src="KoreaSecondPageVideo.mp4" type="video/mp4">
+    </video>
 
     <!-- Boxes -->
     <div class="menu">
+
+        <a href="KoreaSchoolSystem.html" class="box school">School System</a>
         <a href="KoreaGeography.html" class="box geo">Geography</a>
         <a href="KoreaHistory.html" class="box his">History</a>
 
         <a href="KoreaCulture.html" class="box cul">Culture</a>
         <a href="KoreaFood.html" class="box food">Food</a>
-
         <a href="KoreaLanguage.html" class="box lang">Language</a>
-        <a href="KoreaBasicPhrases.html" class="box phr">Basic Phrases</a>
 
+        <a href="KoreaBasicPhrases.html" class="box phr">Basic Phrases</a>
         <a href="KoreaFestivalsHolidays.html" class="box fest">Festivals & Holidays</a>
         <a href="KoreaSurvivalGuide.html" class="box surv">Survival Guide</a>
+
     </div>
 
     <a href="index.html" class="back">← Back</a>
