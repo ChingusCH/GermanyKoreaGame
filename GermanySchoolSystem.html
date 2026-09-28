@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Germany School System Menu</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Georgia", serif;
+            background-image: url("GermanyPhotoForIQ.jpg");
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(2, 250px);
+            gap: 25px;
+        }
+
+        .box {
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 10px;
+            font-size: 22px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            border: 2px solid rgba(0,0,0,0.4);
+            background: rgba(0,0,0,0.25);
+            backdrop-filter: blur(2px);
+            transition: 0.3s;
+        }
+
+        .box:hover {
+            transform: scale(1.07);
+            background: rgba(0,0,0,0.4);
+        }
+
+        /* Colors */
+        .geo { background-color: rgba(60, 120, 190, 0.75); }         /* soft blue */
+        .quiz1 { background-color: rgba(200, 80, 120, 0.75); }       /* rose red */
+        .sights { background-color: rgba(80, 160, 120, 0.75); }      /* jade green */
+        .quiz2 { background-color: rgba(180, 130, 60, 0.75); }       /* warm gold */
+        .cities { background-color: rgba(140, 90, 180, 0.75); }      /* violet */
+        .quiz3 { background-color: rgba(220, 110, 70, 0.75); }       /* orange-red */
+        .schoollife { background-color: rgba(60, 170, 170, 0.75); }  /* teal */
+        .quiz4 { background-color: rgba(180, 70, 140, 0.75); }       /* magenta */
+
+        /* Back button */
+        .back {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            font-size: 20px;
+            color: white;
+            text-decoration: none;
+            background: rgba(0,0,0,0.4);
+            padding: 10px 15px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="menu">
+
+        <!-- Row 1 -->
+        <a href="GermanySchoolStructureCareer.html" class="box geo">
+            School Structure &<br>School Career
+        </a>
+        <a href="GermanySchoolStructureCareerQuiz.html" class="box quiz1">Quiz</a>
+
+        <!-- Row 2 -->
+        <a href="GermanySchoolDaySubjectsHomework.html" class="box sights">
+            School Day,<br>Subjects & Homework
+        </a>
+        <a href="GermanySchoolDaySubjectsHomeworkQuiz.html" class="box quiz2">Quiz</a>
+
+        <!-- Row 3 -->
+        <a href="GermanyTestGradesAssessment.html" class="box cities">
+            Test, Grades &<br>Assessment
+        </a>
+        <a href="GermanyTestGradesAssessmentQuiz.html" class="box quiz3">Quiz</a>
+
+        <!-- Row 4 -->
+        <a href="GermanySchoolCultureVacationsStudentLife.html" class="box schoollife">
+            School Culture,<br>Vacations & Student Life
+        </a>
+        <a href="GermanySchoolCultureVacationsStudentLifeQuiz.html" class="box quiz4">Quiz</a>
+
+    </div>
+
+    <a href="GermanySecondPage.html" class="back">← Back</a>
+
+</body>
+</html>
