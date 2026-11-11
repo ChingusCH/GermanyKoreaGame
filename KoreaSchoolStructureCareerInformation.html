@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Structure and Educational Pathways in Korea</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Georgia, serif;
+            color: white;
+            background-image: url("KoreaPhotoForIQ.jpg");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        .overlay {
+            background: rgba(0, 0, 0, 0.55);
+            min-height: 100vh;
+            padding: 45px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .content-box {
+            width: 100%;
+            max-width: 1050px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffd27f;
+            font-size: 36px;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .intro {
+            text-align: center;
+            font-size: 17px;
+            line-height: 1.7;
+            margin-bottom: 35px;
+        }
+
+        h2 {
+            color: #ffd27f;
+            font-size: 24px;
+            margin-top: 35px;
+            margin-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 210, 127, 0.45);
+            padding-bottom: 8px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        ul {
+            padding-left: 25px;
+            line-height: 1.9;
+            font-size: 16px;
+        }
+
+        li {
+            margin-bottom: 7px;
+        }
+
+        strong {
+            color: #ffe0a3;
+        }
+
+        .highlight {
+            color: #ffd27f;
+            font-weight: bold;
+        }
+
+        .system-overview {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .school-card {
+            background: rgba(255, 255, 255, 0.13);
+            border: 1px solid rgba(255, 210, 127, 0.45);
+            border-radius: 12px;
+            padding: 20px 12px;
+            text-align: center;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .school-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .school-card h3 {
+            color: #ffd27f;
+            font-size: 18px;
+            margin: 5px 0 12px;
+        }
+
+        .school-card .years {
+            font-size: 30px;
+            font-weight: bold;
+            color: white;
+            margin: 8px 0;
+        }
+
+        .school-card p {
+            font-size: 14px;
+            margin: 5px 0;
+            line-height: 1.5;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 14px;
+            text-align: left;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 15px;
+        }
+
+        th {
+            background: rgba(255, 210, 127, 0.22);
+            color: #ffd27f;
+        }
+
+        .note-box {
+            background: rgba(255, 210, 127, 0.12);
+            border-left: 4px solid #ffd27f;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            line-height: 1.7;
+        }
+
+        .pathway {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .pathway-step {
+            color: #ffd27f;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .arrow {
+            color: #ffd27f;
+            font-size: 25px;
+            margin: 5px 0;
+        }
+
+        .source {
+            margin-top: 35px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.25);
+            font-size: 13px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .source a {
+            color: #ffd27f;
+            text-decoration: none;
+        }
+
+        .source a:hover {
+            text-decoration: underline;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 25px;
+            color: white;
+            background: rgba(255, 210, 127, 0.2);
+            border: 1px solid #ffd27f;
+            border-radius: 8px;
+            text-decoration: none;
+            font-family: Georgia, serif;
+            font-size: 16px;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 210, 127, 0.4);
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 750px) {
+            .content-box {
+                padding: 25px 20px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .system-overview {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .school-card {
+                padding: 15px 8px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .system-overview {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+
+            h2 {
+                font-size: 21px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="overlay">
+    <div class="content-box">
+
+        <h1>School Structure and Educational Pathways in Korea 🇰🇷</h1>
+
+        <p class="intro">
+            South Korea has a structured education system that guides students
+            from elementary school to higher education. The system is commonly
+            known as the <span class="highlight">6–3–3–4 system</span>,
+            referring to the number of years spent at each educational level.
+        </p>
+
+        <!-- EDUCATION SYSTEM OVERVIEW -->
+        <h2>1. The Korean Education System</h2>
+
+        <p>
+            Students generally complete 12 years of school before moving on
+            to higher education. The education system consists of elementary,
+            middle and high school, followed by university or other forms
+            of higher education.
+        </p>
+
+        <div class="system-overview">
+
+            <div class="school-card">
+                <h3>Elementary School</h3>
+                <div class="years">6</div>
+                <p>Years of education</p>
+                <p>Ages 6–11</p>
+            </div>
+
+            <div class="school-card">
+                <h3>Middle School</h3>
+                <div class="years">3</div>
+                <p>Years of education</p>
+                <p>Ages 12–14</p>
+            </div>
+
+            <div class="school-card">
+                <h3>High School</h3>
+                <div class="years">3</div>
+                <p>Years of education</p>
+                <p>Ages 15–17</p>
+            </div>
+
+            <div class="school-card">
+                <h3>University</h3>
+                <div class="years">4</div>
+                <p>Typical bachelor's program</p>
+                <p>Usually from around 18</p>
+            </div>
+
+        </div>
+
+        <div class="note-box">
+            <strong>Important:</strong> Elementary and middle school education
+            are compulsory in South Korea. High school and university are
+            not compulsory.
+        </div>
+
+
+        <!-- TYPES OF SCHOOLS -->
+        <h2>2. What Types of Schools Are There?</h2>
+
+        <p>
+            South Korea has different types of schools, particularly at
+            high-school level. Some provide general education, while others
+            focus on specific academic or professional fields.
+        </p>
+
+        <ul>
+            <li>
+                <strong>Elementary schools:</strong>
+                Provide six years of primary education and establish
+                students' basic academic knowledge.
+            </li>
+
+            <li>
+                <strong>Middle schools:</strong>
+                Provide three years of lower secondary education.
+                They can be public or private.
+            </li>
+
+            <li>
+                <strong>Regular high schools:</strong>
+                Offer general education across a wide range of subjects.
+            </li>
+
+            <li>
+                <strong>Special-purpose high schools:</strong>
+                Focus on particular fields, such as foreign languages,
+                science, arts or physical education.
+            </li>
+
+            <li>
+                <strong>Vocational high schools:</strong>
+                Emphasize practical training and professional skills
+                to prepare students for specific careers.
+            </li>
+
+            <li>
+                <strong>Autonomous high schools:</strong>
+                Have greater flexibility in organizing their
+                educational programs.
+            </li>
+
+            <li>
+                <strong>Schools for gifted students:</strong>
+                Provide specialized education for students with
+                particular abilities and talents.
+            </li>
+        </ul>
+
+
+        <!-- AGES AND TRANSITIONS -->
+        <h2>3. At What Age Do Students Move Between School Levels?</h2>
+
+        <p>
+            Students normally move to the next educational level after
+            completing the previous one. The following table shows the
+            typical age ranges published by the Korean Ministry of Education.
+        </p>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>School Level</th>
+                    <th>Typical Age Range</th>
+                    <th>Duration</th>
+                </tr>
+
+                <tr>
+                    <td>Elementary School</td>
+                    <td>6–11</td>
+                    <td>6 years</td>
+                </tr>
+
+                <tr>
+                    <td>Middle School</td>
+                    <td>12–14</td>
+                    <td>3 years</td>
+                </tr>
+
+                <tr>
+                    <td>High School</td>
+                    <td>15–17</td>
+                    <td>3 years</td>
+                </tr>
+
+                <tr>
+                    <td>University</td>
+                    <td>Usually from around 18</td>
+                    <td>Typically 4 years</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="note-box">
+            These are typical ages, not absolute rules for every student.
+            Individual educational pathways may differ.
+        </div>
+
+
+        <!-- GRADE REPETITION -->
+        <h2>4. Can Students Repeat a Grade?</h2>
+
+        <p>
+            The English-language information provided by the South Korean
+            Ministry of Education does not explicitly explain the rules
+            concerning grade repetition.
+        </p>
+
+        <div class="note-box">
+            <strong>Not specified:</strong>
+            The Ministry's pages used for this overview do not provide
+            enough information to confirm the exact rules for repeating
+            a school year.
+        </div>
+
+
+        <!-- GRADUATION QUALIFICATIONS -->
+        <h2>5. What Qualifications Do Students Receive?</h2>
+
+        <p>
+            Students progress through the educational system by completing
+            the requirements of each school level.
+        </p>
+
+        <ul>
+            <li>
+                <strong>Elementary school:</strong>
+                After completing six years, students can move on to middle school.
+            </li>
+
+            <li>
+                <strong>Middle school:</strong>
+                After completing three years, students can apply for
+                high-school admission.
+            </li>
+
+            <li>
+                <strong>High school:</strong>
+                Students who successfully complete high school graduate
+                with a high-school graduation qualification.
+            </li>
+
+            <li>
+                <strong>University:</strong>
+                Students who successfully complete a bachelor's program
+                receive a bachelor's degree.
+            </li>
+        </ul>
+
+        <p>
+            The Ministry also recognizes qualifying examinations and
+            equivalent academic credentials for certain educational pathways.
+        </p>
+
+
+        <!-- UNIVERSITY ADMISSION -->
+        <h2>6. How Do Students Enter University?</h2>
+
+        <p>
+            Students can enter higher education after graduating from
+            high school or obtaining an equivalent academic qualification.
+            University admission is determined by several factors.
+        </p>
+
+        <ul>
+            <li>
+                <strong>College Scholastic Ability Test (CSAT):</strong>
+                A standardized examination whose scores can be considered
+                during the university admission process.
+            </li>
+
+            <li>
+                <strong>School records:</strong>
+                Students' academic performance and achievements during
+                high school can also influence admission.
+            </li>
+
+            <li>
+                <strong>Other admission requirements:</strong>
+                Universities may use additional criteria depending on
+                their individual admission processes.
+            </li>
+        </ul>
+
+        <h2>Higher Education Options</h2>
+
+        <p>
+            South Korea offers several types of higher education institutions.
+            Students can choose a pathway depending on their academic goals
+            and future careers.
+        </p>
+
+        <ul>
+            <li>
+                <strong>Four-year universities:</strong>
+                Offer bachelor's degree programs in many academic fields.
+            </li>
+
+            <li>
+                <strong>Junior colleges:</strong>
+                Usually offer two- or three-year programs with a more
+                practical and career-oriented focus.
+            </li>
+
+            <li>
+                <strong>Universities of Education:</strong>
+                Focus on preparing future teachers.
+            </li>
+
+            <li>
+                <strong>Polytechnic colleges:</strong>
+                Provide technical and vocational education.
+            </li>
+
+            <li>
+                <strong>Cyber and open universities:</strong>
+                Offer alternative forms of higher education, including
+                distance learning.
+            </li>
+        </ul>
+
+        <div class="note-box">
+            <strong>Junior colleges:</strong>
+            Graduates can enter the workforce or, depending on the pathway
+            and admission requirements, transfer to a four-year university.
+        </div>
+
+
+        <!-- EDUCATIONAL PATHWAY -->
+        <h2>The Educational Pathway at a Glance</h2>
+
+        <div class="pathway">
+
+            <div class="pathway-step">Elementary School</div>
+            <p>6 years · Ages 6–11</p>
+
+            <div class="arrow">↓</div>
+
+            <div class="pathway-step">Middle School</div>
+            <p>3 years · Ages 12–14</p>
+
+            <div class="arrow">↓</div>
+
+            <div class="pathway-step">High School</div>
+            <p>3 years · Ages 15–17</p>
+
+            <div class="arrow">↓</div>
+
+            <div class="pathway-step">Higher Education</div>
+            <p>University, junior college or another institution</p>
+
+        </div>
+
+
+        <!-- SOURCE -->
+        <div class="source">
+            <strong>Sources:</strong><br>
+            South Korean Ministry of Education – Official English Website<br>
+
+            <a href="https://english.moe.go.kr/sub/infoRenewal.do?m=0304&page=0304&s=english"
+               target="_blank">
+                Education System Overview
+            </a>
+            <br>
+
+            <a href="https://english.moe.go.kr/" target="_blank">
+                Ministry of Education – English Website
+            </a>
+
+            <p>
+                Information is based on the Ministry's published education
+                system overview, primary education, secondary education,
+                higher education and education statistics.
+            </p>
+        </div>
+
+
+        <a href="KoreaSchoolSystem.html" class="back-button">
+            ← Back to School System
+        </a>
+
+    </div>
+</div>
+
+</body>
+</html>
