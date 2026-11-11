@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>School Day, Subjects & Homework Quiz – Germany</title>
+
+<style>
+:root {
+    --gold: #ffd27f;
+    --glass: rgba(255,255,255,0.12);
+    --overlay: rgba(0,0,0,0.55);
+    --green: #4caf50;
+    --red: #e74c3c;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Georgia", serif;
+    background-image: url("GermanyPhotoForIQ.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.overlay {
+    width: 100%;
+    min-height: 100vh;
+    background: var(--overlay);
+    backdrop-filter: blur(3px);
+    padding: 40px 0;
+}
+
+.content-box {
+    max-width: 850px;
+    margin: auto;
+    padding: 40px;
+    background: var(--glass);
+    border-radius: 15px;
+    backdrop-filter: blur(6px);
+    color: white;
+    line-height: 1.7;
+    box-shadow: 0 0 25px rgba(0,0,0,0.35);
+}
+
+h1 {
+    text-align: center;
+    font-size: 36px;
+    color: var(--gold);
+    text-shadow: 0 0 10px rgba(0,0,0,0.6);
+    margin-bottom: 15px;
+}
+
+.intro {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.progress-container {
+    width: 100%;
+    height: 12px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    margin: 25px 0;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: var(--gold);
+    transition: width 0.3s ease;
+}
+
+.question-number {
+    color: var(--gold);
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+.question {
+    font-size: 23px;
+    font-weight: bold;
+    margin-bottom: 22px;
+}
+
+.answers {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.answer-btn {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 9px;
+    background: rgba(0,0,0,0.35);
+    color: white;
+    font-family: Georgia, serif;
+    font-size: 17px;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.2s, border 0.2s;
+}
+
+.answer-btn:hover:not(:disabled) {
+    background: rgba(255,255,255,0.2);
+}
+
+.answer-btn:disabled {
+    cursor: default;
+}
+
+.answer-btn.correct {
+    background: rgba(76,175,80,0.45);
+    border: 2px solid var(--green);
+}
+
+.answer-btn.wrong {
+    background: rgba(231,76,60,0.45);
+    border: 2px solid var(--red);
+}
+
+.feedback {
+    display: none;
+    margin-top: 22px;
+    padding: 17px;
+    border-radius: 9px;
+    background: rgba(0,0,0,0.4);
+    font-size: 17px;
+}
+
+.feedback.correct-feedback {
+    border-left: 5px solid var(--green);
+}
+
+.feedback.wrong-feedback {
+    border-left: 5px solid var(--red);
+}
+
+.next-btn, .restart-btn, .back {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 13px 22px;
+    background: rgba(0,0,0,0.55);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 8px;
+    font-family: Georgia, serif;
+    font-size: 17px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.next-btn:hover, .restart-btn:hover, .back:hover {
+    background: rgba(0,0,0,0.8);
+}
+
+.next-btn {
+    display: none;
+}
+
+.score {
+    color: var(--gold);
+    font-size: 25px;
+    text-align: center;
+    margin: 25px 0;
+}
+
+.result-message {
+    text-align: center;
+    font-size: 19px;
+    line-height: 1.8;
+}
+
+#result-screen {
+    display: none;
+    text-align: center;
+}
+
+.back-container {
+    text-align: center;
+}
+
+@media(max-width:760px) {
+    .content-box {
+        margin: 20px;
+        padding: 24px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .question {
+        font-size: 20px;
+    }
+
+    .answer-btn {
+        font-size: 16px;
+    }
+
+    .intro {
+        font-size: 16px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+<div class="content-box">
+
+    <h1>School Day, Subjects & Homework Quiz</h1>
+
+    <p class="intro">
+        Test your knowledge about everyday school life in Germany!
+        Answer all 10 questions and see how much you remember.
+    </p>
+
+    <div id="quiz-screen">
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <div class="question-number" id="question-number"></div>
+
+        <div class="question" id="question"></div>
+
+        <div class="answers" id="answers"></div>
+
+        <div class="feedback" id="feedback"></div>
+
+        <button class="next-btn" id="next-btn" onclick="nextQuestion()">
+            Next Question →
+        </button>
+
+    </div>
+
+    <div id="result-screen">
+
+        <h2>Quiz Completed!</h2>
+
+        <div class="score" id="final-score"></div>
+
+        <p class="result-message" id="result-message"></p>
+
+        <button class="restart-btn" onclick="restartQuiz()">
+            Try Again ↻
+        </button>
+
+    </div>
+
+    <div class="back-container">
+        <a class="back" href="GermanySchoolSystem.html">← Back</a>
+    </div>
+
+</div>
+</div>
+
+<script>
+
+const questions = [
+
+    {
+        question: "1. At approximately what time does school usually begin in Germany?",
+        answers: [
+            "6:00 AM",
+            "8:00 AM",
+            "10:00 AM",
+            "12:00 PM"
+        ],
+        correct: 1,
+        explanation: "School in Germany usually begins at around 8:00 AM, although the exact starting time can vary between schools."
+    },
+
+    {
+        question: "2. When do many German students finish their regular lessons?",
+        answers: [
+            "Around 7:00–9:00 AM",
+            "Around 10:00 AM–12:00 PM",
+            "Around 1:00–5:00 PM",
+            "Around 9:00–11:00 PM"
+        ],
+        correct: 2,
+        explanation: "Many students finish their lessons between 1:00 and 5:00 PM. The exact time depends on their timetable and school."
+    },
+
+    {
+        question: "3. How many lessons do German students usually have per day?",
+        answers: [
+            "1–2 lessons",
+            "3–4 lessons",
+            "5–8 lessons",
+            "10–12 lessons"
+        ],
+        correct: 2,
+        explanation: "Students usually have around 5–8 lessons per day. A lesson normally lasts approximately 45 minutes."
+    },
+
+    {
+        question: "4. Which of the following is a common compulsory school subject in Germany?",
+        answers: [
+            "Professional driving",
+            "Mathematics",
+            "University studies",
+            "Business management only"
+        ],
+        correct: 1,
+        explanation: "Mathematics is one of the common school subjects in Germany. Other subjects include German, foreign languages, sciences, history and physical education."
+    },
+
+    {
+        question: "5. What happens to students' subject choices as they get older?",
+        answers: [
+            "They can often choose more elective subjects and courses.",
+            "They are no longer allowed to study languages.",
+            "They must study exactly the same subjects forever.",
+            "They can only study mathematics."
+        ],
+        correct: 0,
+        explanation: "Students generally gain more opportunities to choose subjects as they get older. In upper secondary school, they can often select elective subjects and advanced courses."
+    },
+
+    {
+        question: "6. Which statement about homework in Germany is correct?",
+        answers: [
+            "Every student receives exactly the same amount.",
+            "Homework is never given.",
+            "The amount varies depending on school, grade, teachers and subjects.",
+            "Homework is only assigned during holidays."
+        ],
+        correct: 2,
+        explanation: "The amount of homework differs greatly. Students may receive exercises, reading assignments, vocabulary learning, lesson preparation or projects."
+    },
+
+    {
+        question: "7. What does the German word 'Nachhilfe' mean?",
+        answers: [
+            "A school holiday",
+            "Private tutoring or additional lessons",
+            "A final examination",
+            "A compulsory school subject"
+        ],
+        correct: 1,
+        explanation: "Nachhilfe means private tutoring. Students may receive additional help in subjects such as mathematics, German or foreign languages."
+    },
+
+    {
+        question: "8. Which statement about private tutoring in Germany is correct?",
+        answers: [
+            "Every student must attend private tutoring.",
+            "Only university students can receive tutoring.",
+            "Some students receive tutoring, but it is not compulsory for everyone.",
+            "Private tutoring is only available for sports."
+        ],
+        correct: 2,
+        explanation: "Some students receive private tutoring to improve their performance or get help with difficult subjects. However, not every student attends tutoring."
+    },
+
+    {
+        question: "9. Which foreign language is most commonly taught in German schools?",
+        answers: [
+            "Japanese",
+            "English",
+            "Korean",
+            "Russian"
+        ],
+        correct: 1,
+        explanation: "English is the most common foreign language taught in German schools. Other possible languages include French, Spanish and Latin."
+    },
+
+    {
+        question: "10. Which statement best describes school life in Germany?",
+        answers: [
+            "Students only attend lessons and never participate in other activities.",
+            "All schools have exactly the same timetable and activities.",
+            "Students may combine lessons, homework, tests and extracurricular activities.",
+            "Students are not allowed to participate in sports or music groups."
+        ],
+        correct: 2,
+        explanation: "German school life can include lessons, breaks, homework, tests and extracurricular activities such as sports clubs, music groups, school trips and student councils."
+    }
+
+];
+
+let currentQuestion = 0;
+let score = 0;
+let answered = false;
+
+function loadQuestion() {
+
+    answered = false;
+
+    const q = questions[currentQuestion];
+
+    document.getElementById("question-number").textContent =
+        "Question " + (currentQuestion + 1) + " of " + questions.length;
+
+    document.getElementById("question").textContent = q.question;
+
+    document.getElementById("progress-bar").style.width =
+        (currentQuestion / questions.length * 100) + "%";
+
+    const answersContainer = document.getElementById("answers");
+    answersContainer.innerHTML = "";
+
+    document.getElementById("feedback").style.display = "none";
+    document.getElementById("feedback").className = "feedback";
+
+    document.getElementById("next-btn").style.display = "none";
+
+    q.answers.forEach((answer, index) => {
+
+        const button = document.createElement("button");
+
+        button.className = "answer-btn";
+        button.textContent = answer;
+
+        button.onclick = function() {
+            checkAnswer(index, button);
+        };
+
+        answersContainer.appendChild(button);
+
+    });
+
+}
+
+function checkAnswer(selected, button) {
+
+    if (answered) return;
+
+    answered = true;
+
+    const q = questions[currentQuestion];
+    const buttons = document.querySelectorAll(".answer-btn");
+    const feedback = document.getElementById("feedback");
+
+    buttons.forEach(btn => btn.disabled = true);
+
+    if (selected === q.correct) {
+
+        score++;
+
+        button.classList.add("correct");
+
+        feedback.classList.add("correct-feedback");
+        feedback.innerHTML =
+            "<strong>✓ Correct!</strong><br>" + q.explanation;
+
+    } else {
+
+        button.classList.add("wrong");
+        buttons[q.correct].classList.add("correct");
+
+        feedback.classList.add("wrong-feedback");
+        feedback.innerHTML =
+            "<strong>✗ Incorrect!</strong><br>" +
+            "The correct answer is: <strong>" +
+            q.answers[q.correct] +
+            "</strong><br><br>" +
+            q.explanation;
+
+    }
+
+    feedback.style.display = "block";
+
+    const nextBtn = document.getElementById("next-btn");
+
+    nextBtn.textContent =
+        currentQuestion === questions.length - 1
+        ? "See Results →"
+        : "Next Question →";
+
+    nextBtn.style.display = "inline-block";
+
+}
+
+function nextQuestion() {
+
+    currentQuestion++;
+
+    if (currentQuestion < questions.length) {
+
+        loadQuestion();
+
+    } else {
+
+        showResults();
+
+    }
+
+}
+
+function showResults() {
+
+    document.getElementById("quiz-screen").style.display = "none";
+    document.getElementById("result-screen").style.display = "block";
+
+    document.getElementById("progress-bar").style.width = "100%";
+
+    document.getElementById("final-score").textContent =
+        score + " / " + questions.length + " correct answers";
+
+    let message = "";
+
+    if (score === 10) {
+
+        message = "Perfect score! 🎉 You know a lot about German school life!";
+
+    } else if (score >= 8) {
+
+        message = "Excellent work! You have a very good understanding of the topic.";
+
+    } else if (score >= 6) {
+
+        message = "Good job! You already know quite a bit. A little revision will help.";
+
+    } else if (score >= 4) {
+
+        message = "Not bad! Review the information page and try again.";
+
+    } else {
+
+        message = "Keep learning! Read the information page once more and give it another try.";
+
+    }
+
+    document.getElementById("result-message").textContent = message;
+
+}
+
+function restartQuiz() {
+
+    currentQuestion = 0;
+    score = 0;
+    answered = false;
+
+    document.getElementById("quiz-screen").style.display = "block";
+    document.getElementById("result-screen").style.display = "none";
+
+    loadQuestion();
+
+}
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>
