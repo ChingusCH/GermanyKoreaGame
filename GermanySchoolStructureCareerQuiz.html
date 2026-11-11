@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Germany – School Structure Quiz</title>
+
+<style>
+    :root {
+        --gold: #ffd27f;
+        --glass: rgba(255,255,255,0.12);
+        --overlay: rgba(0,0,0,0.60);
+        --green: #4caf50;
+        --red: #e05252;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Georgia, serif;
+        background-image: url("GermanyPhotoForIQ.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        color: white;
+    }
+
+    .overlay {
+        min-height: 100vh;
+        width: 100%;
+        background: var(--overlay);
+        backdrop-filter: blur(3px);
+        padding: 40px 15px;
+    }
+
+    .content-box {
+        max-width: 850px;
+        margin: auto;
+        padding: 40px;
+        background: var(--glass);
+        border-radius: 15px;
+        backdrop-filter: blur(8px);
+        box-shadow: 0 0 25px rgba(0,0,0,0.4);
+        border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    h1 {
+        text-align: center;
+        color: var(--gold);
+        font-size: 36px;
+        text-shadow: 0 0 10px rgba(0,0,0,0.6);
+        margin-bottom: 12px;
+    }
+
+    .subtitle {
+        text-align: center;
+        font-size: 18px;
+        margin-bottom: 30px;
+        line-height: 1.6;
+    }
+
+    .progress-container {
+        width: 100%;
+        height: 12px;
+        background: rgba(255,255,255,0.2);
+        border-radius: 20px;
+        overflow: hidden;
+        margin-bottom: 12px;
+    }
+
+    .progress-bar {
+        height: 100%;
+        width: 0%;
+        background: var(--gold);
+        transition: width 0.3s ease;
+    }
+
+    .progress-text {
+        text-align: right;
+        font-size: 15px;
+        margin-bottom: 25px;
+    }
+
+    .question-number {
+        color: var(--gold);
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .question {
+        font-size: 23px;
+        line-height: 1.5;
+        margin-bottom: 25px;
+    }
+
+    .answers {
+        display: flex;
+        flex-direction: column;
+        gap: 13px;
+    }
+
+    .answer-btn {
+        width: 100%;
+        padding: 15px 18px;
+        border: 1px solid rgba(255,255,255,0.25);
+        border-radius: 9px;
+        background: rgba(0,0,0,0.35);
+        color: white;
+        font-family: Georgia, serif;
+        font-size: 17px;
+        text-align: left;
+        cursor: pointer;
+        transition: background 0.2s, transform 0.2s;
+    }
+
+    .answer-btn:hover:not(:disabled) {
+        background: rgba(255,210,127,0.22);
+        transform: translateY(-2px);
+    }
+
+    .answer-btn:disabled {
+        cursor: default;
+    }
+
+    .answer-btn.correct {
+        background: rgba(76,175,80,0.8);
+        border: 2px solid #8cff91;
+    }
+
+    .answer-btn.incorrect {
+        background: rgba(224,82,82,0.8);
+        border: 2px solid #ffaaaa;
+    }
+
+    .feedback {
+        display: none;
+        margin-top: 22px;
+        padding: 18px;
+        border-radius: 9px;
+        background: rgba(0,0,0,0.4);
+        font-size: 17px;
+        line-height: 1.6;
+    }
+
+    .feedback.correct-feedback {
+        border-left: 5px solid var(--green);
+    }
+
+    .feedback.incorrect-feedback {
+        border-left: 5px solid var(--red);
+    }
+
+    .next-btn, .restart-btn, .back {
+        display: inline-block;
+        margin-top: 25px;
+        padding: 13px 23px;
+        border: none;
+        border-radius: 8px;
+        background: var(--gold);
+        color: #222;
+        font-family: Georgia, serif;
+        font-size: 17px;
+        font-weight: bold;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background 0.2s;
+    }
+
+    .next-btn:hover, .restart-btn:hover {
+        background: #ffe1a8;
+    }
+
+    .back {
+        background: rgba(0,0,0,0.45);
+        color: white;
+        font-weight: normal;
+        margin-left: 10px;
+    }
+
+    .back:hover {
+        background: rgba(0,0,0,0.75);
+    }
+
+    .results {
+        display: none;
+        text-align: center;
+        line-height: 1.7;
+    }
+
+    .results h2 {
+        color: var(--gold);
+        font-size: 30px;
+    }
+
+    .final-score {
+        font-size: 32px;
+        color: var(--gold);
+        font-weight: bold;
+        margin: 20px 0;
+    }
+
+    .result-message {
+        font-size: 19px;
+        margin-bottom: 20px;
+    }
+
+    @media(max-width: 760px) {
+        .content-box {
+            padding: 24px;
+        }
+
+        h1 {
+            font-size: 29px;
+        }
+
+        .question {
+            font-size: 20px;
+        }
+
+        .answer-btn {
+            font-size: 16px;
+        }
+
+        .back {
+            margin-left: 0;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+<div class="content-box">
+
+    <h1>🇩🇪 School Structure Quiz</h1>
+
+    <p class="subtitle">
+        Test your knowledge about the German education system,
+        different school types, qualifications and university admission!
+    </p>
+
+    <div id="quiz">
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="progress-text" id="progressText">
+            Question 1 of 10
+        </div>
+
+        <div class="question-number" id="questionNumber">
+            QUESTION 1
+        </div>
+
+        <div class="question" id="question">
+            Loading question...
+        </div>
+
+        <div class="answers" id="answers"></div>
+
+        <div class="feedback" id="feedback"></div>
+
+        <button class="next-btn" id="nextButton"
+                onclick="nextQuestion()" style="display:none;">
+            Next Question →
+        </button>
+
+    </div>
+
+    <div class="results" id="results">
+        <h2>Quiz Completed! 🎉</h2>
+
+        <div class="final-score" id="finalScore"></div>
+
+        <div class="result-message" id="resultMessage"></div>
+
+        <button class="restart-btn" onclick="restartQuiz()">
+            Try Again ↻
+        </button>
+    </div>
+
+    <a class="back" href="GermanySchoolSystem.html">
+        ← Back
+    </a>
+
+</div>
+</div>
+
+<script>
+
+const questions = [
+
+{
+    question: "At approximately what age do children usually start primary school in Germany?",
+    answers: [
+        "Four years old",
+        "Five years old",
+        "Six years old",
+        "Eight years old"
+    ],
+    correct: 2,
+    explanation: "Children in Germany usually begin primary school (Grundschule) at around six years old."
+},
+
+{
+    question: "How long does primary school generally last in most German federal states?",
+    answers: [
+        "Two years",
+        "Four years",
+        "Six years",
+        "Eight years"
+    ],
+    correct: 1,
+    explanation: "In most federal states, Grundschule covers grades 1–4. In Berlin and Brandenburg, it generally lasts six years."
+},
+
+{
+    question: "Which statement about compulsory education in Germany is correct?",
+    answers: [
+        "Every student must attend university.",
+        "Full-time compulsory education generally lasts nine or ten years, depending on the state.",
+        "All students must complete exactly 13 years of school.",
+        "School attendance is voluntary after primary school."
+    ],
+    correct: 1,
+    explanation: "Full-time compulsory education generally lasts nine or ten years, depending on the federal state. Additional part-time vocational school attendance may also be required."
+},
+
+{
+    question: "Which school type usually offers an academically focused pathway leading to the Abitur?",
+    answers: [
+        "Hauptschule",
+        "Berufsschule",
+        "Gymnasium",
+        "Förderschule"
+    ],
+    correct: 2,
+    explanation: "The Gymnasium provides an academically focused education and usually leads to the Abitur, the general higher education entrance qualification."
+},
+
+{
+    question: "What is a Gesamtschule?",
+    answers: [
+        "A school that combines different educational pathways",
+        "A university for vocational training",
+        "A school exclusively for students with special educational needs",
+        "A school that only teaches foreign languages"
+    ],
+    correct: 0,
+    explanation: "A Gesamtschule combines different educational pathways in one school. Students can work towards different school-leaving qualifications."
+},
+
+{
+    question: "What does the term Sitzenbleiben mean?",
+    answers: [
+        "Changing to another school",
+        "Repeating a school year",
+        "Skipping a school year",
+        "Starting university"
+    ],
+    correct: 1,
+    explanation: "Sitzenbleiben means repeating a school year because a student's academic performance does not meet the requirements for promotion."
+},
+
+{
+    question: "Which qualification generally allows students to apply for almost any university degree programme in Germany?",
+    answers: [
+        "Erster Schulabschluss",
+        "Mittlerer Schulabschluss",
+        "Allgemeine Hochschulreife (Abitur)",
+        "A school attendance certificate"
+    ],
+    correct: 2,
+    explanation: "The Allgemeine Hochschulreife, commonly known as the Abitur, is the general higher education entrance qualification."
+},
+
+{
+    question: "What is the Fachhochschulreife generally used for?",
+    answers: [
+        "Access to universities of applied sciences",
+        "Automatic admission to every university programme",
+        "Admission to primary school",
+        "Replacing compulsory education"
+    ],
+    correct: 0,
+    explanation: "The Fachhochschulreife generally provides access to universities of applied sciences (Fachhochschulen). Specific admission rules can vary."
+},
+
+{
+    question: "What does Numerus Clausus (NC) refer to?",
+    answers: [
+        "A compulsory school year",
+        "A grading system used in primary school",
+        "A restriction on the number of available university places",
+        "A type of vocational qualification"
+    ],
+    correct: 2,
+    explanation: "An NC applies to degree programmes with limited places. Applicants' grades can influence admission."
+},
+
+{
+    question: "Which statement best describes the German education system?",
+    answers: [
+        "Every federal state has exactly the same school system.",
+        "Students have only one possible educational pathway.",
+        "Education is mainly the responsibility of the 16 federal states, and different pathways are available.",
+        "Vocational education is not part of the education system."
+    ],
+    correct: 2,
+    explanation: "Education is mainly the responsibility of Germany's 16 federal states. School types and regulations can differ, and students have several educational pathways."
+}
+
+];
+
+let currentQuestion = 0;
+let score = 0;
+let answered = false;
+
+function loadQuestion() {
+
+    answered = false;
+
+    const q = questions[currentQuestion];
+
+    document.getElementById("questionNumber").textContent =
+        "QUESTION " + (currentQuestion + 1);
+
+    document.getElementById("question").textContent = q.question;
+
+    document.getElementById("progressText").textContent =
+        "Question " + (currentQuestion + 1) + " of " + questions.length;
+
+    document.getElementById("progressBar").style.width =
+        (currentQuestion / questions.length * 100) + "%";
+
+    const answersContainer = document.getElementById("answers");
+    answersContainer.innerHTML = "";
+
+    q.answers.forEach((answer, index) => {
+
+        const button = document.createElement("button");
+
+        button.className = "answer-btn";
+        button.textContent =
+            String.fromCharCode(65 + index) + ". " + answer;
+
+        button.onclick = () => checkAnswer(index, button);
+
+        answersContainer.appendChild(button);
+
+    });
+
+    const feedback = document.getElementById("feedback");
+    feedback.style.display = "none";
+    feedback.className = "feedback";
+
+    document.getElementById("nextButton").style.display = "none";
+}
+
+function checkAnswer(selected, button) {
+
+    if (answered) return;
+
+    answered = true;
+
+    const q = questions[currentQuestion];
+    const buttons = document.querySelectorAll(".answer-btn");
+    const feedback = document.getElementById("feedback");
+
+    buttons.forEach(btn => btn.disabled = true);
+
+    if (selected === q.correct) {
+
+        score++;
+
+        button.classList.add("correct");
+
+        feedback.classList.add("correct-feedback");
+
+        feedback.innerHTML =
+            "<strong>✓ Correct!</strong><br>" + q.explanation;
+
+    } else {
+
+        button.classList.add("incorrect");
+
+        buttons[q.correct].classList.add("correct");
+
+        feedback.classList.add("incorrect-feedback");
+
+        feedback.innerHTML =
+            "<strong>✗ Not quite!</strong><br>" +
+            "The correct answer is <strong>" +
+            String.fromCharCode(65 + q.correct) + ". " +
+            q.answers[q.correct] +
+            "</strong>.<br>" + q.explanation;
+
+    }
+
+    feedback.style.display = "block";
+
+    document.getElementById("nextButton").style.display = "inline-block";
+
+    if (currentQuestion === questions.length - 1) {
+        document.getElementById("nextButton").textContent =
+            "See Results →";
+    }
+
+}
+
+function nextQuestion() {
+
+    currentQuestion++;
+
+    if (currentQuestion < questions.length) {
+
+        loadQuestion();
+
+    } else {
+
+        showResults();
+
+    }
+
+}
+
+function showResults() {
+
+    document.getElementById("quiz").style.display = "none";
+
+    const results = document.getElementById("results");
+    results.style.display = "block";
+
+    document.getElementById("progressBar").style.width = "100%";
+
+    document.getElementById("finalScore").textContent =
+        score + " / " + questions.length;
+
+    let message = "";
+
+    if (score === 10) {
+        message = "Perfect score! 🏆 You know the German education system extremely well!";
+    } else if (score >= 8) {
+        message = "Excellent work! 🌟 You have a very good understanding of German school structures and qualifications.";
+    } else if (score >= 6) {
+        message = "Good job! 😊 You know quite a lot, but there are still a few things to review.";
+    } else if (score >= 4) {
+        message = "Not bad! 📚 A little more revision will help you improve.";
+    } else {
+        message = "Keep practising! 💪 Review the information page and try again.";
+    }
+
+    document.getElementById("resultMessage").textContent = message;
+
+}
+
+function restartQuiz() {
+
+    currentQuestion = 0;
+    score = 0;
+    answered = false;
+
+    document.getElementById("quiz").style.display = "block";
+    document.getElementById("results").style.display = "none";
+
+    document.getElementById("nextButton").textContent =
+        "Next Question →";
+
+    loadQuestion();
+
+}
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>
