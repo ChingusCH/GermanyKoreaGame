@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Germany – Exams, Grades and Assessment Quiz</title>
+
+<style>
+    :root {
+        --gold: #ffd27f;
+        --glass: rgba(255,255,255,0.12);
+        --overlay: rgba(0,0,0,0.60);
+        --green: #4caf50;
+        --red: #e05252;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Georgia, serif;
+        background-image: url("GermanyPhotoForIQ.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        color: white;
+    }
+
+    .overlay {
+        min-height: 100vh;
+        width: 100%;
+        background: var(--overlay);
+        backdrop-filter: blur(3px);
+        padding: 40px 15px;
+    }
+
+    .content-box {
+        max-width: 850px;
+        margin: auto;
+        padding: 40px;
+        background: var(--glass);
+        border-radius: 15px;
+        backdrop-filter: blur(8px);
+        box-shadow: 0 0 25px rgba(0,0,0,0.4);
+        border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    h1 {
+        text-align: center;
+        color: var(--gold);
+        font-size: 36px;
+        text-shadow: 0 0 10px rgba(0,0,0,0.6);
+        margin-bottom: 12px;
+    }
+
+    .subtitle {
+        text-align: center;
+        font-size: 18px;
+        margin-bottom: 30px;
+        line-height: 1.6;
+    }
+
+    .progress-container {
+        width: 100%;
+        height: 12px;
+        background: rgba(255,255,255,0.2);
+        border-radius: 20px;
+        overflow: hidden;
+        margin-bottom: 12px;
+    }
+
+    .progress-bar {
+        height: 100%;
+        width: 0%;
+        background: var(--gold);
+        transition: width 0.3s ease;
+    }
+
+    .progress-text {
+        text-align: right;
+        font-size: 15px;
+        margin-bottom: 25px;
+    }
+
+    .question-number {
+        color: var(--gold);
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .question {
+        font-size: 23px;
+        line-height: 1.5;
+        margin-bottom: 25px;
+    }
+
+    .answers {
+        display: flex;
+        flex-direction: column;
+        gap: 13px;
+    }
+
+    .answer-btn {
+        width: 100%;
+        padding: 15px 18px;
+        border: 1px solid rgba(255,255,255,0.25);
+        border-radius: 9px;
+        background: rgba(0,0,0,0.35);
+        color: white;
+        font-family: Georgia, serif;
+        font-size: 17px;
+        text-align: left;
+        cursor: pointer;
+        transition: background 0.2s, transform 0.2s;
+    }
+
+    .answer-btn:hover:not(:disabled) {
+        background: rgba(255,210,127,0.22);
+        transform: translateY(-2px);
+    }
+
+    .answer-btn:disabled {
+        cursor: default;
+    }
+
+    .answer-btn.correct {
+        background: rgba(76,175,80,0.8);
+        border: 2px solid #8cff91;
+    }
+
+    .answer-btn.incorrect {
+        background: rgba(224,82,82,0.8);
+        border: 2px solid #ffaaaa;
+    }
+
+    .feedback {
+        display: none;
+        margin-top: 22px;
+        padding: 18px;
+        border-radius: 9px;
+        background: rgba(0,0,0,0.4);
+        font-size: 17px;
+        line-height: 1.6;
+    }
+
+    .feedback.correct-feedback {
+        border-left: 5px solid var(--green);
+    }
+
+    .feedback.incorrect-feedback {
+        border-left: 5px solid var(--red);
+    }
+
+    .next-btn, .restart-btn, .back {
+        display: inline-block;
+        margin-top: 25px;
+        padding: 13px 23px;
+        border: none;
+        border-radius: 8px;
+        background: var(--gold);
+        color: #222;
+        font-family: Georgia, serif;
+        font-size: 17px;
+        font-weight: bold;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background 0.2s;
+    }
+
+    .next-btn:hover, .restart-btn:hover {
+        background: #ffe1a8;
+    }
+
+    .back {
+        background: rgba(0,0,0,0.45);
+        color: white;
+        font-weight: normal;
+        margin-left: 10px;
+    }
+
+    .back:hover {
+        background: rgba(0,0,0,0.75);
+    }
+
+    .results {
+        display: none;
+        text-align: center;
+        line-height: 1.7;
+    }
+
+    .results h2 {
+        color: var(--gold);
+        font-size: 30px;
+    }
+
+    .final-score {
+        font-size: 32px;
+        color: var(--gold);
+        font-weight: bold;
+        margin: 20px 0;
+    }
+
+    .result-message {
+        font-size: 19px;
+        margin-bottom: 20px;
+    }
+
+    @media(max-width: 760px) {
+        .content-box {
+            padding: 24px;
+        }
+
+        h1 {
+            font-size: 29px;
+        }
+
+        .question {
+            font-size: 20px;
+        }
+
+        .answer-btn {
+            font-size: 16px;
+        }
+
+        .back {
+            margin-left: 0;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+<div class="content-box">
+
+    <h1>🇩🇪 Exams & Grades Quiz</h1>
+
+    <p class="subtitle">
+        Test your knowledge about examinations, grading systems,
+        school assessments and academic pressure in Germany!
+    </p>
+
+    <div id="quiz">
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="progress-text" id="progressText">
+            Question 1 of 10
+        </div>
+
+        <div class="question-number" id="questionNumber">
+            QUESTION 1
+        </div>
+
+        <div class="question" id="question">
+            Loading question...
+        </div>
+
+        <div class="answers" id="answers"></div>
+
+        <div class="feedback" id="feedback"></div>
+
+        <button class="next-btn" id="nextButton"
+                onclick="nextQuestion()" style="display:none;">
+            Next Question →
+        </button>
+
+    </div>
+
+    <div class="results" id="results">
+        <h2>Quiz Completed! 🎉</h2>
+
+        <div class="final-score" id="finalScore"></div>
+
+        <div class="result-message" id="resultMessage"></div>
+
+        <button class="restart-btn" onclick="restartQuiz()">
+            Try Again ↻
+        </button>
+    </div>
+
+    <a class="back" href="GermanySchoolSystem.html">
+        ← Back
+    </a>
+
+</div>
+</div>
+
+<script>
+
+const questions = [
+
+{
+    question: "Which of the following is an example of a formal written examination in Germany?",
+    answers: [
+        "Klassenarbeit",
+        "Klassenfahrt",
+        "Arbeitsgemeinschaft",
+        "Sportfest"
+    ],
+    correct: 0,
+    explanation: "A Klassenarbeit is a formal written test, often used in subjects such as mathematics, German and foreign languages."
+},
+
+{
+    question: "How often do German students take examinations?",
+    answers: [
+        "Exactly once every month",
+        "Exactly ten times per year",
+        "The frequency depends on the state, school type, grade and subject.",
+        "Only at the end of each school year"
+    ],
+    correct: 2,
+    explanation: "There is no single nationwide number of examinations. The frequency depends on several factors, including the federal state, school level and subject."
+},
+
+{
+    question: "Which two main assessment areas are used in the NRW upper secondary system for courses with written examinations?",
+    answers: [
+        "Homework and attendance",
+        "Written examinations and other classroom performance",
+        "Sports and practical skills",
+        "Final exams and school behaviour"
+    ],
+    correct: 1,
+    explanation: "In NRW, written examinations (Klausuren) and other classroom performance (Sonstige Mitarbeit) are normally given equal consideration in courses with written examinations."
+},
+
+{
+    question: "Which activity can count as Sonstige Mitarbeit?",
+    answers: [
+        "Only written examinations",
+        "Only homework",
+        "Oral contributions and presentations",
+        "Only attendance"
+    ],
+    correct: 2,
+    explanation: "Sonstige Mitarbeit can include answering questions, participating in discussions, giving presentations, explaining ideas and completing practical assignments."
+},
+
+{
+    question: "What is the traditional German school grading scale?",
+    answers: [
+        "0 to 10",
+        "1 to 5",
+        "1 to 6",
+        "0 to 100"
+    ],
+    correct: 2,
+    explanation: "The traditional grading scale generally ranges from 1 to 6. A grade of 1 is the best, while 6 is the worst."
+},
+
+{
+    question: "What does a grade of 4 generally mean in the traditional German grading system?",
+    answers: [
+        "Very good",
+        "Good",
+        "Sufficient – generally a pass",
+        "Very poor"
+    ],
+    correct: 2,
+    explanation: "A grade of 4 means sufficient (ausreichend) and is generally considered a passing grade."
+},
+
+{
+    question: "What is the highest possible score in the NRW upper secondary 15-point system?",
+    answers: [
+        "10 points",
+        "12 points",
+        "15 points",
+        "20 points"
+    ],
+    correct: 2,
+    explanation: "In the qualification phase of upper secondary education in NRW, students receive between 0 and 15 points. 15 points represent the highest result."
+},
+
+{
+    question: "Can students automatically retake every examination if they receive a low grade?",
+    answers: [
+        "Yes, every examination can be repeated.",
+        "No, there is generally no automatic right to repeat every test because of a low grade.",
+        "Yes, but only in mathematics.",
+        "No examination can ever be repeated."
+    ],
+    correct: 1,
+    explanation: "Students do not generally have an automatic right to repeat every test after receiving a low grade. Valid absences and final examinations are treated under specific rules."
+},
+
+{
+    question: "What does Numerus Clausus (NC) mean?",
+    answers: [
+        "A compulsory school subject",
+        "A type of written examination",
+        "A system used when university places are limited",
+        "A certificate for vocational training"
+    ],
+    correct: 2,
+    explanation: "A Numerus Clausus applies to degree programmes with limited places. Applicants' grades can influence admission, although not every university programme has an NC."
+},
+
+{
+    question: "Which statement about academic pressure in Germany and South Korea is most accurate?",
+    answers: [
+        "South Korea has no academic pressure.",
+        "German students never experience examination stress.",
+        "One country can be definitively declared more stressful for every student.",
+        "Both countries have students who experience academic pressure, but its forms and causes can differ."
+    ],
+    correct: 3,
+    explanation: "Academic pressure depends on many factors. PISA mathematics anxiety is only one measure and cannot describe every aspect of students' school experiences in either country."
+}
+
+];
+
+let currentQuestion = 0;
+let score = 0;
+let answered = false;
+
+function loadQuestion() {
+
+    answered = false;
+
+    const q = questions[currentQuestion];
+
+    document.getElementById("questionNumber").textContent =
+        "QUESTION " + (currentQuestion + 1);
+
+    document.getElementById("question").textContent = q.question;
+
+    document.getElementById("progressText").textContent =
+        "Question " + (currentQuestion + 1) + " of " + questions.length;
+
+    document.getElementById("progressBar").style.width =
+        (currentQuestion / questions.length * 100) + "%";
+
+    const answersContainer = document.getElementById("answers");
+    answersContainer.innerHTML = "";
+
+    q.answers.forEach((answer, index) => {
+
+        const button = document.createElement("button");
+
+        button.className = "answer-btn";
+        button.textContent =
+            String.fromCharCode(65 + index) + ". " + answer;
+
+        button.onclick = () => checkAnswer(index, button);
+
+        answersContainer.appendChild(button);
+
+    });
+
+    const feedback = document.getElementById("feedback");
+    feedback.style.display = "none";
+    feedback.className = "feedback";
+
+    document.getElementById("nextButton").style.display = "none";
+}
+
+function checkAnswer(selected, button) {
+
+    if (answered) return;
+
+    answered = true;
+
+    const q = questions[currentQuestion];
+    const buttons = document.querySelectorAll(".answer-btn");
+    const feedback = document.getElementById("feedback");
+
+    buttons.forEach(btn => btn.disabled = true);
+
+    if (selected === q.correct) {
+
+        score++;
+
+        button.classList.add("correct");
+
+        feedback.classList.add("correct-feedback");
+
+        feedback.innerHTML =
+            "<strong>✓ Correct!</strong><br>" + q.explanation;
+
+    } else {
+
+        button.classList.add("incorrect");
+
+        buttons[q.correct].classList.add("correct");
+
+        feedback.classList.add("incorrect-feedback");
+
+        feedback.innerHTML =
+            "<strong>✗ Not quite!</strong><br>" +
+            "The correct answer is <strong>" +
+            String.fromCharCode(65 + q.correct) + ". " +
+            q.answers[q.correct] +
+            "</strong>.<br>" + q.explanation;
+
+    }
+
+    feedback.style.display = "block";
+
+    document.getElementById("nextButton").style.display = "inline-block";
+
+    if (currentQuestion === questions.length - 1) {
+        document.getElementById("nextButton").textContent =
+            "See Results →";
+    }
+
+}
+
+function nextQuestion() {
+
+    currentQuestion++;
+
+    if (currentQuestion < questions.length) {
+
+        loadQuestion();
+
+    } else {
+
+        showResults();
+
+    }
+
+}
+
+function showResults() {
+
+    document.getElementById("quiz").style.display = "none";
+
+    const results = document.getElementById("results");
+    results.style.display = "block";
+
+    document.getElementById("progressBar").style.width = "100%";
+
+    document.getElementById("finalScore").textContent =
+        score + " / " + questions.length;
+
+    let message = "";
+
+    if (score === 10) {
+        message = "Perfect score! 🏆 You know the German assessment system extremely well!";
+    } else if (score >= 8) {
+        message = "Excellent work! 🌟 You have a very good understanding of exams and grades in Germany.";
+    } else if (score >= 6) {
+        message = "Good job! 😊 You know quite a lot, but there are still a few things to review.";
+    } else if (score >= 4) {
+        message = "Not bad! 📚 A little more revision will help you improve.";
+    } else {
+        message = "Keep practising! 💪 Review the information page and try again.";
+    }
+
+    document.getElementById("resultMessage").textContent = message;
+
+}
+
+function restartQuiz() {
+
+    currentQuestion = 0;
+    score = 0;
+    answered = false;
+
+    document.getElementById("quiz").style.display = "block";
+    document.getElementById("results").style.display = "none";
+
+    document.getElementById("nextButton").textContent =
+        "Next Question →";
+
+    loadQuestion();
+
+}
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>
