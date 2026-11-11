@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Culture, Vacations and Student Life in Korea</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Georgia, serif;
+            color: white;
+            background-image: url("KoreaPhotoForIQ.jpg");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        .overlay {
+            background: rgba(0, 0, 0, 0.55);
+            min-height: 100vh;
+            padding: 45px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .content-box {
+            width: 100%;
+            max-width: 1050px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffd27f;
+            font-size: 36px;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .intro {
+            text-align: center;
+            font-size: 17px;
+            line-height: 1.7;
+            margin-bottom: 35px;
+        }
+
+        h2 {
+            color: #ffd27f;
+            font-size: 24px;
+            margin-top: 35px;
+            margin-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 210, 127, 0.45);
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            color: #ffe0a3;
+            font-size: 19px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        ul {
+            padding-left: 25px;
+            line-height: 1.9;
+            font-size: 16px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: #ffe0a3;
+        }
+
+        .highlight {
+            color: #ffd27f;
+            font-weight: bold;
+        }
+
+        .season-grid,
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin: 25px 0;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.13);
+            border: 1px solid rgba(255, 210, 127, 0.4);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.3s ease,
+                        background 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .info-card h3 {
+            color: #ffd27f;
+            margin-top: 0;
+        }
+
+        .info-card p {
+            font-size: 15px;
+            margin-bottom: 0;
+        }
+
+        .note-box {
+            background: rgba(255, 210, 127, 0.12);
+            border-left: 4px solid #ffd27f;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            line-height: 1.7;
+        }
+
+        .law-box {
+            background: rgba(255, 255, 255, 0.13);
+            border: 1px solid rgba(255, 210, 127, 0.55);
+            border-radius: 12px;
+            padding: 22px;
+            margin: 25px 0;
+        }
+
+        .law-box h3 {
+            color: #ffd27f;
+            margin-top: 0;
+            font-size: 22px;
+        }
+
+        .date {
+            color: #ffd27f;
+            font-weight: bold;
+            font-size: 17px;
+        }
+
+        .source {
+            margin-top: 35px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.25);
+            font-size: 13px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .source a {
+            color: #ffd27f;
+            text-decoration: none;
+        }
+
+        .source a:hover {
+            text-decoration: underline;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 25px;
+            color: white;
+            background: rgba(255, 210, 127, 0.2);
+            border: 1px solid #ffd27f;
+            border-radius: 8px;
+            text-decoration: none;
+            font-family: Georgia, serif;
+            font-size: 16px;
+            transition: background 0.3s ease,
+                        transform 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 210, 127, 0.4);
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 750px) {
+            .content-box {
+                padding: 25px 20px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .season-grid,
+            .activity-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 420px) {
+            h1 {
+                font-size: 25px;
+            }
+
+            h2 {
+                font-size: 21px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="overlay">
+    <div class="content-box">
+
+        <h1>School Culture, Vacations and Student Life in Korea 🇰🇷</h1>
+
+        <p class="intro">
+            School life in South Korea includes more than lessons
+            and examinations. Students experience school traditions,
+            extracurricular activities, school meals and different
+            vacation periods. Some aspects are regulated nationally,
+            while others depend on individual schools.
+        </p>
+
+
+        <!-- SCHOOL VACATIONS -->
+        <h2>1. How Long Are School Vacations?</h2>
+
+        <p>
+            South Korean schools generally have two main vacation
+            periods during the academic year. The school year begins
+            in March, and the second semester starts at the end of August.
+        </p>
+
+        <div class="season-grid">
+
+            <div class="info-card">
+                <h3>☀️ Summer Vacation</h3>
+                <p class="date">July – August</p>
+                <p>
+                    Summer vacation usually takes place during
+                    the warmest months of the year.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <h3>❄️ Winter Vacation</h3>
+                <p class="date">December – February</p>
+                <p>
+                    Winter vacation takes place around the end
+                    of the calendar year and the beginning
+                    of the next year.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="note-box">
+            <strong>Did you know?</strong>
+            The exact vacation dates and duration can differ
+            between schools. The Ministry of Education gives
+            these months as the typical vacation periods.
+        </div>
+
+
+        <!-- SCHOOL UNIFORMS -->
+        <h2>2. Do Students Wear School Uniforms?</h2>
+
+        <p>
+            School uniforms are a familiar part of Korean school
+            culture. However, the Ministry of Education's general
+            English-language information does not establish one
+            nationwide uniform requirement for all schools.
+        </p>
+
+        <p>
+            Uniform policies can depend on the individual school.
+            Therefore, students' clothing requirements may differ
+            from one school to another.
+        </p>
+
+        <div class="note-box">
+            <strong>Important:</strong>
+            Korean school uniforms are also widely recognized
+            through Korean popular culture, but television dramas
+            should not be treated as proof of the rules followed
+            by every real school.
+        </div>
+
+
+        <!-- SMARTPHONES -->
+        <h2>3. Are Students Allowed to Use Smartphones at School?</h2>
+
+        <p>
+            South Korea introduced a national legal restriction
+            on students' use of smartphones and other smart devices
+            during lessons.
+        </p>
+
+        <div class="law-box">
+            <h3>📵 Smartphone Restrictions</h3>
+
+            <p class="date">Effective March 1, 2026</p>
+
+            <ul>
+                <li>
+                    Students may not use smartphones or other
+                    smart devices during class.
+                </li>
+
+                <li>
+                    Exceptions are possible for educational
+                    purposes, accessibility needs or emergency
+                    situations, when permitted by the school
+                    or teacher.
+                </li>
+
+                <li>
+                    Schools can also restrict the use or
+                    possession of devices on school premises.
+                </li>
+            </ul>
+        </div>
+
+        <p>
+            This means students cannot freely use their phones
+            during lessons. Individual schools may introduce
+            additional restrictions through their own school rules.
+        </p>
+
+
+        <!-- SCHOOL MEALS -->
+        <h2>4. What Do Students Eat at School?</h2>
+
+        <p>
+            South Korean schools provide school meals for students.
+            The Ministry of Education monitors food safety and
+            has specifically published information about safety
+            checks for seafood used in school lunches.
+        </p>
+
+        <p>
+            The exact menu is not the same in every school.
+            Meals and ingredients can vary depending on the
+            school's menu and arrangements.
+        </p>
+
+        <div class="note-box">
+            <strong>Food safety:</strong>
+            The Korean government carries out checks at different
+            stages of seafood production and distribution to help
+            ensure that seafood served in school meals is safe.
+        </div>
+
+
+        <!-- CLUBS AND EXTRACURRICULAR ACTIVITIES -->
+        <h2>5. What Kinds of Clubs and Extracurricular Activities Are Available?</h2>
+
+        <p>
+            Korean schools can offer activities outside the regular
+            curriculum. The Ministry of Education has documented
+            several examples of after-school programs and student
+            activities.
+        </p>
+
+        <div class="activity-grid">
+
+            <div class="info-card">
+                <h3>⚽ Sports Clubs</h3>
+                <p>
+                    Students can participate in sports and
+                    physical education activities. Some school
+                    sports clubs also take part in events
+                    beyond their own schools.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <h3>🎨 Arts Activities</h3>
+                <p>
+                    Arts programs give students opportunities
+                    to explore creative interests and develop
+                    artistic abilities.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <h3>🤖 Robotics Classes</h3>
+                <p>
+                    Robotics is one example of an after-school
+                    activity that can help students develop
+                    technical and creative skills.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <h3>🌟 Creative Programs</h3>
+                <p>
+                    Schools can offer additional activities
+                    designed to develop students' interests,
+                    talents and abilities.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="note-box">
+            <strong>National School Sports Club Festival:</strong>
+            The Ministry of Education has organized a national
+            festival where school sports clubs can participate
+            in sporting activities and competitions.
+        </div>
+
+
+        <!-- FESTIVALS AND FIELD TRIPS -->
+        <h2>6. What Kinds of School Festivals or Field Trips Are Common?</h2>
+
+        <p>
+            Schools can organize experiential learning activities
+            and educational field trips. These allow students
+            to gain practical experiences outside ordinary
+            classroom lessons.
+        </p>
+
+        <ul>
+            <li>
+                <strong>Educational field trips:</strong>
+                Students can visit places connected to their
+                school subjects and learning activities.
+            </li>
+
+            <li>
+                <strong>Science-related experiences:</strong>
+                The Ministry has documented field trips and
+                practical learning experiences in science-focused
+                education.
+            </li>
+
+            <li>
+                <strong>Sports events:</strong>
+                School sports clubs can participate in
+                organized competitions and festivals.
+            </li>
+        </ul>
+
+        <div class="note-box">
+            The Ministry's English-language information does not
+            provide a complete nationwide list of school festivals.
+            Events and traditions can differ between schools.
+        </div>
+
+
+        <!-- TEACHER STUDENT RELATIONSHIP -->
+        <h2>7. How Formal Is the Relationship Between Teachers and Students?</h2>
+
+        <p>
+            Respect for teachers is an important topic in
+            South Korea's education policies. The Ministry
+            of Education emphasizes the importance of
+            protecting teachers' rights and creating a
+            respectful school environment.
+        </p>
+
+        <p>
+            The Ministry also highlights the importance of
+            communication and mutual respect between students,
+            parents and teachers.
+        </p>
+
+        <div class="note-box">
+            <strong>Important values:</strong>
+            <ul>
+                <li>Respect between students and teachers</li>
+                <li>Trust and communication</li>
+                <li>Protection of teachers' educational activities</li>
+                <li>A positive and safe school environment</li>
+            </ul>
+        </div>
+
+        <p>
+            The exact level of formality in everyday interactions
+            can vary. Official policy information does not
+            establish one universal way in which all teachers
+            and students communicate.
+        </p>
+
+
+        <!-- FREE TIME -->
+        <h2>8. What Do Students Usually Do in Their Free Time?</h2>
+
+        <p>
+            Students' free-time routines can differ depending
+            on their interests, school schedules and personal
+            circumstances.
+        </p>
+
+        <p>
+            The Ministry of Education documents several
+            after-school activities, including:
+        </p>
+
+        <ul>
+            <li>Sports and physical activities</li>
+            <li>Arts and creative programs</li>
+            <li>Robotics and technical classes</li>
+            <li>Other after-school learning activities</li>
+        </ul>
+
+        <div class="note-box">
+            <strong>Note:</strong>
+            The Ministry's general English-language sources
+            do not provide representative statistics about
+            how Korean students spend all of their free time.
+            It is therefore better not to assume that every
+            student follows the same daily routine.
+        </div>
+
+
+        <!-- SUMMARY -->
+        <h2>Key Facts to Remember</h2>
+
+        <ul>
+            <li>
+                Summer vacation is typically in July and August.
+            </li>
+
+            <li>
+                Winter vacation is typically in December and February.
+            </li>
+
+            <li>
+                Uniform policies can differ between schools.
+            </li>
+
+            <li>
+                Smartphone use during lessons is nationally
+                restricted from March 1, 2026.
+            </li>
+
+            <li>
+                Schools provide meals and monitor food safety.
+            </li>
+
+            <li>
+                Sports, arts and robotics are examples of
+                extracurricular activities.
+            </li>
+
+            <li>
+                Respect and communication between teachers,
+                students and parents are emphasized by the
+                Ministry of Education.
+            </li>
+        </ul>
+
+
+        <!-- SOURCES -->
+        <div class="source">
+
+            <strong>Official Sources:</strong><br><br>
+
+            South Korean Ministry of Education
+
+            <br><br>
+
+            <a href="https://english.moe.go.kr/sub/infoRenewal.do?m=0301&page=0301&s=english"
+               target="_blank">
+                Education System Overview – School Calendar and Vacations
+            </a>
+
+            <br>
+
+            <a href="https://english.moe.go.kr/boardCnts/viewRenewal.do?boardID=265&boardSeq=96297&lev=0&m=0201&opType=N&s=english&statusYN=W"
+               target="_blank">
+                School Meals – Food Safety
+            </a>
+
+            <br>
+
+            <a href="https://english.moe.go.kr/boardCnts/viewRenewal.do?boardID=265&boardSeq=96154&lev=0&m=0201&opType=N&page=1&s=english&searchType=null&statusYN=W"
+               target="_blank">
+                National School Sports Club Festival
+            </a>
+
+            <br>
+
+            <a href="https://english.moe.go.kr/boardCnts/view.do?boardID=265&boardSeq=75491&lev=0&m=0301&opType=N&page=2&s=english&searchType=null&statusYN=C"
+               target="_blank">
+                Ministry of Education – After-School Activities
+            </a>
+
+            <br>
+
+            <a href="https://english.moe.go.kr/boardCnts/viewRenewal.do?boardID=254&boardSeq=96996&lev=0&m=0202&opType=N&page=2&s=english"
+               target="_blank">
+                Students, Parents and Teachers – Schools Together
+            </a>
+
+            <br>
+
+            <a href="https://english.moe.go.kr/boardCnts/viewRenewal.do?boardID=254&boardSeq=96790&lev=0&m=0202&opType=N&page=3&s=english"
+               target="_blank">
+                Guidelines for Teachers' Guidance and Student Life
+            </a>
+
+            <br>
+
+            <a href="https://www.law.go.kr/LSW/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1032275567"
+               target="_blank">
+                Korean Elementary and Secondary Education Act – Article 20-5
+            </a>
+
+            <br>
+
+            <a href="https://www.moleg.go.kr/board.es?act=view&bid=0048&list_no=147603&mid=a10501000000"
+               target="_blank">
+                Ministry of Government Legislation – Smart Device Restrictions
+            </a>
+
+            <br>
+
+            <a href="https://english.visitkorea.or.kr/svc/sp/HallyuNew/contentsView.do?dataSetId=70&vcontsId=228418"
+               target="_blank">
+                Korea Tourism Organization – Korean Student Culture
+            </a>
+
+            <p>
+                Information is based on official Korean government
+                sources. Where national rules or representative
+                statistics are not available, the page identifies
+                those limitations instead of assuming that all
+                Korean schools are the same.
+            </p>
+
+        </div>
+
+
+        <a href="KoreaSchoolSystem.html" class="back-button">
+            ← Back to School System
+        </a>
+
+    </div>
+</div>
+
+</body>
+</html>
