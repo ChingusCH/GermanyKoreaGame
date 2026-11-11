@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>School Day, Subjects & Homework Quiz – Korea</title>
+
+<style>
+    :root {
+        --gold: #ffd27f;
+        --glass: rgba(255,255,255,0.12);
+        --overlay: rgba(0,0,0,0.55);
+        --green: #4caf50;
+        --red: #e74c3c;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: "Georgia", serif;
+        background-image: url("KoreaPhotoForIQ.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+
+    .overlay {
+        width: 100%;
+        min-height: 100vh;
+        background: var(--overlay);
+        backdrop-filter: blur(3px);
+        padding: 40px 0;
+    }
+
+    .content-box {
+        max-width: 850px;
+        margin: auto;
+        padding: 40px;
+        background: var(--glass);
+        border-radius: 15px;
+        backdrop-filter: blur(6px);
+        color: white;
+        line-height: 1.7;
+        box-shadow: 0 0 25px rgba(0,0,0,0.35);
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 36px;
+        color: var(--gold);
+        text-shadow: 0 0 10px rgba(0,0,0,0.6);
+        margin-bottom: 15px;
+    }
+
+    .intro {
+        text-align: center;
+        font-size: 18px;
+        margin-bottom: 30px;
+    }
+
+    .progress-container {
+        width: 100%;
+        height: 12px;
+        background: rgba(255,255,255,0.2);
+        border-radius: 10px;
+        margin: 25px 0;
+        overflow: hidden;
+    }
+
+    .progress-bar {
+        width: 0%;
+        height: 100%;
+        background: var(--gold);
+        transition: width 0.3s ease;
+    }
+
+    .question-number {
+        color: var(--gold);
+        font-size: 17px;
+        margin-bottom: 10px;
+    }
+
+    .question {
+        font-size: 23px;
+        font-weight: bold;
+        margin-bottom: 22px;
+    }
+
+    .answers {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .answer-btn {
+        width: 100%;
+        padding: 15px;
+        border: 1px solid rgba(255,255,255,0.3);
+        border-radius: 9px;
+        background: rgba(0,0,0,0.35);
+        color: white;
+        font-family: Georgia, serif;
+        font-size: 17px;
+        text-align: left;
+        cursor: pointer;
+        transition: background 0.2s, border 0.2s;
+    }
+
+    .answer-btn:hover:not(:disabled) {
+        background: rgba(255,255,255,0.2);
+    }
+
+    .answer-btn:disabled {
+        cursor: default;
+    }
+
+    .answer-btn.correct {
+        background: rgba(76,175,80,0.45);
+        border: 2px solid var(--green);
+    }
+
+    .answer-btn.wrong {
+        background: rgba(231,76,60,0.45);
+        border: 2px solid var(--red);
+    }
+
+    .feedback {
+        display: none;
+        margin-top: 22px;
+        padding: 17px;
+        border-radius: 9px;
+        background: rgba(0,0,0,0.4);
+        font-size: 17px;
+    }
+
+    .feedback.correct-feedback {
+        border-left: 5px solid var(--green);
+    }
+
+    .feedback.wrong-feedback {
+        border-left: 5px solid var(--red);
+    }
+
+    .next-btn, .restart-btn, .back {
+        display: inline-block;
+        margin-top: 25px;
+        padding: 13px 22px;
+        background: rgba(0,0,0,0.55);
+        color: white;
+        border: 1px solid rgba(255,255,255,0.3);
+        border-radius: 8px;
+        font-family: Georgia, serif;
+        font-size: 17px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+
+    .next-btn:hover, .restart-btn:hover, .back:hover {
+        background: rgba(0,0,0,0.8);
+    }
+
+    .next-btn {
+        display: none;
+    }
+
+    .score {
+        color: var(--gold);
+        font-size: 25px;
+        text-align: center;
+        margin: 25px 0;
+    }
+
+    .result-message {
+        text-align: center;
+        font-size: 19px;
+        line-height: 1.8;
+    }
+
+    #result-screen {
+        display: none;
+        text-align: center;
+    }
+
+    .back-container {
+        text-align: center;
+    }
+
+    @media(max-width:760px) {
+        .content-box {
+            margin: 20px;
+            padding: 24px;
+        }
+
+        h1 {
+            font-size: 28px;
+        }
+
+        .question {
+            font-size: 20px;
+        }
+
+        .answer-btn {
+            font-size: 16px;
+        }
+
+        .intro {
+            font-size: 16px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+<div class="content-box">
+
+    <h1>School Day, Subjects & Homework Quiz</h1>
+
+    <p class="intro">
+        Test your knowledge about everyday school life in South Korea!
+        Answer all 10 questions and see how much you remember.
+    </p>
+
+    <div id="quiz-screen">
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <div class="question-number" id="question-number"></div>
+
+        <div class="question" id="question"></div>
+
+        <div class="answers" id="answers"></div>
+
+        <div class="feedback" id="feedback"></div>
+
+        <button class="next-btn" id="next-btn" onclick="nextQuestion()">
+            Next Question →
+        </button>
+
+    </div>
+
+    <div id="result-screen">
+        <h2>Quiz Completed!</h2>
+
+        <div class="score" id="final-score"></div>
+
+        <p class="result-message" id="result-message"></p>
+
+        <button class="restart-btn" onclick="restartQuiz()">
+            Try Again ↻
+        </button>
+    </div>
+
+    <div class="back-container">
+        <a class="back" href="KoreaSchoolSystem.html">← Back</a>
+    </div>
+
+</div>
+</div>
+
+<script>
+
+const questions = [
+
+    {
+        question: "1. At approximately what time does a typical school day in Korea begin?",
+        answers: [
+            "6:00–7:00 AM",
+            "8:00–9:00 AM",
+            "10:00–11:00 AM",
+            "12:00–1:00 PM"
+        ],
+        correct: 1,
+        explanation: "A typical Korean school day begins at around 8:00–9:00 AM. The exact time depends on the school and the student's age."
+    },
+
+    {
+        question: "2. When do regular lessons often finish?",
+        answers: [
+            "Around 10:00 AM",
+            "Around 12:00 PM",
+            "Around 2:00–4:00 PM",
+            "Around 8:00 PM"
+        ],
+        correct: 2,
+        explanation: "Regular lessons often finish in the afternoon, around 2:00–4:00 PM. Some students continue studying afterwards."
+    },
+
+    {
+        question: "3. How many class periods does a school day generally contain?",
+        answers: [
+            "1–3 periods",
+            "4–5 periods",
+            "6–8 periods",
+            "10–12 periods"
+        ],
+        correct: 2,
+        explanation: "A school day generally contains around 6–8 class periods, with breaks between lessons."
+    },
+
+    {
+        question: "4. Which of the following is a common school subject in Korea?",
+        answers: [
+            "Korean language",
+            "Only English",
+            "Driving lessons",
+            "Professional cooking"
+        ],
+        correct: 0,
+        explanation: "Common subjects include Korean language, mathematics, science, social studies, English, physical education and arts."
+    },
+
+    {
+        question: "5. What generally happens to students' subject choices as they get older?",
+        answers: [
+            "They lose all subject choices.",
+            "They can choose certain elective subjects in high school.",
+            "They only study mathematics and science.",
+            "They can choose every subject without restrictions."
+        ],
+        correct: 1,
+        explanation: "High school students can select certain elective subjects, depending on their school and educational program."
+    },
+
+    {
+        question: "6. Which statement about homework in Korea is correct?",
+        answers: [
+            "Every student receives exactly the same amount.",
+            "Students never receive homework.",
+            "The amount varies by school, grade and subject.",
+            "Homework is only given during holidays."
+        ],
+        correct: 2,
+        explanation: "The amount of homework varies. It can include exercises, reading, vocabulary, test preparation, projects and revision."
+    },
+
+    {
+        question: "7. What is a hagwon (학원)?",
+        answers: [
+            "A public university",
+            "A private academy offering additional lessons",
+            "A school sports club",
+            "A national examination"
+        ],
+        correct: 1,
+        explanation: "Hagwon are private academies where students can receive additional lessons, for example in mathematics, English, Korean or science."
+    },
+
+    {
+        question: "8. Which statement about hagwon attendance is correct?",
+        answers: [
+            "Every Korean student must attend one.",
+            "Only university students can attend.",
+            "Not every student attends one, but they are very common.",
+            "They only offer sports activities."
+        ],
+        correct: 2,
+        explanation: "Hagwon are very common in South Korea, but attending one is not compulsory for every student."
+    },
+
+    {
+        question: "9. Which statement about languages in Korean schools is correct?",
+        answers: [
+            "English is an important foreign language taught in schools.",
+            "Chinese is the only foreign language.",
+            "Students are not taught foreign languages.",
+            "Japanese is compulsory for every student."
+        ],
+        correct: 0,
+        explanation: "English is a major foreign language in Korean schools. Some students also study languages such as Chinese or Japanese."
+    },
+
+    {
+        question: "10. Which writing system is primarily used for modern Korean?",
+        answers: [
+            "Latin alphabet",
+            "Chinese characters only",
+            "Hangul",
+            "Japanese Hiragana"
+        ],
+        correct: 2,
+        explanation: "Modern Korean is primarily written using Hangul. Students may also encounter Hanja, which are Chinese characters."
+    }
+
+];
+
+let currentQuestion = 0;
+let score = 0;
+let answered = false;
+
+function loadQuestion() {
+
+    answered = false;
+
+    const q = questions[currentQuestion];
+
+    document.getElementById("question-number").textContent =
+        "Question " + (currentQuestion + 1) + " of " + questions.length;
+
+    document.getElementById("question").textContent = q.question;
+
+    document.getElementById("progress-bar").style.width =
+        (currentQuestion / questions.length * 100) + "%";
+
+    const answersContainer = document.getElementById("answers");
+    answersContainer.innerHTML = "";
+
+    document.getElementById("feedback").style.display = "none";
+    document.getElementById("feedback").className = "feedback";
+
+    document.getElementById("next-btn").style.display = "none";
+
+    q.answers.forEach((answer, index) => {
+
+        const button = document.createElement("button");
+
+        button.className = "answer-btn";
+        button.textContent = answer;
+
+        button.onclick = function() {
+            checkAnswer(index, button);
+        };
+
+        answersContainer.appendChild(button);
+
+    });
+
+}
+
+function checkAnswer(selected, button) {
+
+    if (answered) return;
+
+    answered = true;
+
+    const q = questions[currentQuestion];
+    const buttons = document.querySelectorAll(".answer-btn");
+    const feedback = document.getElementById("feedback");
+
+    buttons.forEach(btn => btn.disabled = true);
+
+    if (selected === q.correct) {
+
+        score++;
+
+        button.classList.add("correct");
+
+        feedback.classList.add("correct-feedback");
+        feedback.innerHTML =
+            "<strong>✓ Correct!</strong><br>" + q.explanation;
+
+    } else {
+
+        button.classList.add("wrong");
+        buttons[q.correct].classList.add("correct");
+
+        feedback.classList.add("wrong-feedback");
+        feedback.innerHTML =
+            "<strong>✗ Incorrect!</strong><br>" +
+            "The correct answer is: <strong>" +
+            q.answers[q.correct] +
+            "</strong><br><br>" +
+            q.explanation;
+
+    }
+
+    feedback.style.display = "block";
+
+    const nextBtn = document.getElementById("next-btn");
+
+    nextBtn.textContent =
+        currentQuestion === questions.length - 1
+        ? "See Results →"
+        : "Next Question →";
+
+    nextBtn.style.display = "inline-block";
+
+}
+
+function nextQuestion() {
+
+    currentQuestion++;
+
+    if (currentQuestion < questions.length) {
+
+        loadQuestion();
+
+    } else {
+
+        showResults();
+
+    }
+
+}
+
+function showResults() {
+
+    document.getElementById("quiz-screen").style.display = "none";
+    document.getElementById("result-screen").style.display = "block";
+
+    document.getElementById("progress-bar").style.width = "100%";
+
+    document.getElementById("final-score").textContent =
+        score + " / " + questions.length + " correct answers";
+
+    let message = "";
+
+    if (score === 10) {
+
+        message = "Perfect score! 🎉 You know a lot about Korean school life!";
+
+    } else if (score >= 8) {
+
+        message = "Excellent work! You have a very good understanding of the topic.";
+
+    } else if (score >= 6) {
+
+        message = "Good job! You already know quite a bit. A little revision will help.";
+
+    } else if (score >= 4) {
+
+        message = "Not bad! Review the information page and try again.";
+
+    } else {
+
+        message = "Keep learning! Read the information page once more and give it another try.";
+
+    }
+
+    document.getElementById("result-message").textContent = message;
+
+}
+
+function restartQuiz() {
+
+    currentQuestion = 0;
+    score = 0;
+    answered = false;
+
+    document.getElementById("quiz-screen").style.display = "block";
+    document.getElementById("result-screen").style.display = "none";
+
+    loadQuestion();
+
+}
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>
