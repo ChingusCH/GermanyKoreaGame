@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Korea School Culture Quiz</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Georgia, serif;
+            color: white;
+            background-image: url("KoreaPhotoForIQ.jpg");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        .overlay {
+            background: rgba(0, 0, 0, 0.60);
+            min-height: 100vh;
+            padding: 45px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .content-box {
+            width: 100%;
+            max-width: 900px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffd27f;
+            font-size: 36px;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .intro {
+            text-align: center;
+            font-size: 17px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .progress-container {
+            background: rgba(255, 255, 255, 0.15);
+            height: 9px;
+            border-radius: 10px;
+            margin: 25px 0 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: #ffd27f;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            text-align: right;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .quiz-box {
+            background: rgba(255, 255, 255, 0.10);
+            border: 1px solid rgba(255, 210, 127, 0.35);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 25px;
+        }
+
+        .question-number {
+            color: #ffd27f;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        h2 {
+            font-size: 22px;
+            line-height: 1.5;
+            margin-top: 0;
+            margin-bottom: 22px;
+        }
+
+        .answer {
+            display: block;
+            width: 100%;
+            padding: 15px 18px;
+            margin: 12px 0;
+            text-align: left;
+            font-family: Georgia, serif;
+            font-size: 16px;
+            color: white;
+            background: rgba(255, 255, 255, 0.10);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.25s ease, transform 0.25s ease;
+        }
+
+        .answer:hover:not(:disabled) {
+            background: rgba(255, 210, 127, 0.22);
+            transform: translateX(4px);
+        }
+
+        .answer:disabled {
+            cursor: default;
+            opacity: 1;
+        }
+
+        .answer.correct {
+            background: rgba(46, 160, 90, 0.45);
+            border: 1px solid #62d68d;
+        }
+
+        .answer.incorrect {
+            background: rgba(190, 55, 55, 0.45);
+            border: 1px solid #ff7777;
+        }
+
+        .feedback {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            line-height: 1.6;
+            display: none;
+            background: rgba(255, 255, 255, 0.10);
+        }
+
+        .feedback.correct-feedback {
+            border-left: 4px solid #62d68d;
+        }
+
+        .feedback.incorrect-feedback {
+            border-left: 4px solid #ff7777;
+        }
+
+        .next-button,
+        .restart-button,
+        .back-button {
+            display: inline-block;
+            margin-top: 22px;
+            padding: 12px 25px;
+            color: white;
+            background: rgba(255, 210, 127, 0.2);
+            border: 1px solid #ffd27f;
+            border-radius: 8px;
+            text-decoration: none;
+            font-family: Georgia, serif;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .next-button:hover,
+        .restart-button:hover,
+        .back-button:hover {
+            background: rgba(255, 210, 127, 0.4);
+            transform: scale(1.04);
+        }
+
+        .next-button {
+            display: none;
+            float: right;
+        }
+
+        .result-box {
+            display: none;
+            text-align: center;
+            padding: 30px 15px;
+            margin-top: 25px;
+            background: rgba(255, 255, 255, 0.10);
+            border: 1px solid rgba(255, 210, 127, 0.4);
+            border-radius: 12px;
+        }
+
+        .result-box h2 {
+            color: #ffd27f;
+            font-size: 28px;
+        }
+
+        .score {
+            font-size: 48px;
+            font-weight: bold;
+            color: #ffd27f;
+            margin: 20px 0;
+        }
+
+        .result-message {
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .back-container {
+            text-align: center;
+            clear: both;
+        }
+
+        @media (max-width: 600px) {
+            .content-box {
+                padding: 25px 18px;
+            }
+
+            h1 {
+                font-size: 27px;
+            }
+
+            h2 {
+                font-size: 19px;
+            }
+
+            .answer {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="overlay">
+    <div class="content-box">
+
+        <h1>School Culture and Student Life Quiz 🇰🇷</h1>
+
+        <p class="intro">
+            How much do you know about everyday school life
+            in South Korea?
+            Test yourself with these 10 questions about
+            holidays, uniforms, smartphones, school meals
+            and extracurricular activities!
+        </p>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="progress-text" id="progressText">
+            Question 1 of 10
+        </div>
+
+        <div class="quiz-box" id="quizBox">
+
+            <div class="question-number" id="questionNumber">
+                QUESTION 1
+            </div>
+
+            <h2 id="question"></h2>
+
+            <div id="answers"></div>
+
+            <div class="feedback" id="feedback"></div>
+
+            <button class="next-button" id="nextButton"
+                    onclick="nextQuestion()">
+                Next Question →
+            </button>
+
+        </div>
+
+        <div class="result-box" id="resultBox">
+
+            <h2>Quiz Completed! 🎓</h2>
+
+            <p>Your final score:</p>
+
+            <div class="score" id="score"></div>
+
+            <p class="result-message" id="resultMessage"></p>
+
+            <button class="restart-button" onclick="restartQuiz()">
+                Try Again ↻
+            </button>
+
+        </div>
+
+        <div class="back-container">
+            <a href="KoreaSchoolSystem.html" class="back-button">
+                ← Back to School System
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+    const questions = [
+
+        {
+            question: "When does the summer vacation in South Korean schools typically take place?",
+            answers: [
+                "March – April",
+                "July – August",
+                "October – November",
+                "January – February"
+            ],
+            correct: 1,
+            explanation: "Summer vacation typically takes place in July and August. The exact dates can vary between schools."
+        },
+
+        {
+            question: "When does winter vacation typically take place?",
+            answers: [
+                "December – February",
+                "March – May",
+                "June – July",
+                "September – October"
+            ],
+            correct: 0,
+            explanation: "Winter vacation generally takes place from December to February, although the exact dates depend on the school."
+        },
+
+        {
+            question: "Which statement about school uniforms in South Korea is correct?",
+            answers: [
+                "Every school must wear exactly the same uniform",
+                "Uniforms are forbidden in public schools",
+                "Uniform policies can differ between individual schools",
+                "Only university students wear uniforms"
+            ],
+            correct: 2,
+            explanation: "School uniforms are familiar in Korean school culture, but there is no single nationwide uniform requirement for all schools."
+        },
+
+        {
+            question: "When did the national restriction on smartphone use during lessons take effect?",
+            answers: [
+                "January 1, 2024",
+                "September 1, 2025",
+                "January 1, 2026",
+                "March 1, 2026"
+            ],
+            correct: 3,
+            explanation: "The national legal restriction on students' use of smartphones and other smart devices during lessons took effect on March 1, 2026."
+        },
+
+        {
+            question: "Are there exceptions to the smartphone restriction during lessons?",
+            answers: [
+                "No, there are absolutely no exceptions",
+                "Yes, for permitted educational purposes, accessibility needs or emergencies",
+                "Yes, whenever students want to use social media",
+                "Only during lunch breaks"
+            ],
+            correct: 1,
+            explanation: "Exceptions can be permitted for educational purposes, accessibility needs or emergency situations. Schools and teachers have a role in permitting these exceptions."
+        },
+
+        {
+            question: "What is one responsibility of the Korean government regarding school meals?",
+            answers: [
+                "Ensuring every school serves identical meals",
+                "Requiring every student to bring food from home",
+                "Monitoring food safety, including checks on seafood",
+                "Providing only vegetarian meals"
+            ],
+            correct: 2,
+            explanation: "The Ministry of Education has published information about school meals and food safety checks, including checks involving seafood."
+        },
+
+        {
+            question: "Which of the following is an example of an extracurricular activity documented by the Ministry of Education?",
+            answers: [
+                "Robotics classes",
+                "Professional car racing",
+                "Commercial airline training",
+                "Military service"
+            ],
+            correct: 0,
+            explanation: "Robotics is one example of an after-school activity. Other examples include arts and sports programs."
+        },
+
+        {
+            question: "What is the National School Sports Club Festival?",
+            answers: [
+                "A university entrance examination",
+                "A compulsory school graduation ceremony",
+                "A national holiday for all students",
+                "An event where school sports clubs can participate in sporting activities"
+            ],
+            correct: 3,
+            explanation: "The Ministry of Education has documented a national festival that gives school sports clubs opportunities to participate in sporting activities and competitions."
+        },
+
+        {
+            question: "What is one purpose of educational field trips?",
+            answers: [
+                "To replace all classroom lessons permanently",
+                "To provide practical learning experiences outside the classroom",
+                "To determine students' final grades automatically",
+                "To prepare students for university admission only"
+            ],
+            correct: 1,
+            explanation: "Educational field trips can support experiential learning by allowing students to explore topics and gain practical experiences outside the classroom."
+        },
+
+        {
+            question: "Which values does the Ministry of Education emphasize in relationships between teachers, students and parents?",
+            answers: [
+                "Competition and strict isolation",
+                "Only academic performance",
+                "Respect, trust and communication",
+                "Complete independence from teachers"
+            ],
+            correct: 2,
+            explanation: "The Ministry emphasizes mutual respect, trust and communication between teachers, students and parents. Everyday interactions can still vary between schools."
+        }
+
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+    let answered = false;
+
+    function loadQuestion() {
+
+        answered = false;
+
+        const q = questions[currentQuestion];
+
+        document.getElementById("questionNumber").textContent =
+            "QUESTION " + (currentQuestion + 1);
+
+        document.getElementById("question").textContent = q.question;
+
+        document.getElementById("progressText").textContent =
+            "Question " + (currentQuestion + 1) +
+            " of " + questions.length;
+
+        document.getElementById("progressBar").style.width =
+            (currentQuestion / questions.length * 100) + "%";
+
+        document.getElementById("feedback").style.display = "none";
+        document.getElementById("nextButton").style.display = "none";
+
+        const answersContainer = document.getElementById("answers");
+        answersContainer.innerHTML = "";
+
+        q.answers.forEach((answer, index) => {
+
+            const button = document.createElement("button");
+
+            button.className = "answer";
+            button.textContent = answer;
+
+            button.onclick = function() {
+                checkAnswer(index, button);
+            };
+
+            answersContainer.appendChild(button);
+
+        });
+
+    }
+
+    function checkAnswer(selected, button) {
+
+        if (answered) return;
+
+        answered = true;
+
+        const q = questions[currentQuestion];
+        const allAnswers = document.querySelectorAll(".answer");
+        const feedback = document.getElementById("feedback");
+
+        allAnswers.forEach(answer => {
+            answer.disabled = true;
+        });
+
+        if (selected === q.correct) {
+
+            score++;
+
+            button.classList.add("correct");
+
+            feedback.className = "feedback correct-feedback";
+
+            feedback.innerHTML =
+                "<strong>✓ Correct!</strong><br>" +
+                q.explanation;
+
+        } else {
+
+            button.classList.add("incorrect");
+
+            allAnswers[q.correct].classList.add("correct");
+
+            feedback.className = "feedback incorrect-feedback";
+
+            feedback.innerHTML =
+                "<strong>✗ Not quite!</strong><br>" +
+                "The correct answer is: <strong>" +
+                q.answers[q.correct] +
+                "</strong><br><br>" +
+                q.explanation;
+
+        }
+
+        feedback.style.display = "block";
+
+        document.getElementById("nextButton").style.display =
+            "inline-block";
+
+        if (currentQuestion === questions.length - 1) {
+
+            document.getElementById("nextButton").textContent =
+                "See Results →";
+
+        }
+
+        document.getElementById("progressBar").style.width =
+            ((currentQuestion + 1) / questions.length * 100) + "%";
+
+    }
+
+    function nextQuestion() {
+
+        currentQuestion++;
+
+        if (currentQuestion < questions.length) {
+
+            loadQuestion();
+
+        } else {
+
+            showResults();
+
+        }
+
+    }
+
+    function showResults() {
+
+        document.getElementById("quizBox").style.display = "none";
+
+        document.getElementById("progressText").style.display = "none";
+
+        document.querySelector(".progress-container").style.display =
+            "none";
+
+        document.getElementById("resultBox").style.display = "block";
+
+        document.getElementById("score").textContent =
+            score + " / " + questions.length;
+
+        let message = "";
+
+        if (score === 10) {
+
+            message = "Perfect score! You know Korean school culture extremely well!";
+
+        } else if (score >= 8) {
+
+            message = "Excellent! You have a very good understanding of everyday school life in South Korea.";
+
+        } else if (score >= 6) {
+
+            message = "Good job! You know most of the important facts. A little revision will help you improve further.";
+
+        } else if (score >= 4) {
+
+            message = "Not bad! Review the information about holidays, smartphones and school activities before trying again.";
+
+        } else {
+
+            message = "Keep learning! Revisit the information page and give the quiz another try. You can do it!";
+
+        }
+
+        document.getElementById("resultMessage").textContent = message;
+
+    }
+
+    function restartQuiz() {
+
+        currentQuestion = 0;
+        score = 0;
+        answered = false;
+
+        document.getElementById("quizBox").style.display = "block";
+
+        document.getElementById("resultBox").style.display = "none";
+
+        document.getElementById("progressText").style.display = "block";
+
+        document.querySelector(".progress-container").style.display =
+            "block";
+
+        document.getElementById("nextButton").textContent =
+            "Next Question →";
+
+        loadQuestion();
+
+    }
+
+    loadQuestion();
+
+</script>
+
+</body>
+</html>
