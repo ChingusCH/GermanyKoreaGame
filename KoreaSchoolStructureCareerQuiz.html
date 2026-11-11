@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Korea School System Quiz</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Georgia, serif;
+            color: white;
+            background-image: url("KoreaPhotoForIQ.jpg");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        .overlay {
+            background: rgba(0, 0, 0, 0.60);
+            min-height: 100vh;
+            padding: 45px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .content-box {
+            width: 100%;
+            max-width: 900px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffd27f;
+            font-size: 36px;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .intro {
+            text-align: center;
+            font-size: 17px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .progress-container {
+            background: rgba(255, 255, 255, 0.15);
+            height: 9px;
+            border-radius: 10px;
+            margin: 25px 0 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: #ffd27f;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            text-align: right;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .quiz-box {
+            background: rgba(255, 255, 255, 0.10);
+            border: 1px solid rgba(255, 210, 127, 0.35);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 25px;
+        }
+
+        .question-number {
+            color: #ffd27f;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        h2 {
+            font-size: 22px;
+            line-height: 1.5;
+            margin-top: 0;
+            margin-bottom: 22px;
+        }
+
+        .answer {
+            display: block;
+            width: 100%;
+            padding: 15px 18px;
+            margin: 12px 0;
+            text-align: left;
+            font-family: Georgia, serif;
+            font-size: 16px;
+            color: white;
+            background: rgba(255, 255, 255, 0.10);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.25s ease, transform 0.25s ease;
+        }
+
+        .answer:hover:not(:disabled) {
+            background: rgba(255, 210, 127, 0.22);
+            transform: translateX(4px);
+        }
+
+        .answer:disabled {
+            cursor: default;
+            opacity: 1;
+        }
+
+        .answer.correct {
+            background: rgba(46, 160, 90, 0.45);
+            border: 1px solid #62d68d;
+        }
+
+        .answer.incorrect {
+            background: rgba(190, 55, 55, 0.45);
+            border: 1px solid #ff7777;
+        }
+
+        .feedback {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            line-height: 1.6;
+            display: none;
+            background: rgba(255, 255, 255, 0.10);
+        }
+
+        .feedback.correct-feedback {
+            border-left: 4px solid #62d68d;
+        }
+
+        .feedback.incorrect-feedback {
+            border-left: 4px solid #ff7777;
+        }
+
+        .next-button,
+        .restart-button,
+        .back-button {
+            display: inline-block;
+            margin-top: 22px;
+            padding: 12px 25px;
+            color: white;
+            background: rgba(255, 210, 127, 0.2);
+            border: 1px solid #ffd27f;
+            border-radius: 8px;
+            text-decoration: none;
+            font-family: Georgia, serif;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .next-button:hover,
+        .restart-button:hover,
+        .back-button:hover {
+            background: rgba(255, 210, 127, 0.4);
+            transform: scale(1.04);
+        }
+
+        .next-button {
+            display: none;
+            float: right;
+        }
+
+        .result-box {
+            display: none;
+            text-align: center;
+            padding: 30px 15px;
+            margin-top: 25px;
+            background: rgba(255, 255, 255, 0.10);
+            border: 1px solid rgba(255, 210, 127, 0.4);
+            border-radius: 12px;
+        }
+
+        .result-box h2 {
+            color: #ffd27f;
+            font-size: 28px;
+        }
+
+        .score {
+            font-size: 48px;
+            font-weight: bold;
+            color: #ffd27f;
+            margin: 20px 0;
+        }
+
+        .result-message {
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .back-container {
+            text-align: center;
+            clear: both;
+        }
+
+        @media (max-width: 600px) {
+            .content-box {
+                padding: 25px 18px;
+            }
+
+            h1 {
+                font-size: 27px;
+            }
+
+            h2 {
+                font-size: 19px;
+            }
+
+            .answer {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="overlay">
+    <div class="content-box">
+
+        <h1>Korea School System Quiz 🇰🇷</h1>
+
+        <p class="intro">
+            How much do you know about education in South Korea?
+            Test your knowledge with these 10 questions about
+            school structure, educational pathways and university admission!
+        </p>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="progress-text" id="progressText">
+            Question 1 of 10
+        </div>
+
+        <div class="quiz-box" id="quizBox">
+
+            <div class="question-number" id="questionNumber">
+                QUESTION 1
+            </div>
+
+            <h2 id="question"></h2>
+
+            <div id="answers"></div>
+
+            <div class="feedback" id="feedback"></div>
+
+            <button class="next-button" id="nextButton"
+                    onclick="nextQuestion()">
+                Next Question →
+            </button>
+
+        </div>
+
+        <div class="result-box" id="resultBox">
+            <h2>Quiz Completed! 🎓</h2>
+
+            <p>Your final score:</p>
+
+            <div class="score" id="score"></div>
+
+            <p class="result-message" id="resultMessage"></p>
+
+            <button class="restart-button" onclick="restartQuiz()">
+                Try Again ↻
+            </button>
+        </div>
+
+        <div class="back-container">
+            <a href="KoreaSchoolSystem.html" class="back-button">
+                ← Back to School System
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+    const questions = [
+
+        {
+            question: "What does the 6–3–3–4 system in South Korea represent?",
+            answers: [
+                "6 years elementary, 3 years middle, 3 years high school, 4 years university",
+                "6 years elementary, 3 years high school, 3 years university, 4 years vocational school",
+                "6 years middle school, 3 years elementary, 3 years high school, 4 years university",
+                "6 years elementary, 3 years middle, 3 years university, 4 years high school"
+            ],
+            correct: 0,
+            explanation: "The 6–3–3–4 system describes six years of elementary school, three years of middle school, three years of high school and typically four years for a bachelor's degree."
+        },
+
+        {
+            question: "Which stages of education are compulsory in South Korea?",
+            answers: [
+                "Elementary school only",
+                "Middle school and high school",
+                "Elementary and middle school",
+                "All education, including university"
+            ],
+            correct: 2,
+            explanation: "Elementary and middle school education are compulsory. High school and university are not compulsory."
+        },
+
+        {
+            question: "At what age do students typically attend elementary school?",
+            answers: [
+                "Ages 3–5",
+                "Ages 6–11",
+                "Ages 12–14",
+                "Ages 15–17"
+            ],
+            correct: 1,
+            explanation: "Elementary school lasts six years. The typical age range published by the Ministry of Education is 6–11."
+        },
+
+        {
+            question: "How long does middle school last in South Korea?",
+            answers: [
+                "2 years",
+                "4 years",
+                "5 years",
+                "3 years"
+            ],
+            correct: 3,
+            explanation: "Middle school lasts three years and is part of compulsory education."
+        },
+
+        {
+            question: "Which type of high school focuses on practical training and professional skills?",
+            answers: [
+                "Regular high schools",
+                "Vocational high schools",
+                "Universities of Education",
+                "Cyber universities"
+            ],
+            correct: 1,
+            explanation: "Vocational high schools emphasize practical training and professional skills to prepare students for specific careers."
+        },
+
+        {
+            question: "Which of the following is an example of a special-purpose high school?",
+            answers: [
+                "A school focusing on science",
+                "A junior college",
+                "A four-year university",
+                "An elementary school"
+            ],
+            correct: 0,
+            explanation: "Special-purpose high schools can focus on fields such as science, foreign languages, arts or physical education."
+        },
+
+        {
+            question: "What is the CSAT?",
+            answers: [
+                "A national university degree",
+                "A school attendance certificate",
+                "The College Scholastic Ability Test",
+                "An examination for elementary school admission"
+            ],
+            correct: 2,
+            explanation: "The College Scholastic Ability Test (CSAT) is a standardized examination whose scores can be considered during university admission."
+        },
+
+        {
+            question: "Which factor can influence university admission in South Korea?",
+            answers: [
+                "Only a student's age",
+                "Only participation in sports clubs",
+                "Only the number of years spent at school",
+                "CSAT results and high-school records"
+            ],
+            correct: 3,
+            explanation: "University admission can consider CSAT results, school records and other requirements depending on the university and admission process."
+        },
+
+        {
+            question: "What is a typical duration of a bachelor's degree at a four-year university?",
+            answers: [
+                "1 year",
+                "4 years",
+                "6 years",
+                "8 years"
+            ],
+            correct: 1,
+            explanation: "A typical bachelor's program at a four-year university lasts four years."
+        },
+
+        {
+            question: "What is one characteristic of junior colleges in South Korea?",
+            answers: [
+                "They only teach elementary school students",
+                "They are compulsory for every student",
+                "They usually offer two- or three-year, career-oriented programs",
+                "They only prepare students for the CSAT"
+            ],
+            correct: 2,
+            explanation: "Junior colleges usually offer two- or three-year programs with a practical and career-oriented focus."
+        }
+
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+    let answered = false;
+
+    function loadQuestion() {
+
+        answered = false;
+
+        const q = questions[currentQuestion];
+
+        document.getElementById("questionNumber").textContent =
+            "QUESTION " + (currentQuestion + 1);
+
+        document.getElementById("question").textContent = q.question;
+
+        document.getElementById("progressText").textContent =
+            "Question " + (currentQuestion + 1) +
+            " of " + questions.length;
+
+        document.getElementById("progressBar").style.width =
+            (currentQuestion / questions.length * 100) + "%";
+
+        document.getElementById("feedback").style.display = "none";
+        document.getElementById("nextButton").style.display = "none";
+
+        const answersContainer = document.getElementById("answers");
+        answersContainer.innerHTML = "";
+
+        q.answers.forEach((answer, index) => {
+
+            const button = document.createElement("button");
+
+            button.className = "answer";
+            button.textContent = answer;
+
+            button.onclick = function() {
+                checkAnswer(index, button);
+            };
+
+            answersContainer.appendChild(button);
+
+        });
+
+    }
+
+    function checkAnswer(selected, button) {
+
+        if (answered) return;
+
+        answered = true;
+
+        const q = questions[currentQuestion];
+        const allAnswers = document.querySelectorAll(".answer");
+        const feedback = document.getElementById("feedback");
+
+        allAnswers.forEach(answer => {
+            answer.disabled = true;
+        });
+
+        if (selected === q.correct) {
+
+            score++;
+
+            button.classList.add("correct");
+
+            feedback.className = "feedback correct-feedback";
+            feedback.innerHTML =
+                "<strong>✓ Correct!</strong><br>" + q.explanation;
+
+        } else {
+
+            button.classList.add("incorrect");
+
+            allAnswers[q.correct].classList.add("correct");
+
+            feedback.className = "feedback incorrect-feedback";
+            feedback.innerHTML =
+                "<strong>✗ Not quite!</strong><br>" +
+                "The correct answer is: <strong>" +
+                q.answers[q.correct] +
+                "</strong><br><br>" +
+                q.explanation;
+
+        }
+
+        feedback.style.display = "block";
+
+        document.getElementById("nextButton").style.display = "inline-block";
+
+        if (currentQuestion === questions.length - 1) {
+            document.getElementById("nextButton").textContent =
+                "See Results →";
+        }
+
+        document.getElementById("progressBar").style.width =
+            ((currentQuestion + 1) / questions.length * 100) + "%";
+
+    }
+
+    function nextQuestion() {
+
+        currentQuestion++;
+
+        if (currentQuestion < questions.length) {
+
+            loadQuestion();
+
+        } else {
+
+            showResults();
+
+        }
+
+    }
+
+    function showResults() {
+
+        document.getElementById("quizBox").style.display = "none";
+        document.getElementById("progressText").style.display = "none";
+        document.querySelector(".progress-container").style.display = "none";
+
+        document.getElementById("resultBox").style.display = "block";
+
+        document.getElementById("score").textContent =
+            score + " / " + questions.length;
+
+        let message = "";
+
+        if (score === 10) {
+
+            message = "Outstanding! You know the South Korean education system extremely well!";
+
+        } else if (score >= 8) {
+
+            message = "Excellent work! You have a very good understanding of the Korean school system.";
+
+        } else if (score >= 6) {
+
+            message = "Good job! You know the basics, but there is still a little more to learn.";
+
+        } else if (score >= 4) {
+
+            message = "Not bad! Consider reviewing the information and trying again.";
+
+        } else {
+
+            message = "Keep learning! Review the school structure and educational pathways before your next attempt.";
+
+        }
+
+        document.getElementById("resultMessage").textContent = message;
+
+    }
+
+    function restartQuiz() {
+
+        currentQuestion = 0;
+        score = 0;
+        answered = false;
+
+        document.getElementById("quizBox").style.display = "block";
+        document.getElementById("resultBox").style.display = "none";
+
+        document.getElementById("progressText").style.display = "block";
+        document.querySelector(".progress-container").style.display = "block";
+
+        document.getElementById("nextButton").textContent =
+            "Next Question →";
+
+        loadQuestion();
+
+    }
+
+    loadQuestion();
+
+</script>
+
+</body>
+</html>
