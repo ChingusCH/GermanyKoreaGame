@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exams, Grades and Assessment in Korea</title>
+    <title>Korea Exams, Grades and Assessment Quiz</title>
 
     <style>
         * {
@@ -23,7 +23,7 @@
         }
 
         .overlay {
-            background: rgba(0, 0, 0, 0.55);
+            background: rgba(0, 0, 0, 0.60);
             min-height: 100vh;
             padding: 45px 20px;
             display: flex;
@@ -33,7 +33,7 @@
 
         .content-box {
             width: 100%;
-            max-width: 1050px;
+            max-width: 900px;
             padding: 40px;
             background: rgba(255, 255, 255, 0.12);
             backdrop-filter: blur(12px);
@@ -55,148 +55,110 @@
             text-align: center;
             font-size: 17px;
             line-height: 1.7;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
         }
 
-        h2 {
-            color: #ffd27f;
-            font-size: 24px;
-            margin-top: 35px;
-            margin-bottom: 12px;
-            border-bottom: 1px solid rgba(255, 210, 127, 0.45);
-            padding-bottom: 8px;
-        }
-
-        h3 {
-            color: #ffe0a3;
-            font-size: 19px;
-        }
-
-        p {
-            font-size: 16px;
-            line-height: 1.8;
-        }
-
-        ul {
-            padding-left: 25px;
-            line-height: 1.9;
-            font-size: 16px;
-        }
-
-        li {
-            margin-bottom: 8px;
-        }
-
-        strong {
-            color: #ffe0a3;
-        }
-
-        .highlight {
-            color: #ffd27f;
-            font-weight: bold;
-        }
-
-        .exam-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 18px;
-            margin: 25px 0;
-        }
-
-        .exam-card {
-            background: rgba(255, 255, 255, 0.13);
-            border: 1px solid rgba(255, 210, 127, 0.4);
-            border-radius: 12px;
-            padding: 20px;
-            transition: transform 0.3s ease,
-                        background 0.3s ease;
-        }
-
-        .exam-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .exam-card h3 {
-            color: #ffd27f;
-            margin-top: 0;
-        }
-
-        .exam-card p {
-            font-size: 15px;
-            margin-bottom: 0;
-        }
-
-        .csat-box {
-            background: rgba(255, 210, 127, 0.13);
-            border: 1px solid rgba(255, 210, 127, 0.5);
-            border-radius: 12px;
-            padding: 22px;
-            margin: 25px 0;
-        }
-
-        .csat-box h3 {
-            color: #ffd27f;
-            margin-top: 0;
-            font-size: 22px;
-        }
-
-        .note-box {
-            background: rgba(255, 210, 127, 0.12);
-            border-left: 4px solid #ffd27f;
-            padding: 15px 20px;
-            margin: 20px 0;
-            border-radius: 5px;
-            line-height: 1.7;
-        }
-
-        .comparison-table {
-            overflow-x: auto;
-            margin: 20px 0;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: rgba(255, 255, 255, 0.08);
+        .progress-container {
+            background: rgba(255, 255, 255, 0.15);
+            height: 9px;
             border-radius: 10px;
+            margin: 25px 0 10px;
             overflow: hidden;
         }
 
-        th, td {
-            padding: 14px;
-            text-align: left;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            font-size: 15px;
-            line-height: 1.6;
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: #ffd27f;
+            transition: width 0.3s ease;
         }
 
-        th {
-            background: rgba(255, 210, 127, 0.22);
-            color: #ffd27f;
-        }
-
-        .source {
-            margin-top: 35px;
-            padding-top: 15px;
-            border-top: 1px solid rgba(255, 255, 255, 0.25);
+        .progress-text {
+            text-align: right;
             font-size: 13px;
-            line-height: 1.7;
             color: rgba(255, 255, 255, 0.8);
         }
 
-        .source a {
+        .quiz-box {
+            background: rgba(255, 255, 255, 0.10);
+            border: 1px solid rgba(255, 210, 127, 0.35);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 25px;
+        }
+
+        .question-number {
             color: #ffd27f;
-            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 12px;
         }
 
-        .source a:hover {
-            text-decoration: underline;
+        h2 {
+            font-size: 22px;
+            line-height: 1.5;
+            margin-top: 0;
+            margin-bottom: 22px;
         }
 
+        .answer {
+            display: block;
+            width: 100%;
+            padding: 15px 18px;
+            margin: 12px 0;
+            text-align: left;
+            font-family: Georgia, serif;
+            font-size: 16px;
+            color: white;
+            background: rgba(255, 255, 255, 0.10);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.25s ease, transform 0.25s ease;
+        }
+
+        .answer:hover:not(:disabled) {
+            background: rgba(255, 210, 127, 0.22);
+            transform: translateX(4px);
+        }
+
+        .answer:disabled {
+            cursor: default;
+            opacity: 1;
+        }
+
+        .answer.correct {
+            background: rgba(46, 160, 90, 0.45);
+            border: 1px solid #62d68d;
+        }
+
+        .answer.incorrect {
+            background: rgba(190, 55, 55, 0.45);
+            border: 1px solid #ff7777;
+        }
+
+        .feedback {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            line-height: 1.6;
+            display: none;
+            background: rgba(255, 255, 255, 0.10);
+        }
+
+        .feedback.correct-feedback {
+            border-left: 4px solid #62d68d;
+        }
+
+        .feedback.incorrect-feedback {
+            border-left: 4px solid #ff7777;
+        }
+
+        .next-button,
+        .restart-button,
         .back-button {
             display: inline-block;
-            margin-top: 30px;
+            margin-top: 22px;
             padding: 12px 25px;
             color: white;
             background: rgba(255, 210, 127, 0.2);
@@ -205,36 +167,69 @@
             text-decoration: none;
             font-family: Georgia, serif;
             font-size: 16px;
-            transition: background 0.3s ease,
-                        transform 0.3s ease;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
         }
 
+        .next-button:hover,
+        .restart-button:hover,
         .back-button:hover {
             background: rgba(255, 210, 127, 0.4);
-            transform: scale(1.05);
+            transform: scale(1.04);
         }
 
-        @media (max-width: 750px) {
+        .next-button {
+            display: none;
+            float: right;
+        }
+
+        .result-box {
+            display: none;
+            text-align: center;
+            padding: 30px 15px;
+            margin-top: 25px;
+            background: rgba(255, 255, 255, 0.10);
+            border: 1px solid rgba(255, 210, 127, 0.4);
+            border-radius: 12px;
+        }
+
+        .result-box h2 {
+            color: #ffd27f;
+            font-size: 28px;
+        }
+
+        .score {
+            font-size: 48px;
+            font-weight: bold;
+            color: #ffd27f;
+            margin: 20px 0;
+        }
+
+        .result-message {
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .back-container {
+            text-align: center;
+            clear: both;
+        }
+
+        @media (max-width: 600px) {
             .content-box {
-                padding: 25px 20px;
+                padding: 25px 18px;
             }
 
             h1 {
-                font-size: 28px;
-            }
-
-            .exam-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 420px) {
-            h1 {
-                font-size: 25px;
+                font-size: 27px;
             }
 
             h2 {
-                font-size: 21px;
+                font-size: 19px;
+            }
+
+            .answer {
+                font-size: 15px;
             }
         }
     </style>
@@ -245,426 +240,381 @@
 <div class="overlay">
     <div class="content-box">
 
-        <h1>Exams, Grades and Assessment in Korea 🇰🇷</h1>
+        <h1>Exams, Grades and Assessment Quiz 🇰🇷</h1>
 
         <p class="intro">
-            Examinations and academic performance play an important role
-            in South Korea's education system. Students are assessed through
-            school-based evaluations, while the nationwide
-            <span class="highlight">College Scholastic Ability Test (CSAT)</span>
-            is one of the factors considered for university admission.
+            How well do you understand examinations and academic
+            assessment in South Korea?
+            Test your knowledge with these 10 questions about
+            the CSAT, school records, grading and university admission!
         </p>
 
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
 
-        <!-- TYPES OF EXAMS -->
-        <h2>1. What Kinds of Tests and Exams Do Students Take?</h2>
+        <div class="progress-text" id="progressText">
+            Question 1 of 10
+        </div>
 
-        <p>
-            Students encounter different forms of assessment throughout
-            their education. These assessments help schools evaluate
-            academic progress and provide information for future
-            educational pathways.
-        </p>
+        <div class="quiz-box" id="quizBox">
 
-        <div class="exam-grid">
-
-            <div class="exam-card">
-                <h3>School Examinations</h3>
-                <p>
-                    Schools use examinations to assess students'
-                    understanding of subjects and their academic
-                    performance.
-                </p>
+            <div class="question-number" id="questionNumber">
+                QUESTION 1
             </div>
 
-            <div class="exam-card">
-                <h3>School-Based Assessments</h3>
-                <p>
-                    Students' academic development and performance
-                    are documented in official school records.
-                </p>
-            </div>
+            <h2 id="question"></h2>
 
-            <div class="exam-card">
-                <h3>CSAT</h3>
-                <p>
-                    The College Scholastic Ability Test is a nationwide
-                    standardized examination used as one factor in
-                    university admission.
-                </p>
-            </div>
+            <div id="answers"></div>
 
-            <div class="exam-card">
-                <h3>Qualifying Examinations</h3>
-                <p>
-                    Certain examinations can provide an alternative
-                    route for people seeking academic qualifications
-                    equivalent to completing a school level.
-                </p>
-            </div>
+            <div class="feedback" id="feedback"></div>
+
+            <button class="next-button" id="nextButton"
+                    onclick="nextQuestion()">
+                Next Question →
+            </button>
 
         </div>
 
-        <div class="csat-box">
-            <h3>The CSAT – College Scholastic Ability Test</h3>
+        <div class="result-box" id="resultBox">
 
-            <p>
-                The CSAT is one of the most important examinations
-                in South Korea's education system. Its results can
-                influence students' opportunities when applying
-                to universities.
-            </p>
+            <h2>Quiz Completed! 🎓</h2>
 
-            <p>
-                Universities may consider CSAT scores together with
-                school records and other admission requirements.
-            </p>
+            <p>Your final score:</p>
 
-            <p>
-                The examination is held as part of the annual
-                university admissions cycle.
-            </p>
+            <div class="score" id="score"></div>
+
+            <p class="result-message" id="resultMessage"></p>
+
+            <button class="restart-button" onclick="restartQuiz()">
+                Try Again ↻
+            </button>
+
         </div>
 
-
-        <!-- EXAM FREQUENCY -->
-        <h2>2. How Often Do Students Take Exams?</h2>
-
-        <p>
-            The South Korean Ministry of Education does not specify
-            one nationwide timetable or an exact number of school
-            examinations per year in its general English-language
-            education information.
-        </p>
-
-        <p>
-            The frequency and timing of ordinary school examinations
-            can depend on the school, grade and assessment arrangements.
-        </p>
-
-        <div class="note-box">
-            <strong>Important distinction:</strong>
-            Ordinary school examinations follow school assessment
-            arrangements. The CSAT is a separate nationwide examination
-            held once for each annual university admissions cycle.
-        </div>
-
-
-        <!-- GRADING -->
-        <h2>3. How Are Grades Calculated?</h2>
-
-        <p>
-            Students' academic performance is documented in official
-            school records. These records are important because they
-            can be used during the selection process for higher
-            education institutions.
-        </p>
-
-        <p>
-            The Ministry of Education has published guidelines
-            concerning school records, subject evaluation and
-            grade calculation.
-        </p>
-
-        <ul>
-            <li>
-                <strong>Academic performance:</strong>
-                Students' performance in their school subjects
-                is documented.
-            </li>
-
-            <li>
-                <strong>Subject evaluation:</strong>
-                Schools follow evaluation guidelines for their
-                different subjects.
-            </li>
-
-            <li>
-                <strong>School records:</strong>
-                Academic information is recorded and may be
-                considered during university admission.
-            </li>
-        </ul>
-
-        <div class="note-box">
-            <strong>Note:</strong>
-            There is no single universal formula in the Ministry's
-            English-language overview that explains how every
-            student's final grades are calculated.
-        </div>
-
-
-        <!-- PARTICIPATION -->
-        <h2>4. Are Participation and Presentations Included?</h2>
-
-        <p>
-            South Korea's official school-record system is not
-            limited to recording examination results. It also
-            describes students' development and learning processes.
-        </p>
-
-        <p>
-            Teachers are expected to observe students and record
-            verified information about their progress.
-        </p>
-
-        <ul>
-            <li>
-                <strong>Learning development:</strong>
-                Teachers document students' progress over time.
-            </li>
-
-            <li>
-                <strong>Academic achievement:</strong>
-                Students' performance in their subjects is recorded.
-            </li>
-
-            <li>
-                <strong>Teacher observations:</strong>
-                Official school records can include information
-                based on teachers' observations of students.
-            </li>
-        </ul>
-
-        <div class="note-box">
-            The official sources consulted do not confirm that every
-            school grades class participation, speaking activities
-            and presentations in exactly the same way.
-        </div>
-
-
-        <!-- GRADING SCALE -->
-        <h2>5. What Are the Highest and Lowest Grades?</h2>
-
-        <p>
-            South Korea does not have one single grading scale that
-            can be applied to every school assessment and every
-            examination.
-        </p>
-
-        <p>
-            The grading arrangements can differ depending on the
-            subject and type of assessment.
-        </p>
-
-        <div class="comparison-table">
-            <table>
-                <tr>
-                    <th>Assessment</th>
-                    <th>Grading Information</th>
-                </tr>
-
-                <tr>
-                    <td>Ordinary school assessments</td>
-                    <td>
-                        Grade calculation follows the relevant
-                        school and subject evaluation guidelines.
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>CSAT</td>
-                    <td>
-                        Scoring arrangements differ depending
-                        on the examination subject.
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>Some CSAT subjects</td>
-                    <td>
-                        A nine-grade system is used for certain
-                        subjects.
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-        <div class="note-box">
-            <strong>Important:</strong>
-            It would be misleading to give one universal highest
-            and lowest grade for the entire Korean school system.
-            The grading scale depends on the assessment being discussed.
-        </div>
-
-
-        <!-- RETAKING EXAMS -->
-        <h2>6. Can Students Retake Exams?</h2>
-
-        <p>
-            The Ministry's general English-language education pages
-            do not specify a universal right to retake ordinary
-            school examinations.
-        </p>
-
-        <p>
-            The CSAT and ordinary school examinations are different
-            assessment systems. Their retake arrangements should
-            not be treated as identical.
-        </p>
-
-        <div class="note-box">
-            <strong>Not specified:</strong>
-            The exact rules for retaking ordinary school examinations
-            cannot be confirmed from the general Ministry sources
-            used for this page.
-        </div>
-
-
-        <!-- IMPORTANCE OF GRADES -->
-        <h2>7. How Important Are Grades for the Future?</h2>
-
-        <p>
-            Academic performance can have a significant influence
-            on students' future educational opportunities.
-        </p>
-
-        <p>
-            According to the Ministry of Education, admission to
-            higher education institutions can depend on several
-            factors, including:
-        </p>
-
-        <ul>
-            <li>
-                <strong>CSAT results:</strong>
-                Scores from the nationwide university entrance examination.
-            </li>
-
-            <li>
-                <strong>School records:</strong>
-                Students' academic performance and documented
-                educational development.
-            </li>
-
-            <li>
-                <strong>University-specific requirements:</strong>
-                Additional admission criteria depending on
-                the institution and its selection process.
-            </li>
-        </ul>
-
-        <div class="note-box">
-            <strong>Why does this matter?</strong>
-            Students' performance during high school can influence
-            their opportunities to enter different universities
-            and higher education programs.
-        </div>
-
-
-        <!-- PRESSURE COMPARISON -->
-        <h2>8. Which School System Puts More Pressure on Students?</h2>
-
-        <p>
-            Examinations, school records and university admission
-            are important parts of the Korean education system.
-            However, the Ministry's official education information
-            does not provide a direct comparison of student stress
-            between South Korea and Germany.
-        </p>
-
-        <p>
-            To determine which country puts more pressure on
-            students, reliable statistics about student stress,
-            mental well-being and academic workload in both
-            countries would be needed.
-        </p>
-
-        <div class="note-box">
-            <strong>Conclusion:</strong>
-            The available Ministry sources explain the importance
-            of academic assessment in South Korea, but they do not
-            establish which country has the more stressful
-            school system.
-        </div>
-
-
-        <!-- SUMMARY -->
-        <h2>Key Facts to Remember</h2>
-
-        <ul>
-            <li>
-                South Korea uses school-based assessments and
-                official school records.
-            </li>
-
-            <li>
-                The CSAT is a nationwide examination used as
-                one factor in university admission.
-            </li>
-
-            <li>
-                University admission can depend on both CSAT
-                results and school records.
-            </li>
-
-            <li>
-                The Ministry's general English-language pages
-                do not establish one universal grading scale,
-                exam frequency or retake policy for all schools.
-            </li>
-        </ul>
-
-
-        <!-- SOURCES -->
-        <div class="source">
-
-            <strong>Official Sources:</strong><br><br>
-
-            South Korean Ministry of Education – English Website
-
-            <br><br>
-
-            <a href="https://english.moe.go.kr/sub/infoRenewal.do?m=0305&page=0305&s=english"
-               target="_blank">
-                Higher Education – University Admission
+        <div class="back-container">
+            <a href="KoreaSchoolSystem.html" class="back-button">
+                ← Back to School System
             </a>
-
-            <br>
-
-            <a href="https://english.moe.go.kr/sub/infoRenewal.do?m=0304&page=0304&s=english"
-               target="_blank">
-                Secondary Education
-            </a>
-
-            <br>
-
-            <a href="https://english.moe.go.kr/boardCnts/view.do?boardID=265&boardSeq=73211&lev=0&m=0301&opType=N&page=1&s=english"
-               target="_blank">
-                Ministry of Education – School Records Guidelines
-            </a>
-
-            <br>
-
-            <a href="https://star.moe.go.kr/web/contents/m10400.do"
-               target="_blank">
-                Official School Records Information Portal
-            </a>
-
-            <br>
-
-            <a href="https://english.moe.go.kr/boardCnts/viewRenewal.do?boardID=254&boardSeq=104823&lev=0&opType=N&page=1&s=english"
-               target="_blank">
-                Ministry of Education – 2026 College Scholastic Ability Test
-            </a>
-
-            <p>
-                Information is based on official publications from
-                the South Korean Ministry of Education. Where the
-                available sources do not specify a nationwide rule,
-                this page states that limitation rather than
-                presenting an unverified claim.
-            </p>
-
         </div>
-
-
-        <a href="KoreaSchoolSystem.html" class="back-button">
-            ← Back to School System
-        </a>
 
     </div>
 </div>
+
+<script>
+
+    const questions = [
+
+        {
+            question: "Which examination is a nationwide standardized test used in South Korea's university admission process?",
+            answers: [
+                "The TOEFL",
+                "The College Scholastic Ability Test (CSAT)",
+                "The GCSE",
+                "The SAT Subject Test"
+            ],
+            correct: 1,
+            explanation: "The College Scholastic Ability Test (CSAT) is a nationwide standardized examination. Its results can be considered during university admission."
+        },
+
+        {
+            question: "How often is the CSAT held as part of the university admissions cycle?",
+            answers: [
+                "Every month",
+                "Every two years",
+                "Once each year",
+                "Only once during a student's entire education"
+            ],
+            correct: 2,
+            explanation: "The CSAT is held annually as part of South Korea's university admissions cycle."
+        },
+
+        {
+            question: "What is one purpose of school-based assessments?",
+            answers: [
+                "To document students' academic progress and performance",
+                "To determine students' nationality",
+                "To replace all university entrance examinations",
+                "To decide which school uniforms students wear"
+            ],
+            correct: 0,
+            explanation: "School-based assessments help evaluate academic progress. Students' performance and development are documented in official school records."
+        },
+
+        {
+            question: "Does South Korea have one universal formula for calculating every student's final school grades?",
+            answers: [
+                "Yes, every subject uses exactly the same formula",
+                "Yes, all grades depend only on the CSAT",
+                "No, grades are never calculated",
+                "No, evaluation arrangements can depend on the subject and assessment"
+            ],
+            correct: 3,
+            explanation: "The Ministry's general information does not establish one universal formula for every school assessment. Evaluation arrangements can differ."
+        },
+
+        {
+            question: "What information can official school records contain?",
+            answers: [
+                "Only students' attendance",
+                "Academic performance and information about students' educational development",
+                "Only students' sports achievements",
+                "Only the results of the CSAT"
+            ],
+            correct: 1,
+            explanation: "Official school records can document academic performance and aspects of students' development and learning processes."
+        },
+
+        {
+            question: "Which statement about participation and presentations is correct?",
+            answers: [
+                "Every school must give exactly the same participation grade",
+                "Presentations are the only way to receive school grades",
+                "The sources do not establish one universal grading rule for participation and presentations",
+                "Participation is never observed by teachers"
+            ],
+            correct: 2,
+            explanation: "Teachers can document learning development and observations, but the official sources consulted do not confirm identical participation and presentation grading rules at every school."
+        },
+
+        {
+            question: "Which grading system is used for certain CSAT subjects?",
+            answers: [
+                "A nine-grade system",
+                "A 100-point system for every subject only",
+                "A five-star system",
+                "The German 15-point system"
+            ],
+            correct: 0,
+            explanation: "Certain CSAT subjects use a nine-grade system. However, scoring arrangements can differ depending on the subject."
+        },
+
+        {
+            question: "Can students universally retake every ordinary school examination under one nationwide rule?",
+            answers: [
+                "Yes, exactly three retakes are always allowed",
+                "Yes, every student can retake every exam once",
+                "No, retakes are forbidden in every school",
+                "The general Ministry sources do not specify a universal retake right"
+            ],
+            correct: 3,
+            explanation: "The Ministry's general English-language information does not establish a universal right to retake ordinary school examinations."
+        },
+
+        {
+            question: "Which factors can influence university admission in South Korea?",
+            answers: [
+                "Only students' age and hobbies",
+                "CSAT results, school records and university-specific requirements",
+                "Only attendance in elementary school",
+                "Only the number of extracurricular activities"
+            ],
+            correct: 1,
+            explanation: "Universities can consider CSAT results, school records and additional criteria depending on their individual admission processes."
+        },
+
+        {
+            question: "Can the official Ministry sources used for this topic establish whether South Korea or Germany puts more pressure on students?",
+            answers: [
+                "Yes, they prove that Germany is always more stressful",
+                "Yes, they prove that South Korea is always more stressful",
+                "No, a direct comparison would require reliable data about stress and student well-being in both countries",
+                "Yes, because both countries have exactly the same school system"
+            ],
+            correct: 2,
+            explanation: "The Ministry's education information explains assessment and university admission, but does not directly compare student stress in South Korea and Germany."
+        }
+
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+    let answered = false;
+
+    function loadQuestion() {
+
+        answered = false;
+
+        const q = questions[currentQuestion];
+
+        document.getElementById("questionNumber").textContent =
+            "QUESTION " + (currentQuestion + 1);
+
+        document.getElementById("question").textContent = q.question;
+
+        document.getElementById("progressText").textContent =
+            "Question " + (currentQuestion + 1) +
+            " of " + questions.length;
+
+        document.getElementById("progressBar").style.width =
+            (currentQuestion / questions.length * 100) + "%";
+
+        document.getElementById("feedback").style.display = "none";
+        document.getElementById("nextButton").style.display = "none";
+
+        const answersContainer = document.getElementById("answers");
+        answersContainer.innerHTML = "";
+
+        q.answers.forEach((answer, index) => {
+
+            const button = document.createElement("button");
+
+            button.className = "answer";
+            button.textContent = answer;
+
+            button.onclick = function() {
+                checkAnswer(index, button);
+            };
+
+            answersContainer.appendChild(button);
+
+        });
+
+    }
+
+    function checkAnswer(selected, button) {
+
+        if (answered) return;
+
+        answered = true;
+
+        const q = questions[currentQuestion];
+        const allAnswers = document.querySelectorAll(".answer");
+        const feedback = document.getElementById("feedback");
+
+        allAnswers.forEach(answer => {
+            answer.disabled = true;
+        });
+
+        if (selected === q.correct) {
+
+            score++;
+
+            button.classList.add("correct");
+
+            feedback.className = "feedback correct-feedback";
+
+            feedback.innerHTML =
+                "<strong>✓ Correct!</strong><br>" +
+                q.explanation;
+
+        } else {
+
+            button.classList.add("incorrect");
+
+            allAnswers[q.correct].classList.add("correct");
+
+            feedback.className = "feedback incorrect-feedback";
+
+            feedback.innerHTML =
+                "<strong>✗ Not quite!</strong><br>" +
+                "The correct answer is: <strong>" +
+                q.answers[q.correct] +
+                "</strong><br><br>" +
+                q.explanation;
+
+        }
+
+        feedback.style.display = "block";
+
+        document.getElementById("nextButton").style.display =
+            "inline-block";
+
+        if (currentQuestion === questions.length - 1) {
+
+            document.getElementById("nextButton").textContent =
+                "See Results →";
+
+        }
+
+        document.getElementById("progressBar").style.width =
+            ((currentQuestion + 1) / questions.length * 100) + "%";
+
+    }
+
+    function nextQuestion() {
+
+        currentQuestion++;
+
+        if (currentQuestion < questions.length) {
+
+            loadQuestion();
+
+        } else {
+
+            showResults();
+
+        }
+
+    }
+
+    function showResults() {
+
+        document.getElementById("quizBox").style.display = "none";
+
+        document.getElementById("progressText").style.display = "none";
+
+        document.querySelector(".progress-container").style.display =
+            "none";
+
+        document.getElementById("resultBox").style.display = "block";
+
+        document.getElementById("score").textContent =
+            score + " / " + questions.length;
+
+        let message = "";
+
+        if (score === 10) {
+
+            message = "Perfect score! You know the Korean assessment system extremely well!";
+
+        } else if (score >= 8) {
+
+            message = "Excellent! You have a very good understanding of exams and grades in South Korea.";
+
+        } else if (score >= 6) {
+
+            message = "Good job! You understand most of the key concepts. A little revision will help you improve further.";
+
+        } else if (score >= 4) {
+
+            message = "Not bad! Review the CSAT, school records and grading information before trying again.";
+
+        } else {
+
+            message = "Keep learning! Revisit the information page and give the quiz another try. You can do it!";
+
+        }
+
+        document.getElementById("resultMessage").textContent = message;
+
+    }
+
+    function restartQuiz() {
+
+        currentQuestion = 0;
+        score = 0;
+        answered = false;
+
+        document.getElementById("quizBox").style.display = "block";
+
+        document.getElementById("resultBox").style.display = "none";
+
+        document.getElementById("progressText").style.display = "block";
+
+        document.querySelector(".progress-container").style.display =
+            "block";
+
+        document.getElementById("nextButton").textContent =
+            "Next Question →";
+
+        loadQuestion();
+
+    }
+
+    loadQuestion();
+
+</script>
 
 </body>
 </html>
